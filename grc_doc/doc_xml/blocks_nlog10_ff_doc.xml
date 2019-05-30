@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<block>
+  <name>Log10</name>
+  <key>blocks_nlog10_ff</key>
+  <doc>Calculates the logarithm of the input signal. Implements the function out = n*log10(in) + k.</doc>
+  <param>
+    <name>n</name>
+    <doc>Sets the multiplier constant n. For calculating dB from a voltage this can be set to 20.</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>k</name>
+    <doc>Sets the additive constant k.</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Vec Length</name>
+    <doc>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</doc>
+    <type>int</type>
+  </param>
+</block>

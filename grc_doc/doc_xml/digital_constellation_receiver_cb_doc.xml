@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<block>
+  <name>Constellation Receiver</name>
+  <key>digital_constellation_receiver_cb</key>
+  <doc>TODO </doc>
+  <param>
+    <name>Constellation Object</name>
+    <doc>TODO</doc>
+    <type>raw</type>
+  </param>
+  <param>
+    <name>Loop Bandwidth</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Minimum Freq Deviation</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Maximum Freq Deviation</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+</block>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Constant Source</title>
+  </sect2info>
+  <para>Outputs a constant value.</para>
+  <screenshot>
+    <graphic fileref="images/analog_const_source_x.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Output Type</title>
+    </sect3info>
+    <para>Specifies the data type of the output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Output is complex-valued.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Output is a floating-point value.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Output is an integer value.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Output is a short (16-bit) integer value.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Constant</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>Same as Output Type</para>
+    <para>Specifies the constant value to output.</para>
+  </sect3>
+</sect2>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Binary Slicer</title>
+  </sect2info>
+  <para>TODO </para>
+  <screenshot>
+    <graphic fileref="images/digital_binary_slicer_fb.png"/>
+  </screenshot>
+</sect2>

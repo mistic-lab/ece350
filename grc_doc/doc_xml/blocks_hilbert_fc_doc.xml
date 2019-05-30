@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<block>
+  <name>Hilbert</name>
+  <key>blocks_hilbert_fc</key>
+  <doc>Implements the function out = in + jH(in). Note that the input is floating point while the output is complex.</doc>
+  <param>
+    <name>Num Taps</name>
+    <doc>Number of taps that will be used in the Discrete Hilbert Transform filter. A higher number of taps will give better accuracy but also longer processing delay.</doc>
+    <type>int</type>
+  </param>
+</block>

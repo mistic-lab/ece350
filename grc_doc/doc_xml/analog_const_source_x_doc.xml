@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<block>
+  <name>Constant Source</name>
+  <key>analog_const_source_x</key>
+  <doc>Outputs a constant value.</doc>
+  <param>
+    <name>Output Type</name>
+    <doc>Specifies the data type of the output.</doc>
+    <type>
+      <option>
+        <name>Complex</name>
+        <doc>Output is complex-valued.</doc>
+      </option>
+      <option>
+        <name>Float</name>
+        <doc>Output is a floating-point value.</doc>
+      </option>
+      <option>
+        <name>Int</name>
+        <doc>Output is an integer value.</doc>
+      </option>
+      <option>
+        <name>Short</name>
+        <doc>Output is a short (16-bit) integer value.</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Constant</name>
+    <doc>Specifies the constant value to output.</doc>
+    <type>Same as Output Type</type>
+  </param>
+</block>

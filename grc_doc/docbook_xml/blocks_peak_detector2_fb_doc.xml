@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Peak Detector2</title>
+  </sect2info>
+  <para>TODO </para>
+  <screenshot>
+    <graphic fileref="images/blocks_peak_detector2_fb.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>TH Factor Rise</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Look Ahead</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Alpha</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+</sect2>

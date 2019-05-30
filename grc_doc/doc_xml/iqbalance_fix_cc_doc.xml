@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<block>
+  <name>IQ Bal Fix</name>
+  <key>iqbalance_fix_cc</key>
+  <doc>TODO </doc>
+  <param>
+    <name>Magnitude</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Phase</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+</block>

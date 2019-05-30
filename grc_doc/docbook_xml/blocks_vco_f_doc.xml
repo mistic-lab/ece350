@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>VCO</title>
+  </sect2info>
+  <para>Implements a voltage-controlled oscillator. The output frequency is linearly proportional to the input voltage multiplied by the Sensitivity.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_vco_f.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Sample Rate</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the sample rate for the VCO. For most purposes this can be set to the sample rate variable samp_rate </para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Sensitivity</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the scaling constant for the VCO. Note that the units are rad/sec*V, not Hz/V.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Amplitude</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the output amplitude for the VCO.</para>
+  </sect3>
+</sect2>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<block>
+  <name>IQ Bal Optimize</name>
+  <key>iqbalance_optimize_c</key>
+  <doc>TODO </doc>
+  <param>
+    <name>Period</name>
+    <doc>TODO</doc>
+    <type>int</type>
+  </param>
+</block>

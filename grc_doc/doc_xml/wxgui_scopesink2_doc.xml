@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<block>
+  <name>WX GUI Scope Sink</name>
+  <key>wxgui_scopesink2</key>
+  <doc>TODO 
+Set the V Scale to 0 for the scope to auto-scale.
+
+Set the T Scale to 0 for automatic setting.
+
+XY Mode allows the scope to initialize as an XY plotter.
+
+Leave the window blank for the default size, otherwise enter a tuple of (width, height) pixels.
+
+Use the Grid Position (row, column, row span, column span) to position the graphical element in the window.
+
+Use the Notebook Param (notebook-id, page-index) to place the graphical element inside of a notebook page.
+	</doc>
+  <param>
+    <name>Type</name>
+    <doc>TODO</doc>
+    <type>
+      <option>
+        <name>Complex</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>Float</name>
+        <doc>TODO</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Title</name>
+    <doc>TODO</doc>
+    <type>string</type>
+  </param>
+  <param>
+    <name>Sample Rate</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>V Scale</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>V Offset</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>T Scale</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>AC Couple</name>
+    <doc>TODO</doc>
+    <type>bool</type>
+  </param>
+  <param>
+    <name>XY Mode</name>
+    <doc>TODO</doc>
+    <type>
+      <option>
+        <name>Off</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>On</name>
+        <doc>TODO</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Num Inputs</name>
+    <doc>TODO</doc>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Window Size</name>
+    <doc>TODO</doc>
+    <type>int_vector</type>
+  </param>
+  <param>
+    <name>Grid Position</name>
+    <doc>TODO</doc>
+    <type>grid_pos</type>
+  </param>
+  <param>
+    <name>Notebook</name>
+    <doc>TODO</doc>
+    <type>notebook</type>
+  </param>
+  <param>
+    <name>Trigger Mode</name>
+    <doc>TODO</doc>
+    <type>
+      <option>
+        <name>Auto</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>Normal</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>Freerun</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>Stripchart</name>
+        <doc>TODO</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Y Axis Label</name>
+    <doc>TODO</doc>
+    <type>string</type>
+  </param>
+</block>

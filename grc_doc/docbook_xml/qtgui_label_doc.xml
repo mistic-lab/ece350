@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>QT GUI Label</title>
+  </sect2info>
+  <para>TODO 
+This block creates a variable with a label widget for text. \
+Leave the label blank to use the variable id as the label.
+
+The GUI hint can be used to position the widget within the application. \
+The hint is of the form [tab_id@tab_index]: [row, col, row_span, col_span]. \
+Both the tab specification and the grid position are optional.
+	</para>
+  <screenshot>
+    <graphic fileref="images/variable_qtgui_label.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Label</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>TODO</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Float</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Integer</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>String</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Boolean</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Any</entry>
+            <entry>TODO</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Default Value</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>$type</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>GUI Hint</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>gui_hint</para>
+    <para>TODO</para>
+  </sect3>
+</sect2>

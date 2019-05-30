@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>AGC</title>
+  </sect2info>
+  <para>Implements an automatic gain control with a single rate parameter for both attack and decay. The gain is updated by the equation: Gain = Gain + Rate * (Reference - abs(Input)) for each sample.</para>
+  <screenshot>
+    <graphic fileref="images/analog_agc_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input and output are complex values.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input and output are floating point (real) values.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Rate</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the rate at which the AGC can adjust the gain. The rate parameter is used to adjust the gain as per the equation given above.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Reference</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the reference amplitude. The AGC will attempt to keep the output at this level by adjusting the gain.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Gain</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the initial gain. For most applications this can be set to 1.0.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Max Gain</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the maximum value of the gain parameter. The AGC will not adjust the gain beyond this value. Setting this parameter to 0 indicates that there is no maximum.</para>
+  </sect3>
+</sect2>

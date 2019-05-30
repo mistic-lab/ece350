@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<block>
+  <name>WX GUI Number Sink</name>
+  <key>wxgui_numbersink2</key>
+  <doc>TODO 
+Set Average Alpha to 0 for automatic setting.
+
+Leave the window blank for the default size, otherwise enter a tuple of (width, height) pixels.
+
+Use the Grid Position (row, column, row span, column span) to position the graphical element in the window.
+
+Use the Notebook Param (notebook-id, page-index) to place the graphical element inside of a notebook page.
+
+Incoming numbers are multiplied by the factor, and then added-to by the reference level.
+	</doc>
+  <param>
+    <name>Type</name>
+    <doc>TODO</doc>
+    <type>
+      <option>
+        <name>Complex</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>Float</name>
+        <doc>TODO</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Title</name>
+    <doc>TODO</doc>
+    <type>string</type>
+  </param>
+  <param>
+    <name>Units</name>
+    <doc>TODO</doc>
+    <type>string</type>
+  </param>
+  <param>
+    <name>Sample Rate</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Min Value</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Max Value</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Factor</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Decimal Places</name>
+    <doc>TODO</doc>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Reference Level</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Number Rate</name>
+    <doc>TODO</doc>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Peak Hold</name>
+    <doc>TODO</doc>
+    <type>
+      <option>
+        <name>On</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>Off</name>
+        <doc>TODO</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Average</name>
+    <doc>TODO</doc>
+    <type>
+      <option>
+        <name>On</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>Off</name>
+        <doc>TODO</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Average Alpha</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Show Gauge</name>
+    <doc>TODO</doc>
+    <type>
+      <option>
+        <name>Show</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>Hide</name>
+        <doc>TODO</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Window Size</name>
+    <doc>TODO</doc>
+    <type>int_vector</type>
+  </param>
+  <param>
+    <name>Grid Position</name>
+    <doc>TODO</doc>
+    <type>grid_pos</type>
+  </param>
+  <param>
+    <name>Notebook</name>
+    <doc>TODO</doc>
+    <type>notebook</type>
+  </param>
+</block>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Float To Int</title>
+  </sect2info>
+  <para>Converts from floating point data type to integer (32-bit) data type.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_float_to_int.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Scale</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the scaling factor for the conversion.</para>
+  </sect3>
+</sect2>

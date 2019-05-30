@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Peak Detector</title>
+  </sect2info>
+  <para>TODO </para>
+  <screenshot>
+    <graphic fileref="images/blocks_peak_detector_xb.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Input Type</title>
+    </sect3info>
+    <para>TODO</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Float</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>TODO</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>TH Factor Rise</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>TH Factor Fall</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Look Ahead</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Alpha</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+</sect2>

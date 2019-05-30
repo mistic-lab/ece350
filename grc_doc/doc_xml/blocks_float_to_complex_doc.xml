@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<block>
+  <name>Float To Complex</name>
+  <key>blocks_float_to_complex</key>
+  <doc>Implements the function out = re + jim. Note that the data type changes from floating point (real) to complex.</doc>
+  <param>
+    <name>Vec Length</name>
+    <doc>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</doc>
+    <type>int</type>
+  </param>
+</block>

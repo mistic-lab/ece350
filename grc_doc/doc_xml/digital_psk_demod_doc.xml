@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<block>
+  <name>PSK Demod</name>
+  <key>digital_psk_demod</key>
+  <doc>TODO </doc>
+  <param>
+    <name>Number of Constellation Points</name>
+    <doc>TODO</doc>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Differential Encoding</name>
+    <doc>TODO</doc>
+    <type>bool</type>
+  </param>
+  <param>
+    <name>Samples/Symbol</name>
+    <doc>TODO</doc>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Excess BW</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Frequency BW</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Timing BW</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Phase BW</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Gray Code</name>
+    <doc>TODO</doc>
+    <type>
+      <option>
+        <name>Yes</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>No</name>
+        <doc>TODO</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Verbose</name>
+    <doc>TODO</doc>
+    <type>bool</type>
+  </param>
+  <param>
+    <name>Logging</name>
+    <doc>TODO</doc>
+    <type>bool</type>
+  </param>
+</block>

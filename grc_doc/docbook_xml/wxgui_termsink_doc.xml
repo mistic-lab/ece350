@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>WX GUI Terminal Sink</title>
+  </sect2info>
+  <para>TODO </para>
+  <screenshot>
+    <graphic fileref="images/wxgui_termsink.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Window Size</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int_vector</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Grid Position</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>grid_pos</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Notebook</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>notebook</para>
+    <para>TODO</para>
+  </sect3>
+</sect2>

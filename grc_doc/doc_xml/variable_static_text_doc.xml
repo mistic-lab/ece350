@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<block>
+  <name>WX GUI Static Text</name>
+  <key>variable_static_text</key>
+  <doc>TODO 
+This block creates a variable with a static text form. \
+Leave the label blank to use the variable id as the label.
+
+Format should be a function/lambda that converts a value into a string or None for the default formatter.
+
+Use the Grid Position (row, column, row span, column span) to position the graphical element in the window.
+
+Use the Notebook Param (notebook-id, page-index) to place the graphical element inside of a notebook page.
+	</doc>
+  <param>
+    <name>Label</name>
+    <doc>TODO</doc>
+    <type>string</type>
+  </param>
+  <param>
+    <name>Default Value</name>
+    <doc>TODO</doc>
+    <type>raw</type>
+  </param>
+  <param>
+    <name>Converter</name>
+    <doc>TODO</doc>
+    <type>
+      <option>
+        <name>Float</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>Integer</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>String</name>
+        <doc>TODO</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Formatter</name>
+    <doc>TODO</doc>
+    <type>raw</type>
+  </param>
+  <param>
+    <name>Grid Position</name>
+    <doc>TODO</doc>
+    <type>grid_pos</type>
+  </param>
+  <param>
+    <name>Notebook</name>
+    <doc>TODO</doc>
+    <type>notebook</type>
+  </param>
+</block>

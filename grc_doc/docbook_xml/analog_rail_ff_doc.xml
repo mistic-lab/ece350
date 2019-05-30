@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Rail</title>
+  </sect2info>
+  <para>Sets a hard limit on the highest and lowest values at the output of this block. The effect is similar to an Op-Amp that is being driven to saturation (ie: to the rails).</para>
+  <screenshot>
+    <graphic fileref="images/analog_rail_ff.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Low clipping</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the minimum value that will be output from this block.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Hi clipping</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the maximum value that will be output from this block.</para>
+  </sect3>
+</sect2>

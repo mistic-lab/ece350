@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>High Pass Filter</title>
+  </sect2info>
+  <para>This filter is a convenience wrapper for an FIR filter and a firdes taps generating function. Sample rate, cutoff frequency, and transition width are in Hertz. The beta paramater only applies to the Kaiser window.
+	</para>
+  <screenshot>
+    <graphic fileref="images/high_pass_filter.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>FIR Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output streams, with the option of either decimation or interpolation.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex-&gt;Complex (Decimating)</entry>
+            <entry>Input and output streams are complex, with the option to decimate the output.</entry>
+          </row>
+          <row>
+            <entry>Complex-&gt;Complex (Interpolating)</entry>
+            <entry>Input and output streams are complex, with the option to interpolate the output.</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Float (Decimating)</entry>
+            <entry>Input and output streams are real, with the option to decimate the output.</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Float (Interpolating)</entry>
+            <entry>Input and output streams are real, with the option to interpolate the output.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Decimation/Interpolation</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Decimation or interpolation can be selected through the FIR Type parameter. If resampling is not required set this parameter to 1.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Gain</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the gain of the filter.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Sample Rate</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the sample rate of the filter, in Hz.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Cutoff Freq</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the cutoff frequency of the filter, in Hz.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Transition Width</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the transition width between the pass band and stop band. A small transition width will increase the length of the FIR filter.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Window</title>
+    </sect3info>
+    <para>Specifies the window function that will be applied to the FIR filter.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Hamming</entry>
+            <entry>Apply a Hamming window.</entry>
+          </row>
+          <row>
+            <entry>Hann</entry>
+            <entry>Apply a Hann window.</entry>
+          </row>
+          <row>
+            <entry>Blackman</entry>
+            <entry>Apply a Blackman window.</entry>
+          </row>
+          <row>
+            <entry>Rectangular</entry>
+            <entry>Apply a rectangular window.</entry>
+          </row>
+          <row>
+            <entry>Kaiser</entry>
+            <entry>Apply a Kaiser window. The Beta parameter can be controlled.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Beta</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Beta parameter for the Kaiser window.</para>
+  </sect3>
+</sect2>

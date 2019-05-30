@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Frequency Xlating FIR Filter</title>
+  </sect2info>
+  <para>TODO </para>
+  <screenshot>
+    <graphic fileref="images/blocks_freq_xlating_fir_filter_xxx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>TODO</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex-&gt;Complex (Complex Taps)</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Complex-&gt;Complex (Real Taps)</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Complex (Complex Taps)</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Complex (Real Taps)</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Short-&gt;Complex (Complex Taps)</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Short-&gt;Complex (Real Taps)</entry>
+            <entry>TODO</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Decimation</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Taps</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>$type.taps</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Center Frequency</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Sample Rate</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+</sect2>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<block>
+  <name>Plateau Detector</name>
+  <key>blocks_plateau_detector_fb</key>
+  <doc>TODO </doc>
+  <param>
+    <name>Max. plateau length</name>
+    <doc>TODO</doc>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Threshold</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+</block>

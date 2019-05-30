@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>RMS</title>
+  </sect2info>
+  <para>Calculates the RMS value of the input signal.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_rms_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Input Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input stream.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input stream is complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input stream is float.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Alpha</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the constant for the first-order filter. The filter is updated by the equation Avg = (1-Alpha)*Avg + Alpha*abs(in)^2. The output is updated by the equation Out = sqrt(Avg).</para>
+  </sect3>
+</sect2>

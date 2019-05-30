@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Map</title>
+  </sect2info>
+  <para>TODO </para>
+  <screenshot>
+    <graphic fileref="images/digital_map_bb.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Map</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int_vector</para>
+    <para>TODO</para>
+  </sect3>
+</sect2>

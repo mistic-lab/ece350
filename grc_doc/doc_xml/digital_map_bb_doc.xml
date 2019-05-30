@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<block>
+  <name>Map</name>
+  <key>digital_map_bb</key>
+  <doc>TODO </doc>
+  <param>
+    <name>Map</name>
+    <doc>TODO</doc>
+    <type>int_vector</type>
+  </param>
+</block>

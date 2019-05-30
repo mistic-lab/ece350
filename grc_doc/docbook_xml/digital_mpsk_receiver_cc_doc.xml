@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>MPSK Receiver</title>
+  </sect2info>
+  <para>TODO </para>
+  <screenshot>
+    <graphic fileref="images/digital_mpsk_receiver_cc.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>M</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Theta</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Loop Bandwidth</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Min Freq</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Max Freq</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mu</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Gain Mu</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Omega</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Gain Omega</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Omega Relative Limit</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+</sect2>

@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Signal Source</title>
+  </sect2info>
+  <para>Used to generate a variety of signal types: Sine, Cosine, Square, Triangle and Sawtooth.</para>
+  <screenshot>
+    <graphic fileref="images/analog_sig_source_x.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Output Type</title>
+    </sect3info>
+    <para>Specifies the data type of the output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Output is complex-valued.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Output is real-valued.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Output is a 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Output is a 16-bit integer.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Sample Rate</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Specifies the output sample rate.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Waveform</title>
+    </sect3info>
+    <para>Specifies the output waveform.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Constant</entry>
+            <entry>Output is a constant value equal to the Amplitude parameter plus the Offset parameter. Note that Amplitude is only real while Offset can be complex. The Constant Source block provides the same functionality.</entry>
+          </row>
+          <row>
+            <entry>Sine</entry>
+            <entry>Output is a sine wave with peak amplitude configured by the Amplitude parameter and average value set by the Offset paramater.</entry>
+          </row>
+          <row>
+            <entry>Cosine</entry>
+            <entry>Output is a cosine wave with peak amplitude configured by the Amplitude parameter and average value set by the Offset paramater.</entry>
+          </row>
+          <row>
+            <entry>Square</entry>
+            <entry>Output is a square wave with peak-to-peak amplitude configured by the Amplitude parameter and the average value set by Offset + Amplitude/2. Note that in the Complex case, the imaginary signal is simply another square wave that has been shifted by ninety degrees.</entry>
+          </row>
+          <row>
+            <entry>Triangle</entry>
+            <entry>Output is a triangle wave with peak-to-peak amplitude configured by the Amplitude parameter and the average value set by Offset + Amplitude/2. Note that in the Complex case, the imaginary signal is simply another triangle wave that has been shifted by ninety degrees.</entry>
+          </row>
+          <row>
+            <entry>Sawtooth</entry>
+            <entry>Output is a positive-going sawtooth wave with peak-to-peak amplitude configured by the Amplitude parameter and the average value set by Offset + Amplitude/2. Note that in the Complex case, the imaginary signal is simply another sawtooth wave that has been shifted by ninety degrees.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Frequency</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Specifies the output frequency of the Signal Source. Note that aliasing will occur if the frequency is set higher than half of the sample rate.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Amplitude</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Specifies the peak amplitude (Sine and Cosine) or the peak-to-peak amplitude (Square, Triangle and Sawtooth). When using the Constant output, typically this is set to 0 and the Offset parameter is used.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Offset</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>Complex</para>
+    <para>Specifies the offset that is added to the generated waveform.</para>
+  </sect3>
+</sect2>

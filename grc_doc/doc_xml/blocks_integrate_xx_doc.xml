@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<block>
+  <name>Integrate</name>
+  <key>blocks_integrate_xx</key>
+  <doc>Implements an integrator. The output is the sum of the current and all previous input samples.</doc>
+  <param>
+    <name>IO Type</name>
+    <doc>Specifies the data type of the input and output streams.</doc>
+    <type>
+      <option>
+        <name>Complex</name>
+        <doc>Input and output streams are complex.</doc>
+      </option>
+      <option>
+        <name>Float</name>
+        <doc>Input and output streams are real.</doc>
+      </option>
+      <option>
+        <name>Int</name>
+        <doc>Input and output streams are 32-bit integers.</doc>
+      </option>
+      <option>
+        <name>Short</name>
+        <doc>Input and output streams are 16-bit integers.</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Decimation</name>
+    <doc>Specifies the decimation factor at the output.</doc>
+    <type>int</type>
+  </param>
+</block>

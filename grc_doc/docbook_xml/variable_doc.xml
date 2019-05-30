@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Variable</title>
+  </sect2info>
+  <para>This block maps a value to a unique variable. This variable block has no graphical representation. The variable can be referenced (by ID) from other blocks in the flowgraph.</para>
+  <screenshot>
+    <graphic fileref="images/variable.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Value</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>raw</para>
+    <para>Specifies the value of the variable.</para>
+  </sect3>
+</sect2>

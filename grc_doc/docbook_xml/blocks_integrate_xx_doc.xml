@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Integrate</title>
+  </sect2info>
+  <para>Implements an integrator. The output is the sum of the current and all previous input samples.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_integrate_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output streams.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input and output streams are complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input and output streams are real.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Input and output streams are 32-bit integers.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Input and output streams are 16-bit integers.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Decimation</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the decimation factor at the output.</para>
+  </sect3>
+</sect2>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>IQ Bal Optimize</title>
+  </sect2info>
+  <para>TODO </para>
+  <screenshot>
+    <graphic fileref="images/iqbalance_optimize_c.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Period</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>TODO</para>
+  </sect3>
+</sect2>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<block>
+  <name>Sample and Hold</name>
+  <key>blocks_sample_and_hold_xx</key>
+  <doc>Implements a sample-and-hold operation. When the ctrl input is non-zero, the signal on the in terminal passes to the out terminal. When the ctrl input is zero, the current value on the out terminal is held until the ctrl input is non-zero.</doc>
+  <param>
+    <name>Type</name>
+    <doc>Sets the datatype for the input and output streams.</doc>
+    <type>
+      <option>
+        <name>Float</name>
+        <doc>Sets the input and output streams to real.</doc>
+      </option>
+      <option>
+        <name>Int</name>
+        <doc>Sets the input and output streams to 32-bit integer.</doc>
+      </option>
+      <option>
+        <name>Short</name>
+        <doc>Sets the input and output streams to 16-bit integer.</doc>
+      </option>
+      <option>
+        <name>Byte</name>
+        <doc>Sets the input and output streams to 8-bit byte.</doc>
+      </option>
+    </type>
+  </param>
+</block>

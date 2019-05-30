@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Clock Recovery MM</title>
+  </sect2info>
+  <para>TODO </para>
+  <screenshot>
+    <graphic fileref="images/digital_clock_recovery_mm_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>TODO</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>TODO</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Omega</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Gain Omega</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mu</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Gain Mu</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Omega Relative Limit</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+</sect2>

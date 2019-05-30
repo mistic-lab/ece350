@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Virtual Sink</title>
+  </sect2info>
+  <para>When paired with a Virtual Source block, this is essentially the same as drawing a wire between two blocks. This block can be useful for tidying up a complex flowgraph.</para>
+  <screenshot>
+    <graphic fileref="images/virtual_sink.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Stream ID</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>stream_id</para>
+    <para>Unique identifier for the stream. A virtual source will use this same identifier to connect to this source.</para>
+  </sect3>
+</sect2>

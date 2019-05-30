@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<block>
+  <name>Clock Recovery MM</name>
+  <key>digital_clock_recovery_mm_xx</key>
+  <doc>TODO </doc>
+  <param>
+    <name>Type</name>
+    <doc>TODO</doc>
+    <type>
+      <option>
+        <name>Complex</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>Float</name>
+        <doc>TODO</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Omega</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Gain Omega</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Mu</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Gain Mu</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Omega Relative Limit</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+</block>

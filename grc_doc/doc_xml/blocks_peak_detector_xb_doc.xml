@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<block>
+  <name>Peak Detector</name>
+  <key>blocks_peak_detector_xb</key>
+  <doc>TODO </doc>
+  <param>
+    <name>Input Type</name>
+    <doc>TODO</doc>
+    <type>
+      <option>
+        <name>Float</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>Int</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>Short</name>
+        <doc>TODO</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>TH Factor Rise</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>TH Factor Fall</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Look Ahead</name>
+    <doc>TODO</doc>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Alpha</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+</block>

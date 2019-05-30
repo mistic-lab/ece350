@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<block>
+  <name>Moving Average</name>
+  <key>blocks_moving_average_xx</key>
+  <doc>Implements a basic moving average filter. Can be used as a simple way to smooth out a noisy signal. The moving average is more of a "moving sum" in that to get a real average, the Scale parameter should be set to 1/Length.</doc>
+  <param>
+    <name>Type</name>
+    <doc>Sets the data type of the input and output streams.</doc>
+    <type>
+      <option>
+        <name>Complex</name>
+        <doc>Input and output streams are complex.</doc>
+      </option>
+      <option>
+        <name>Float</name>
+        <doc>Input and output streams are real.</doc>
+      </option>
+      <option>
+        <name>Int</name>
+        <doc>Input and output streams are 32-bit integer.</doc>
+      </option>
+      <option>
+        <name>Short</name>
+        <doc>Input and output streams are 16-bit integer.</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Length</name>
+    <doc>Sets the length of the averaging filter. </doc>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Scale</name>
+    <doc>Sets a scaling factor for the output. Since this filter really just sums all the previous values, it is necessary to set the Scale to the inverse of the Length to get a true average.</doc>
+    <type>Same as Type field.</type>
+  </param>
+  <param>
+    <name>Max Iter</name>
+    <doc>Limits how long we go without flushing the accumulator. This is necessary to avoid numerical instability for float and complex. Leave as the default value unless there is some reason to do otherwise.</doc>
+    <type>int</type>
+  </param>
+</block>

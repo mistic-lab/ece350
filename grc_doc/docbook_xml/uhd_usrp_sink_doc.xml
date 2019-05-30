@@ -1,0 +1,1239 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>UHD: USRP Sink</title>
+  </sect2info>
+  <para>TODO 
+The UHD USRP Sink Block:
+
+Device Address:
+The device address is a delimited string used to locate UHD devices on your system. \
+If left blank, the first UHD device found will be used. \
+Use the device address to specify a specific device or list of devices.
+USRP1 Example: serial=12345678
+USRP2 Example: addr=192.168.10.2
+USRP2 Example: addr0=192.168.10.2, addr1=192.168.10.3
+
+In Type:
+This parameter controls the data type of the stream in gnuradio.
+
+Wire Format:
+This parameter controls the form of the data over the bus/network. Complex bytes may be used to trade off precision for bandwidth. Not all formats are supported on all devices.
+
+Stream Args:
+Optional arguments to be passed in the UHD streamer object. Streamer args is a list of key/value pairs; usage is determined by the implementation.
+Ex: the scalar key affects the scaling between 16 and 8 bit integers in sc8 wire format.
+
+Num Motherboards:
+Selects the number of USRP motherboards in this device configuration.
+
+Reference Source:
+Where the motherboard should sync its time and clock references.
+If source and sink blocks reference the same device,
+it is only necessary to set the reference source on one of the blocks.
+
+Subdevice specification:
+Each motherboard should have its own subdevice specification \
+and all subdevice specifications should be the same length. \
+Select the subdevice or subdevices for each channel using a markup string. \
+The markup string consists of a list of dboard_slot:subdev_name pairs (one pair per channel). \
+If left blank, the UHD will try to select the first subdevice on your system. \
+See the application notes for further details.
+Single channel example: :AB
+Dual channel example: :A :B
+
+Num Channels:
+Selects the total number of channels in this multi-USRP configuration.
+Ex: 4 motherboards with 2 channels per board = 8 channels total
+
+Sample rate:
+The sample rate is the number of samples per second input by this block. \
+The UHD device driver will try its best to match the requested sample rate. \
+If the requested rate is not possible, the UHD block will print an error at runtime.
+
+Center frequency:
+The center frequency is the overall frequency of the RF chain. \
+For greater control of how the UHD tunes elements in the RF chain, \
+pass a tune_request object rather than a simple target frequency.
+Tuning with an LO offset example: uhd.tune_request(freq, lo_off)
+Tuning without DSP: uhd.tune_request(target_freq, dsp_freq=0, \
+dsp_freq_policy=uhd.tune_request.POLICY_MANUAL)
+
+Antenna:
+For subdevices with only one antenna, this may be left blank. \
+Otherwise, the user should specify one of the possible antenna choices. \
+See the daughterboard application notes for the possible antenna choices.
+
+Bandwidth:
+To use the default bandwidth filter setting, this should be zero. \
+Only certain subdevices have configurable bandwidth filters. \
+See the daughterboard application notes for possible configurations.
+
+See the UHD manual for more detailed documentation:
+http://code.ettus.com/redmine/ettus/projects/uhd/wiki
+	</para>
+  <screenshot>
+    <graphic fileref="images/uhd_usrp_sink.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Input Type</title>
+    </sect3info>
+    <para>TODO</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex float32</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Complex int16</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>VITA word32</entry>
+            <entry>TODO</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Wire Format</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Stream args</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Device Addr</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Sync</title>
+    </sect3info>
+    <para>TODO</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>unknown PPS</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>PC Clock</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>don't sync</entry>
+            <entry>TODO</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Clock Rate (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Mboards</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb0: Clock Source</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb0: Time Source</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb0: Subdev Spec</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb1: Clock Source</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb1: Time Source</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb1: Subdev Spec</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb2: Clock Source</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb2: Time Source</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb2: Subdev Spec</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb3: Clock Source</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb3: Time Source</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb3: Subdev Spec</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb4: Clock Source</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb4: Time Source</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb4: Subdev Spec</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb5: Clock Source</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb5: Time Source</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb5: Subdev Spec</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb6: Clock Source</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb6: Time Source</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb6: Subdev Spec</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb7: Clock Source</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb7: Time Source</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mb7: Subdev Spec</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Channels</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Samp Rate (Sps)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch0: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch0: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch0: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch0: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch1: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch1: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch1: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch1: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch2: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch2: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch2: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch2: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch3: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch3: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch3: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch3: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch4: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch4: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch4: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch4: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch5: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch5: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch5: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch5: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch6: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch6: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch6: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch6: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch7: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch7: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch7: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch7: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch8: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch8: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch8: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch8: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch9: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch9: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch9: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch9: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch10: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch10: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch10: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch10: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch11: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch11: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch11: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch11: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch12: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch12: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch12: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch12: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch13: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch13: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch13: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch13: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch14: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch14: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch14: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch14: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch15: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch15: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch15: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch15: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch16: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch16: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch16: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch16: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch17: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch17: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch17: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch17: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch18: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch18: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch18: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch18: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch19: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch19: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch19: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch19: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch20: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch20: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch20: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch20: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch21: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch21: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch21: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch21: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch22: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch22: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch22: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch22: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch23: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch23: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch23: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch23: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch24: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch24: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch24: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch24: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch25: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch25: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch25: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch25: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch26: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch26: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch26: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch26: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch27: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch27: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch27: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch27: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch28: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch28: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch28: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch28: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch29: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch29: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch29: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch29: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch30: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch30: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch30: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch30: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch31: Center Freq (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch31: Gain (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch31: Antenna</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ch31: Bandwidth (Hz)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+</sect2>

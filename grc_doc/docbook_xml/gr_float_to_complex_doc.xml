@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Float To Complex</title>
+  </sect2info>
+  <para>Implements the function out = re + jim. Note that the data type changes from floating point (real) to complex.</para>
+  <screenshot>
+    <graphic fileref="images/gr_float_to_complex.png"/>
+  </screenshot>
+  <sect3><sect3info><title>Vec Length</title></sect3info><para><emphasis>Type: </emphasis>int</para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</sect3>
+</sect2>

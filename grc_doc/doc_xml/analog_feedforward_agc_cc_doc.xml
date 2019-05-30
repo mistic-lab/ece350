@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<block>
+  <name>Feed Forward AGC</name>
+  <key>analog_feedforward_agc_cc</key>
+  <doc>Implements a feedforward AGC. This AGC works by finding the maximum value of the envelope within a buffer of the specified number of samples. It then normalizes the buffer so that the maximum value is equal to the reference value. This AGC introduces a delay in the signal. Because the envelope calculation used in this block is approximate, the output level will not be precisely equal to the reference level. This is not typically a problem in practice.</doc>
+  <param>
+    <name>Num Samples</name>
+    <doc>Number of samples in each buffer.</doc>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Reference</name>
+    <doc>Reference value to normalize buffers to.</doc>
+    <type>real</type>
+  </param>
+</block>

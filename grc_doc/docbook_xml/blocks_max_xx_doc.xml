@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Max</title>
+  </sect2info>
+  <para>TODO </para>
+  <screenshot>
+    <graphic fileref="images/blocks_max_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>TODO</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Float</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>TODO</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Inputs</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>TODO</para>
+  </sect3>
+</sect2>

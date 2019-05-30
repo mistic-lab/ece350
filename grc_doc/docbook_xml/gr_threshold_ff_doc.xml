@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Threshold</title>
+  </sect2info>
+  <para>TODO </para>
+  <screenshot>
+    <graphic fileref="images/gr_threshold_ff.png"/>
+  </screenshot>
+  <sect3><sect3info><title>Low</title></sect3info><para><emphasis>Type: </emphasis>real</para>TODO</sect3>
+  <sect3><sect3info><title>High</title></sect3info><para><emphasis>Type: </emphasis>real</para>TODO</sect3>
+  <sect3><sect3info><title>Initial State</title></sect3info><para><emphasis>Type: </emphasis>real</para>TODO</sect3>
+</sect2>

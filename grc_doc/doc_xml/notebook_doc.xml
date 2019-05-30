@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<block>
+  <name>WX GUI Notebook</name>
+  <key>notebook</key>
+  <doc>TODO 
+Use the Grid Position (row, column, row span, column span) to position the graphical element in the window.
+
+Use the Notebook Param (notebook-id, page-index) to place the graphical element inside of a notebook page.
+	</doc>
+  <param>
+    <name>Tab Orientation</name>
+    <doc>TODO</doc>
+    <type>
+      <option>
+        <name>Top</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>Right</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>Bottom</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>Left</name>
+        <doc>TODO</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Labels</name>
+    <doc>TODO</doc>
+    <type>raw</type>
+  </param>
+  <param>
+    <name>Grid Position</name>
+    <doc>TODO</doc>
+    <type>grid_pos</type>
+  </param>
+  <param>
+    <name>Notebook</name>
+    <doc>TODO</doc>
+    <type>notebook</type>
+  </param>
+</block>

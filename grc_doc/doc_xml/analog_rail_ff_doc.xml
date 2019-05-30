@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<block>
+  <name>Rail</name>
+  <key>analog_rail_ff</key>
+  <doc>Sets a hard limit on the highest and lowest values at the output of this block. The effect is similar to an Op-Amp that is being driven to saturation (ie: to the rails).</doc>
+  <param>
+    <name>Low clipping</name>
+    <doc>Sets the minimum value that will be output from this block.</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Hi clipping</name>
+    <doc>Sets the maximum value that will be output from this block.</doc>
+    <type>real</type>
+  </param>
+</block>

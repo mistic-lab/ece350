@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Message Sink</title>
+  </sect2info>
+  <para>Creates messages from an incoming data stream. Message passing is the mechanism that allows data to flow between the Python and C++ layers of GNU Radio.</para>
+  <screenshot>
+    <graphic fileref="images/message_sink.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Input Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input stream.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input stream is complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input stream is real.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Input stream is 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Input stream is 16-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Input stream is 8-bit byte.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Don't Block</title>
+    </sect3info>
+    <para>
+      <emphasis>Type: </emphasis>
+    </para>
+    <para>Leave as default.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>

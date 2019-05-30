@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>ACARS Decoder</title>
+  </sect2info>
+  <para>TODO ACARS decoder
+
+Premable threshold: max # of tolerable incorrect bits in correlator (-1: default)</para>
+  <screenshot>
+    <graphic fileref="images/baz_acars_decoder.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Preamble Threshold</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Frequency</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Station Name</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+</sect2>

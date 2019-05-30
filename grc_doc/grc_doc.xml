@@ -1,0 +1,3645 @@
+<?xml version="1.0"?>
+<article>
+  <articleinfo>
+    <title>GNU Radio Companion</title>
+    <subtitle>Block Documentation</subtitle>
+    <revhistory>
+      <revision>
+        <revnumber>1.0</revnumber>
+        <date>08 Mar 2013</date>
+        <revremark>Updated for GNU Radio 3.6.3.</revremark>
+      </revision>
+    </revhistory>
+  </articleinfo>
+  <sect1>
+    <sect1info>
+      <title>Level Controllers</title>
+    </sect1info>
+    <sect2>
+  <sect2info>
+    <title>AGC</title>
+  </sect2info>
+  <para>Implements an automatic gain control with a single rate parameter for both attack and decay. The gain is updated by the equation: Gain = Gain + Rate * (Reference - abs(Input)) for each sample.</para>
+  <screenshot>
+    <graphic fileref="images/analog_agc_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input and output are complex values.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input and output are floating point (real) values.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Rate</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the rate at which the AGC can adjust the gain. The rate parameter is used to adjust the gain as per the equation given above.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Reference</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the reference amplitude. The AGC will attempt to keep the output at this level by adjusting the gain.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Gain</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the initial gain. For most applications this can be set to 1.0.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Max Gain</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the maximum value of the gain parameter. The AGC will not adjust the gain beyond this value. Setting this parameter to 0 indicates that there is no maximum.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Feed Forward AGC</title>
+  </sect2info>
+  <para>Implements a feedforward AGC. This AGC works by finding the maximum value of the envelope within a buffer of the specified number of samples. It then normalizes the buffer so that the maximum value is equal to the reference value. This AGC introduces a delay in the signal. Because the envelope calculation used in this block is approximate, the output level will not be precisely equal to the reference level. This is not typically a problem in practice.</para>
+  <screenshot>
+    <graphic fileref="images/analog_feedforward_agc_cc.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Num Samples</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Number of samples in each buffer.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Reference</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Reference value to normalize buffers to.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Power Squelch</title>
+  </sect2info>
+  <para>Implements a squelch control based on the power level of the incoming signal.  </para>
+  <screenshot>
+    <graphic fileref="images/analog_pwr_squelch_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>Sets the input and output data type.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input and output streams are complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input and output streams are real.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Threshold (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the threshold (in dB) where the squelch control switches between MUTED and UNMUTED states. If Ramp is enabled, there in an ATTACK state between MUTED and UNMUTED and a DECAY state between UNMUTED and MUTED.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Alpha</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>The Alpha parameter controls the filtering of the signal's power level. The filter's difference equation is y[i] = (1-Alpha) * y[i-1] + Alpha * x[i].</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ramp</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Sets the number of samples that the MUTED to UNMUTED and UNMUTED to MUTED transitions will occur over. This is actually a raised cosine rather than a linear ramp: Envelope = (1 - cos(pi*x/Ramp))/2.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Gate</title>
+    </sect3info>
+    <para>Specifies whether the Squelch is gating the signal when MUTED.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Yes</entry>
+            <entry>Squelch is gating when MUTED (sets output to 0).</entry>
+          </row>
+          <row>
+            <entry>No</entry>
+            <entry>Squelch is non-gating.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Rail</title>
+  </sect2info>
+  <para>Sets a hard limit on the highest and lowest values at the output of this block. The effect is similar to an Op-Amp that is being driven to saturation (ie: to the rails).</para>
+  <screenshot>
+    <graphic fileref="images/analog_rail_ff.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Low clipping</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the minimum value that will be output from this block.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Hi clipping</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the maximum value that will be output from this block.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Mute</title>
+  </sect2info>
+  <para>Used to mute a signal. Sets the output to 0 when Mute is set to True.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_mute_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output streams.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Sets the input and output streams to complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Sets the input and output streams to real.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Sets the input and output streams to 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Sets the input and output streams to 16-bit integer.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Mute</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>raw</para>
+    <para>Specifies whether to mute the input. The 'True' and 'False' options are selectable through the drop-down menu. You can also type the name of a variable in this box.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Sample and Hold</title>
+  </sect2info>
+  <para>Implements a sample-and-hold operation. When the ctrl input is non-zero, the signal on the in terminal passes to the out terminal. When the ctrl input is zero, the current value on the out terminal is held until the ctrl input is non-zero.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_sample_and_hold_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>Sets the datatype for the input and output streams.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Float</entry>
+            <entry>Sets the input and output streams to real.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Sets the input and output streams to 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Sets the input and output streams to 16-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Sets the input and output streams to 8-bit byte.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Moving Average</title>
+  </sect2info>
+  <para>Implements a basic moving average filter. Can be used as a simple way to smooth out a noisy signal. The moving average is more of a "moving sum" in that to get a real average, the Scale parameter should be set to 1/Length.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_moving_average_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>Sets the data type of the input and output streams.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input and output streams are complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input and output streams are real.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Input and output streams are 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Input and output streams are 16-bit integer.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Sets the length of the averaging filter. </para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Scale</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>Same as Type field.</para>
+    <para>Sets a scaling factor for the output. Since this filter really just sums all the previous values, it is necessary to set the Scale to the inverse of the Length to get a true average.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Max Iter</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Limits how long we go without flushing the accumulator. This is necessary to avoid numerical instability for float and complex. Leave as the default value unless there is some reason to do otherwise.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Threshold</title>
+  </sect2info>
+  <para>Implements a comparator with configurable hysteresis. The output transitions from 0.0 to 1.0 when the input signal transitions from below to above the High level. The output transitions from 1.0 to 0.0 when the input signal transitions from above to below the Low level. The Low level must be less than the High level. </para>
+  <screenshot>
+    <graphic fileref="images/blocks_threshold_ff.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Low</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the level for the high-to-low transition.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>High</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the level for the low-to-high transition.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Initial State</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets whether the initial state of the output should be 0.0 or 1.0.</para>
+  </sect3>
+</sect2>
+  </sect1>
+  <sect1>
+    <sect1info>
+      <title>Waveform Generators</title>
+    </sect1info>
+    <sect2>
+  <sect2info>
+    <title>Signal Source</title>
+  </sect2info>
+  <para>Used to generate a variety of signal types: Sine, Cosine, Square, Triangle and Sawtooth.</para>
+  <screenshot>
+    <graphic fileref="images/analog_sig_source_x.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Output Type</title>
+    </sect3info>
+    <para>Specifies the data type of the output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Output is complex-valued.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Output is real-valued.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Output is a 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Output is a 16-bit integer.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Sample Rate</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Specifies the output sample rate.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Waveform</title>
+    </sect3info>
+    <para>Specifies the output waveform.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Constant</entry>
+            <entry>Output is a constant value equal to the Amplitude parameter plus the Offset parameter. Note that Amplitude is only real while Offset can be complex. The Constant Source block provides the same functionality.</entry>
+          </row>
+          <row>
+            <entry>Sine</entry>
+            <entry>Output is a sine wave with peak amplitude configured by the Amplitude parameter and average value set by the Offset paramater.</entry>
+          </row>
+          <row>
+            <entry>Cosine</entry>
+            <entry>Output is a cosine wave with peak amplitude configured by the Amplitude parameter and average value set by the Offset paramater.</entry>
+          </row>
+          <row>
+            <entry>Square</entry>
+            <entry>Output is a square wave with peak-to-peak amplitude configured by the Amplitude parameter and the average value set by Offset + Amplitude/2. Note that in the Complex case, the imaginary signal is simply another square wave that has been shifted by ninety degrees.</entry>
+          </row>
+          <row>
+            <entry>Triangle</entry>
+            <entry>Output is a triangle wave with peak-to-peak amplitude configured by the Amplitude parameter and the average value set by Offset + Amplitude/2. Note that in the Complex case, the imaginary signal is simply another triangle wave that has been shifted by ninety degrees.</entry>
+          </row>
+          <row>
+            <entry>Sawtooth</entry>
+            <entry>Output is a positive-going sawtooth wave with peak-to-peak amplitude configured by the Amplitude parameter and the average value set by Offset + Amplitude/2. Note that in the Complex case, the imaginary signal is simply another sawtooth wave that has been shifted by ninety degrees.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Frequency</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Specifies the output frequency of the Signal Source. Note that aliasing will occur if the frequency is set higher than half of the sample rate.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Amplitude</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Specifies the peak amplitude (Sine and Cosine) or the peak-to-peak amplitude (Square, Triangle and Sawtooth). When using the Constant output, typically this is set to 0 and the Offset parameter is used.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Offset</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>Complex</para>
+    <para>Specifies the offset that is added to the generated waveform.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Constant Source</title>
+  </sect2info>
+  <para>Outputs a constant value.</para>
+  <screenshot>
+    <graphic fileref="images/analog_const_source_x.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Output Type</title>
+    </sect3info>
+    <para>Specifies the data type of the output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Output is complex-valued.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Output is a floating-point value.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Output is an integer value.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Output is a short (16-bit) integer value.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Constant</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>Same as Output Type</para>
+    <para>Specifies the constant value to output.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Noise Source</title>
+  </sect2info>
+  <para>Implements a noise source. The distribution of the noise can be selected from various standard distributions.</para>
+  <screenshot>
+    <graphic fileref="images/analog_noise_source_x.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Output Type</title>
+    </sect3info>
+    <para>Sets the data type of the output stream.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Output stream is complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Output stream is real.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Output stream is 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Output stream is 16-bit integer.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Noise Type</title>
+    </sect3info>
+    <para>Selects the statistical distribution of the noise.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Uniform</entry>
+            <entry>Selects a uniform distribution.</entry>
+          </row>
+          <row>
+            <entry>Gaussian</entry>
+            <entry>Selects a Gaussian distribution.</entry>
+          </row>
+          <row>
+            <entry>Laplacian</entry>
+            <entry>Selects a Laplacian distribution.</entry>
+          </row>
+          <row>
+            <entry>Impulse</entry>
+            <entry>Selects an Impulse distribution.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Amplitude</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the amplitude of the output. For this will affect the statistical characteristics of the noise source. For example, it will affect the standard deviation of the Gaussian source.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Seed</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Sets the seed for the random number generator used to create the noise source. For most purposes, the default value is sufficient.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Random Source</title>
+  </sect2info>
+  <para>Generate Num Samples random numbers in the range [min, max). Repeat samples if specified. With min=0 and max=2, the sequence 01110101... will be generated.
+  </para>
+  <screenshot>
+    <graphic fileref="images/analog_random_source_x.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Output Type</title>
+    </sect3info>
+    <para>Specifies the data type of the output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Int</entry>
+            <entry>Output is a 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Output is a 16-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Output is an 8-bit byte.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Minimum</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Sets the minimum value that will occur in the output.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Maximum</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>The maximum value that will occur in the output will be Maximum-1.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Samples</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Number of samples to output.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Repeat</title>
+    </sect3info>
+    <para>Selects whether to repeat the sequence or not.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Yes</entry>
+            <entry>Repeat the sequence after Num Samples samples.</entry>
+          </row>
+          <row>
+            <entry>No</entry>
+            <entry>Do not repeat after Num Samples. There will be no output from the Random Source and the flow graph will appear to hang.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>VCO</title>
+  </sect2info>
+  <para>Implements a voltage-controlled oscillator. The output frequency is linearly proportional to the input voltage multiplied by the Sensitivity.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_vco_f.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Sample Rate</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the sample rate for the VCO. For most purposes this can be set to the sample rate variable samp_rate </para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Sensitivity</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the scaling constant for the VCO. Note that the units are rad/sec*V, not Hz/V.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Amplitude</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the output amplitude for the VCO.</para>
+  </sect3>
+</sect2>
+  </sect1>
+  <sect1>
+    <sect1info>
+      <title>Misc</title>
+    </sect1info>
+    <sect2>
+  <sect2info>
+    <title>Virtual Source</title>
+  </sect2info>
+  <para>When paired with a Virtual Sink block, this is essentially the same as drawing a wire between two blocks. This block can be useful for tidying up a complex flowgraph.</para>
+  <screenshot>
+    <graphic fileref="images/virtual_source.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Stream ID</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>stream_id</para>
+    <para>Specifies the stream ID of the virtual sink to read from.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Virtual Sink</title>
+  </sect2info>
+  <para>When paired with a Virtual Source block, this is essentially the same as drawing a wire between two blocks. This block can be useful for tidying up a complex flowgraph.</para>
+  <screenshot>
+    <graphic fileref="images/virtual_sink.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Stream ID</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>stream_id</para>
+    <para>Unique identifier for the stream. A virtual source will use this same identifier to connect to this source.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Note</title>
+  </sect2info>
+  <para>Add a note to the flowgraph. This block does not affect the signal flow in any way.</para>
+  <screenshot>
+    <graphic fileref="images/note.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Note</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>String that will be displayed in the note block.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Import</title>
+  </sect2info>
+  <para>Import additional python modules into the namespace.
+	</para>
+  <screenshot>
+    <graphic fileref="images/import.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Import</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>import</para>
+    <para>Example: import cmath</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Selector</title>
+  </sect2info>
+  <para>Acts as a multiplexer or demultiplexer for multiple signal paths. Connect the sink at input index to the source at output index. Leave all other ports disconnected.
+	</para>
+  <screenshot>
+    <graphic fileref="images/blks2_selector.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output streams.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input and output streams are complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input and output streams are real.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Input and output streams are 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Input and output streams are 16-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Input and output streams are 8-bit byte.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Inputs</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of inputs. Inputs will be labelled in0 through in(N-1).</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Outputs</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of outputs. Outputs will be labelled out0 through out(N-1).</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Input Index</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the selected input. The value must be between 0 and (Num Inputs - 1).</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Output Index</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the selected output. The value must be between 0 and (Num Outputs - 1).</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Valve</title>
+  </sect2info>
+  <para>Connect output to input when valve is closed (not open).
+	</para>
+  <screenshot>
+    <graphic fileref="images/blks2_valve.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output streams.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input and output streams are complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input and output streams are real.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Input and output streams are 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Input and output streams are 16-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Input and output streams are 8-bit byte.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Open</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>raw</para>
+    <para>When this expression evaluates True, the output will be disconnected from the input.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Throttle</title>
+  </sect2info>
+  <para>Limits the data throughput to the specified sampling rate. This prevents GNURadio from consuming all CPU resources when the flowgraph is not being regulated by external hardware (ie: audio source/sink or USRP source/sink).</para>
+  <screenshot>
+    <graphic fileref="images/blocks_throttle.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input and output are complex values.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input and output are floating point (real) values.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Input and output are integer values.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Input and output are short integer values.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Inputs and output are byte values.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Sample Rate</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Specifies the sample rate to limit the flowgraph to.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Delay</title>
+  </sect2info>
+  <para>Implements a delay equal to the specified number of samples.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_delay.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input and output are complex values.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input and output are floating point (real) values.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Input and output are integer values.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Input and output are short integer values.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Input and output are byte values.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Delay</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the delay in samples. Note that the actual delay time depends on the sample rate in this branch of the flowgraph.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Ports</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of inputs/outputs. Essentially creates parallel delay lines.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Null Source</title>
+  </sect2info>
+  <para>Outputs zeros for each sample. This can be useful if you wish to create a complex value from a floating point value with the real or imaginary part set to zero.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_null_source.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Output Type</title>
+    </sect3info>
+    <para>Specifies the data type of the output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Output is complex value (0+j0).</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Output is floating point (real) value 0.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Output is integer (32-bit) value 0.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Output is short integer (16-bit) value 0.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Output is byte (8-bit) value 0.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Null Sink</title>
+  </sect2info>
+  <para>A sink that discards all input data. This can be useful if only one output of a multi-output block is required but GNURadio requires all outputs to be connected.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_null_sink.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Input Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input stream.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input stream is complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input stream is real.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Input stream is 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Input stream is 16-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Input stream is 8-bit byte.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+  </sect1>
+  <sect1>
+    <sect1info>
+      <title>Variables</title>
+    </sect1info>
+    <sect2>
+  <sect2info>
+    <title>Variable</title>
+  </sect2info>
+  <para>This block maps a value to a unique variable. This variable block has no graphical representation. The variable can be referenced (by ID) from other blocks in the flowgraph.</para>
+  <screenshot>
+    <graphic fileref="images/variable.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Value</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>raw</para>
+    <para>Specifies the value of the variable.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Variable Config</title>
+  </sect2info>
+  <para>This block represents a variable that can be read from a config file, as a way to make flowgraph save the settings between runs.
+	</para>
+  <screenshot>
+    <graphic fileref="images/variable_config.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Default Value</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>Same as Type</para>
+    <para>Sets the default value if the parameter named in the Option field is not found in the specified Config File.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>Specifies the data type of the Variable.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Float</entry>
+            <entry>Variable is interpreted as a real value.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Variable is interpreted as an integer value.</entry>
+          </row>
+          <row>
+            <entry>Bool</entry>
+            <entry>Variable is interpreted as a Boolean (True/False) value.</entry>
+          </row>
+          <row>
+            <entry>String</entry>
+            <entry>Variable is interpreted as a string.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Config File</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>file_open</para>
+    <para>Specifies the file that will be used to save the flowgraph configuration. In some versions of GNURadio, this file needs to exist already. You can create a new empty file on the command line using the "touch" command or create a file through the Linux file browser.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Section</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>Specifies which section the variable will be placed in. This allows grouping of variables into different sections depending on the function.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Option</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>What the variable will be called in the config file. The config file will be plain text, and can be edited using a text editor.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>WriteBack</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>raw</para>
+    <para> To save the value back into the config file, enter the name of another variable into the writeback param. When the other variable is changed at runtime, the config file will be re-written.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Parameter</title>
+  </sect2info>
+  <para>
+This block represents a parameter to the flow graph. A parameter can be used to pass command line arguments into a top block. Or, parameters can pass arguments into an instantiated hierarchical block. The paramater value cannot depend on any variables. When type is not None, this parameter also becomes a command line option of the form: -[short_id] --[id] [value] The Short ID field may be left blank.
+	</para>
+  <screenshot>
+    <graphic fileref="images/parameter.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Label</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>Leave the label blank to use the parameter id as the label.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Value</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>Same as Type.</para>
+    <para>Sets the default value if not specified on the command line.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>Specfies the data type of the resulting variable.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>None</entry>
+            <entry>No type.</entry>
+          </row>
+          <row>
+            <entry>Complex</entry>
+            <entry>Parameter is interpreted as complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Parameter is interpreted as real.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Parameter is interpreted as an integer.</entry>
+          </row>
+          <row>
+            <entry>Long</entry>
+            <entry>Parameter is interpreted as a long integer.</entry>
+          </row>
+          <row>
+            <entry>String</entry>
+            <entry>Parameter is interpreted as a string.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Short ID</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>An optional short-hand form for the parameter. May be left blank.</para>
+  </sect3>
+</sect2>
+  </sect1>
+  <sect1>
+    <sect1info>
+      <title>Audio</title>
+    </sect1info>
+    <sect2>
+  <sect2info>
+    <title>Wav File Source</title>
+  </sect2info>
+  <para>Creates a data source from an audio wave file. This file can be captured in GNU Radio with a Wav File Sink or created in an audio editor such as Audacity (with the appropriate WAV options) in or MATLAB using the "wavwrite" command.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_wavfile_source.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>File</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>filename</para>
+    <para>Sets the name of the file to use as the data source.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Repeat</title>
+    </sect3info>
+    <para>Specifies whether to play the file in a loop.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Yes</entry>
+            <entry>Play the file continuously in a loop.</entry>
+          </row>
+          <row>
+            <entry>No</entry>
+            <entry>Do not output any samples once the end of file is reached. This may cause the flowgraph to appear to hang.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>N Channels</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of channels to read from the file. Wav files are typically mono (one channel, representing a single data stream) or stereo (two channels, representing either two independent data streams or the in-phase and quadrature components of a complex waveform).</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Wav File Sink</title>
+  </sect2info>
+  <para>Writes a float stream out to a Wav file. This file can be played back in GNU Radio with a Wav File Source or played in any other Wav file player. It can also be loaded into MATLAB using the "wavread" command.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_wavfile_sink.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>File</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>file_save</para>
+    <para>Sets the name of the file to write to.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>N Channels</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of channels to read from the file. Wav files are typically mono (one channel, representing a single data stream) or stereo (two channels, representing either two independent data streams or the in-phase and quadrature components of a complex waveform).</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Sample Rate</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Sets the sample rate that will be written in the Wav file header. For compatibility with other applications this should be one of the standard sample rates for Wav files such as 8000, 11025, 22050, 44100, 48000, etc. The sample rate of the input stream should match.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Bits per Sample</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Sets the bit depth of the audio file. Typically 16-bit resolution is sufficient.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Audio Sink</title>
+  </sect2info>
+  <para>Represents the audio output hardware within the GRC flowgraph. In the A309 lab, the signal will be played through the speakers unless there is something plugged into the headphone output on the front panel of the computer.</para>
+  <screenshot>
+    <graphic fileref="images/audio_sink.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Sample Rate</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the sampling rate to use. Not all sampling rates are supported by the audio hardware. For typical applications, this should be set to 48kHz.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Device Name</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>Leave the device name blank to choose deafult audio device.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>OK to Block</title>
+    </sect3info>
+    <para>Defaults to True. Leave as Default.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Yes</entry>
+            <entry>Default setting.</entry>
+          </row>
+          <row>
+            <entry>No</entry>
+            <entry>Non-default setting.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Inputs</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of channels to write to the audio output device. For typical applications with I/Q transmitters such as the Softrock kit, set this value to 2. For mono audio output applications, set this value to 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Audio Source</title>
+  </sect2info>
+  <para>Represents the audio input hardware within the GRC flowgraph. In the A309 lab, the signal should be input to the microphone input on the front panel of the computer. You made need to adjust the input gain for best performance.</para>
+  <screenshot>
+    <graphic fileref="images/audio_source.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Sample Rate</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the sampling rate to use. Not all sampling rates are supported by the audio hardware. For typical applications, this should be set to 48kHz.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Device Name</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>Leave the device name blank to choose deafult audio device.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>OK to Block</title>
+    </sect3info>
+    <para>Defaults to True. Leave as default.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Yes</entry>
+            <entry>Default setting.</entry>
+          </row>
+          <row>
+            <entry>No</entry>
+            <entry>Non-default setting.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Outputs</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of channels to read from the audio input device. For typical applications with I/Q receivers such as the Softrock kit, set this value to 2. For mono input applications, set this value to 1.</para>
+  </sect3>
+</sect2>
+  </sect1>
+  <sect1>
+    <sect1info>
+      <title>Boolean Operators</title>
+    </sect1info>
+    <sect2>
+  <sect2info>
+    <title>And</title>
+  </sect2info>
+  <para>Implements the boolean logic function out = in0 AND in1 AND ... AND in(N-1).</para>
+  <screenshot>
+    <graphic fileref="images/blocks_and_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Int</entry>
+            <entry>Sets the input and output to integer (signed, 32-bit) values.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Sets the input and output to short (signed, 16-bit) values.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Sets the input and output to byte (unsigned, 8-bit) values.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Inputs</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Sets the number of inputs to the block.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>And Const</title>
+  </sect2info>
+  <para>Implements the function out = in AND const. This can be useful to mask certain bits in a byte (force them to zero).</para>
+  <screenshot>
+    <graphic fileref="images/blocks_and_const_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Int</entry>
+            <entry>Sets the input and output to integer (signed, 32-bit) values.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Sets the input and output to short (signed, 16-bit) values.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Sets the input and output to byte (unsigned, 8-bit) values.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Constant</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Sets the constant value that will be used as the and-mask.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Not</title>
+  </sect2info>
+  <para>Implements the boolean logic function out = NOT in. Inverts all the bits input stream.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_not_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Int</entry>
+            <entry>Sets the input and output to integer (signed, 32-bit) values.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Sets the input and output to short (signed, 16-bit) values.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Sets the input and output to byte (unsigned, 8-bit) values.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Or</title>
+  </sect2info>
+  <para>Implements the boolean logic function out = in0 OR in1 OR ... OR in(N-1). The or function can be useful if you need to force some bits to 1.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_or_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Int</entry>
+            <entry>Sets the input and output to integer (signed, 32-bit) values.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Sets the input and output to short (signed, 16-bit) values.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Sets the input and output to byte (unsigned, 8-bit) values.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Inputs</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of inputs.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Xor</title>
+  </sect2info>
+  <para>Implements the boolean logic function out = in0 XOR in1 XOR ... XOR in(N-1). The xor function can be useful if you want to invert certain bits.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_xor_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Int</entry>
+            <entry>Sets the input and output to integer (signed, 32-bit) values.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Sets the input and output to short (signed, 16-bit) values.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Sets the input and output to byte (unsigned, 8-bit) values.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Inputs</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Sets the number of inputs to the block.</para>
+  </sect3>
+</sect2>
+  </sect1>
+  <sect1>
+    <sect1info>
+      <title>File Operators</title>
+    </sect1info>
+    <sect2>
+  <sect2info>
+    <title>Wav File Source</title>
+  </sect2info>
+  <para>Creates a data source from an audio wave file. This file can be captured in GNU Radio with a Wav File Sink or created in an audio editor such as Audacity (with the appropriate WAV options) in or MATLAB using the "wavwrite" command.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_wavfile_source.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>File</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>filename</para>
+    <para>Sets the name of the file to use as the data source.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Repeat</title>
+    </sect3info>
+    <para>Specifies whether to play the file in a loop.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Yes</entry>
+            <entry>Play the file continuously in a loop.</entry>
+          </row>
+          <row>
+            <entry>No</entry>
+            <entry>Do not output any samples once the end of file is reached. This may cause the flowgraph to appear to hang.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>N Channels</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of channels to read from the file. Wav files are typically mono (one channel, representing a single data stream) or stereo (two channels, representing either two independent data streams or the in-phase and quadrature components of a complex waveform).</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Wav File Sink</title>
+  </sect2info>
+  <para>Writes a float stream out to a Wav file. This file can be played back in GNU Radio with a Wav File Source or played in any other Wav file player. It can also be loaded into MATLAB using the "wavread" command.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_wavfile_sink.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>File</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>file_save</para>
+    <para>Sets the name of the file to write to.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>N Channels</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of channels to read from the file. Wav files are typically mono (one channel, representing a single data stream) or stereo (two channels, representing either two independent data streams or the in-phase and quadrature components of a complex waveform).</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Sample Rate</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Sets the sample rate that will be written in the Wav file header. For compatibility with other applications this should be one of the standard sample rates for Wav files such as 8000, 11025, 22050, 44100, 48000, etc. The sample rate of the input stream should match.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Bits per Sample</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Sets the bit depth of the audio file. Typically 16-bit resolution is sufficient.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>File Source</title>
+  </sect2info>
+  <para>Reads raw data values in binary format from the specified file. This file can be a file that was captured using a File Sink block, generated with a computer program or saved from an audio editor such as Audacity (using suitable RAW format options).</para>
+  <screenshot>
+    <graphic fileref="images/blocks_file_source.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>File</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>file_open</para>
+    <para>Specifies the input file name.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Output Type</title>
+    </sect3info>
+    <para>Specifies the data type of the output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Output is complex value.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Output is floating point (real) value.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Output is integer value.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Output is short integer value.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Output is byte value.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Repeat</title>
+    </sect3info>
+    <para>Selects whether to read through the file once or play it in a loop.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Yes</entry>
+            <entry>When the end of file is reached, loop back to the beginning of the file and continue.</entry>
+          </row>
+          <row>
+            <entry>No</entry>
+            <entry>Read through the data until the end of file is reached.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>File Sink</title>
+  </sect2info>
+  <para>Outputs raw data values in binary format to the specified file. This file can be read into any programming environment that can read binary files (MATLAB, C, Python, ...). It can also be played back in GRC using an appropriate File Source block.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_file_sink.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>File</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>file_save</para>
+    <para>Specifies the output file name.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Input Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input is complex value.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input is floating point (real) value.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Input is integer value.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Input is short integer value.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Input is byte value.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Unbuffered</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>bool</para>
+    <para>Specifies whether the output is buffered in memory. If the output is unbuffered, the data will be flushed to the file each time the work function is called. This can cause the flowgraph to run slow due to the time required to access the disk each time.</para>
+  </sect3>
+</sect2>
+  </sect1>
+  <sect1>
+    <sect1info>
+      <title>Math Operators</title>
+    </sect1info>
+    <sect2>
+  <sect2info>
+    <title>Add</title>
+  </sect2info>
+  <para>Implements the function out = in0 + in1 + ... + in(N-1).</para>
+  <screenshot>
+    <graphic fileref="images/blocks_add_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>Specifies the data type of the inputs and output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Inputs and output are complex values.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Inputs and output are floating point (real) values.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Inputs and output are integer values.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Inputs and output are short integer values.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Inputs</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of inputs. Inputs will be labelled in0 through in(N-1).</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Add Const</title>
+  </sect2info>
+  <para>Implements the function out = in + Constant.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_add_const_vxx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>Specifies the data type of the inputs and output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Inputs and output are complex values.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Inputs and output are floating point (real) values.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Inputs and output are integer values.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Inputs and output are short integer values.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Constant</title>
+    </sect3info>
+    <para>
+      <emphasis>Type: </emphasis>
+    </para>
+    <para>Specifies the constant to add.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Divide</title>
+  </sect2info>
+  <para>Implements the function out = in0 / in1 / ... / in(N-1).</para>
+  <screenshot>
+    <graphic fileref="images/blocks_divide_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>Specifies the data type of the inputs and output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Inputs and output are complex values.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Inputs and output are floating point (real) values.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Inputs and output are integer values.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Inputs and output are short integer values.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Inputs</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of inputs. Inputs will be labelled in0 through in(N-1). Setting this value to 1 computes the reciprocal of in0.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Multiply</title>
+  </sect2info>
+  <para>Implements the function out = in0 x in1 x ... x in(N-1).</para>
+  <screenshot>
+    <graphic fileref="images/blocks_multiply_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>Specifies the data type of the inputs and output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Inputs and output are complex values.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Inputs and output are floating point (real) values.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Inputs and output are integer values.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Inputs and output are short integer values.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Inputs</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of inputs. Inputs will be labelled in0 through in(N-1).</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Multiply Const</title>
+  </sect2info>
+  <para>Implements the function out = in x Constant.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_multiply_const_vxx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>Specifies the data type of the inputs and output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Inputs and output are complex values.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Inputs and output are floating point (real) values.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Inputs and output are integer values.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Inputs and output are short integer values.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Constant</title>
+    </sect3info>
+    <para>
+      <emphasis>Type: </emphasis>
+    </para>
+    <para>Specifies the constant to multiply with the input.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Multiply Conjugate</title>
+  </sect2info>
+  <para>Multiplies in0 by the complex conjugate of in1.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_multiply_conjugate_cc.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>For typical applications, set to 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Subtract</title>
+  </sect2info>
+  <para>Implements the function in0 - in1 - ... - in(N-1).</para>
+  <screenshot>
+    <graphic fileref="images/blocks_sub_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>Sets the data type of the input and output streams.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input and output streams are complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input and output streams are real.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Input and output streams are 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Input and output streams are 16-bit integer.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Inputs</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of inputs. Inputs will be labelled in0 through in(N-1).</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Complex Conjugate</title>
+  </sect2info>
+  <para>Implements the function out = conj(in).</para>
+  <screenshot>
+    <graphic fileref="images/blocks_conjugate_cc.png"/>
+  </screenshot>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Integrate</title>
+  </sect2info>
+  <para>Implements an integrator. The output is the sum of the current and all previous input samples.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_integrate_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output streams.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input and output streams are complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input and output streams are real.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Input and output streams are 32-bit integers.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Input and output streams are 16-bit integers.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Decimation</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the decimation factor at the output.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Log10</title>
+  </sect2info>
+  <para>Calculates the logarithm of the input signal. Implements the function out = n*log10(in) + k.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_nlog10_ff.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>n</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the multiplier constant n. For calculating dB from a voltage this can be set to 20.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>k</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the additive constant k.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>RMS</title>
+  </sect2info>
+  <para>Calculates the RMS value of the input signal.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_rms_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Input Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input stream.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input stream is complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input stream is float.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Alpha</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the constant for the first-order filter. The filter is updated by the equation Avg = (1-Alpha)*Avg + Alpha*abs(in)^2. The output is updated by the equation Out = sqrt(Avg).</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Transcendental</title>
+  </sect2info>
+  <para>Implements various transcendental functions found in the cmath library, including: exp, log, log10, sqrt, acos, asin, atan, cos, sin, tan, acosh, asinh, atanh, cosh, sinh and tanh</para>
+  <screenshot>
+    <graphic fileref="images/blocks_transcendental.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output streams.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input and output streams are complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input and output streams are real.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Function Name</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>Sets the name of the function that will be computed. See the documentation for the Python cmath library.</para>
+  </sect3>
+</sect2>
+  </sect1>
+  <sect1>
+    <sect1info>
+      <title>Message Tools</title>
+    </sect1info>
+    <sect2>
+  <sect2info>
+    <title>Message Source</title>
+  </sect2info>
+  <para>Creates a data source from a message. Message passing is the mechanism that allows data to flow between the Python and C++ layers of GNU Radio.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_message_source.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Output Type</title>
+    </sect3info>
+    <para>Specifies the data type that will be created from the input message.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Output is complex-valued.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Output is real-valued.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Output is a 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Output is a 16-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Output is an 8-bit byte.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Message Sink</title>
+  </sect2info>
+  <para>Creates messages from an incoming data stream. Message passing is the mechanism that allows data to flow between the Python and C++ layers of GNU Radio.</para>
+  <screenshot>
+    <graphic fileref="images/message_sink.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Input Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input stream.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input stream is complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input stream is real.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Input stream is 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Input stream is 16-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Input stream is 8-bit byte.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Don't Block</title>
+    </sect3info>
+    <para>
+      <emphasis>Type: </emphasis>
+    </para>
+    <para>Leave as default.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+  </sect1>
+  <sect1>
+    <sect1info>
+      <title>Stream Operators</title>
+    </sect1info>
+    <sect2>
+  <sect2info>
+    <title>Deinterleave</title>
+  </sect2info>
+  <para>Deinterleave interleaved input streams. The input values will be assigned in turn to out0, out1, ..., out(N-1). Note that the data rate at the output is the input rate divided by the number of streams.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_deinterleave.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output streams.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input and output streams are complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input and output streams are real.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Input and output streams are 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Input and output streams are 16-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Input and output streams are 8-bit byte.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Streams</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of streams to deinterleave.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Interleave</title>
+  </sect2info>
+  <para>Interleave the input streams (in0, in1, ..., in(N-1)) into a single stream. Note that the data rate of the interleaved stream will be the rate of the input streams times the number of streams. All input streams should be the same rate for correct operation.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_interleave.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output streams.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input and output streams are complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input and output streams are real.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Input and output streams are 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Input and output streams are 16-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Input and output streams are 8-bit byte.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Streams</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of streams to interleave. The block will be created with the required number of inputs.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Repeat</title>
+  </sect2info>
+  <para>Interpolate a stream by repeating each input value a specified number of times. Note that the output sample rate is the input sample rate times the specified Interpolation value.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_repeat.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output streams.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input and output streams are complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input and output streams are real.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Input and output streams are 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Input and output streams are 16-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Input and output streams are 8-bit integer.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Interpolation</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of times each value will be repeated.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+  </sect1>
+  <sect1>
+    <sect1info>
+      <title>Type Converters</title>
+    </sect1info>
+    <sect2>
+  <sect2info>
+    <title>Char To Float</title>
+  </sect2info>
+  <para>Converts a stream from char (byte) data type to float (real) data type.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_char_to_float.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Scale</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the scaling factor of the output value. The default value of 1 will give 0 =&gt; 0.0, 1 =&gt; 1.0, 2 =&gt; 2.0, ..., 255 =&gt; 255.0. If it is desired to normalize the value to 1.0, enter 256.0</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Char To Short</title>
+  </sect2info>
+  <para>Converts a stream from char (byte) data type to short (16-bit) data type.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_char_to_short.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Complex To Float</title>
+  </sect2info>
+  <para>Implements the functions:
+re = Real(in)
+im = Imag(in)
+Note that the data type changes from complex to floating point (real).
+</para>
+  <screenshot>
+    <graphic fileref="images/blocks_complex_to_float.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Complex to Imag</title>
+  </sect2info>
+  <para>Implements the function out = Imag(in). Note that the data type changes from complex to floating point (real).</para>
+  <screenshot>
+    <graphic fileref="images/blocks_complex_to_imag.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Complex to Real</title>
+  </sect2info>
+  <para>Implements the function out = Real(in). Note that the data type changes from complex to floating point (real).</para>
+  <screenshot>
+    <graphic fileref="images/blocks_complex_to_real.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Complex to Mag</title>
+  </sect2info>
+  <para>Implements the function out = abs(in). Note that the data type changes from complex to floating point (real).</para>
+  <screenshot>
+    <graphic fileref="images/blocks_complex_to_mag.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Complex to Mag^2</title>
+  </sect2info>
+  <para>Implements the function out = Re(in)^2 + Im(in)^2. Note that the data type changes from complex to floating point (real).</para>
+  <screenshot>
+    <graphic fileref="images/blocks_complex_to_mag_squared.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Complex to Arg</title>
+  </sect2info>
+  <para>Implements the function out = arg(in). The output value is in radians from -pi to pi. Note that the input data type is complex while the output value is floating point (real).</para>
+  <screenshot>
+    <graphic fileref="images/blocks_complex_to_arg.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Float To Char</title>
+  </sect2info>
+  <para>Convert floating point value to char (byte) value.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_float_to_char.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Scale</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Specifies the scaling factor for the conversion.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Float To Complex</title>
+  </sect2info>
+  <para>Implements the function out = re + jim. Note that the data type changes from floating point (real) to complex.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_float_to_complex.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Float To Int</title>
+  </sect2info>
+  <para>Converts from floating point data type to integer (32-bit) data type.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_float_to_int.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Scale</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the scaling factor for the conversion.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Float To Short</title>
+  </sect2info>
+  <para>Converts a floating point (real) value to a 16-bit short integer.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_float_to_short.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Scale</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the scale factor for the conversion. For example: to normalize a sine wave with amplitude of 1.0 to the full range of short integer, use a scale factor of 32768. Values outside the range [-32768, 32767] will saturate rather than wrap around.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Float To UChar</title>
+  </sect2info>
+  <para>Converts float to unsigned char. Values outside the range [0, 255] will saturate rather than wrap around.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_float_to_uchar.png"/>
+  </screenshot>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Int To Float</title>
+  </sect2info>
+  <para>TODO </para>
+  <screenshot>
+    <graphic fileref="images/blocks_int_to_float.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Scale</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the scale factor for the conversion. For example: to normalize an integer sinewave with amplitude 1000, enter 1000 in this box.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Short To Char</title>
+  </sect2info>
+  <para>Converts a stream of short (16-bit) datatype to a stream of char (8-bit) datatype. The behaviour of this block is to convert the most significant byte to char and discard the least significant byte. To convert the least significant byte, first multiply the short by 256.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_short_to_char.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Short To Float</title>
+  </sect2info>
+  <para>Convert a 16-bit short integer stream to floating point (real) stream.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_short_to_float.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Scale</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the scale factor for the conversion. For example: to normalize an integer sinewave with amplitude 1000, enter 1000 in this box.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>UChar To Float</title>
+  </sect2info>
+  <para>Convert an unsigned char stream to a floating point (real) stream.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_uchar_to_float.png"/>
+  </screenshot>
+</sect2>
+  </sect1>
+  <sect1>
+    <sect1info>
+      <title>Filters</title>
+    </sect1info>
+    <sect2>
+  <sect2info>
+    <title>Low Pass Filter</title>
+  </sect2info>
+  <para>This filter is a convenience wrapper for an FIR filter and a firdes taps generating function. Sample rate, cutoff frequency, and transition width are in Hertz. The beta paramater only applies to the Kaiser window.
+	</para>
+  <screenshot>
+    <graphic fileref="images/low_pass_filter.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>FIR Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output streams, with the option of either decimation or interpolation.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex-&gt;Complex (Decimating)</entry>
+            <entry>Input and output streams are complex, with the option to decimate the output.</entry>
+          </row>
+          <row>
+            <entry>Complex-&gt;Complex (Interpolating)</entry>
+            <entry>Input and output streams are complex, with the option to interpolate the output.</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Float (Decimating)</entry>
+            <entry>Input and output streams are real, with the option to decimate the output.</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Float (Interpolating)</entry>
+            <entry>Input and output streams are real, with the option to interpolate the output.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Decimation/Interpolation</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Decimation or interpolation can be selected through the FIR Type parameter. If resampling is not required set this parameter to 1.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Gain</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the gain of the filter.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Sample Rate</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the sample rate of the filter, in Hz.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Cutoff Freq</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the cutoff frequency of the filter, in Hz.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Transition Width</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the transition width between the pass band and stop band. A small transition width will increase the length of the FIR filter.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Window</title>
+    </sect3info>
+    <para>Specifies the window function that will be applied to the FIR filter.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Hamming</entry>
+            <entry>Apply a Hamming window.</entry>
+          </row>
+          <row>
+            <entry>Hann</entry>
+            <entry>Apply a Hann window.</entry>
+          </row>
+          <row>
+            <entry>Blackman</entry>
+            <entry>Apply a Blackman window.</entry>
+          </row>
+          <row>
+            <entry>Rectangular</entry>
+            <entry>Apply a rectangular window.</entry>
+          </row>
+          <row>
+            <entry>Kaiser</entry>
+            <entry>Apply a Kaiser window. The Beta parameter can be controlled.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Beta</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Beta parameter for the Kaiser window.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>High Pass Filter</title>
+  </sect2info>
+  <para>This filter is a convenience wrapper for an FIR filter and a firdes taps generating function. Sample rate, cutoff frequency, and transition width are in Hertz. The beta paramater only applies to the Kaiser window.
+	</para>
+  <screenshot>
+    <graphic fileref="images/high_pass_filter.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>FIR Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output streams, with the option of either decimation or interpolation.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex-&gt;Complex (Decimating)</entry>
+            <entry>Input and output streams are complex, with the option to decimate the output.</entry>
+          </row>
+          <row>
+            <entry>Complex-&gt;Complex (Interpolating)</entry>
+            <entry>Input and output streams are complex, with the option to interpolate the output.</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Float (Decimating)</entry>
+            <entry>Input and output streams are real, with the option to decimate the output.</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Float (Interpolating)</entry>
+            <entry>Input and output streams are real, with the option to interpolate the output.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Decimation/Interpolation</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Decimation or interpolation can be selected through the FIR Type parameter. If resampling is not required set this parameter to 1.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Gain</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the gain of the filter.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Sample Rate</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the sample rate of the filter, in Hz.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Cutoff Freq</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the cutoff frequency of the filter, in Hz.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Transition Width</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the transition width between the pass band and stop band. A small transition width will increase the length of the FIR filter.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Window</title>
+    </sect3info>
+    <para>Specifies the window function that will be applied to the FIR filter.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Hamming</entry>
+            <entry>Apply a Hamming window.</entry>
+          </row>
+          <row>
+            <entry>Hann</entry>
+            <entry>Apply a Hann window.</entry>
+          </row>
+          <row>
+            <entry>Blackman</entry>
+            <entry>Apply a Blackman window.</entry>
+          </row>
+          <row>
+            <entry>Rectangular</entry>
+            <entry>Apply a rectangular window.</entry>
+          </row>
+          <row>
+            <entry>Kaiser</entry>
+            <entry>Apply a Kaiser window. The Beta parameter can be controlled.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Beta</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Beta parameter for the Kaiser window.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Band Pass Filter</title>
+  </sect2info>
+  <para>This filter is a convenience wrapper for an FIR filter and a firdes taps generating function. Sample rate, cutoff frequency, and transition width are in Hertz. The beta paramater only applies to the Kaiser window.
+	</para>
+  <screenshot>
+    <graphic fileref="images/band_pass_filter.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>FIR Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output streams, with the option of either decimation or interpolation. Also specifies whether the taps are real or complex. Complex taps allow the bandpass filter to be asymmetric in the frequency domain, ie: complex poles don't necessarily appear in conjugate pairs.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex-&gt;Complex (Real Taps) (Decim)</entry>
+            <entry>Input and output streams are complex, with the option to decimate the output. This filter will have the same pass bands on both the positive and negative halves of the spectrum.</entry>
+          </row>
+          <row>
+            <entry>Complex-&gt;Complex (Real Taps) (Interp)</entry>
+            <entry>Input and output streams are complex, with the option to interpolate the output. This filter will have the same pass bands on both the positive and negative halves of the spectrum.</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Float (Real Taps) (Decim)</entry>
+            <entry>Input and output streams are real, with the option to decimate the output.</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Float (Real Taps) (Interp)</entry>
+            <entry>Input and output streams are real, with the option to interpolate the output.</entry>
+          </row>
+          <row>
+            <entry>Complex-&gt;Complex (Complex Taps) (Decim)</entry>
+            <entry>Input and output streams are complex, with the option to decimate the output. This filter will have only one pass band. High and low cutoff frequencies can be positive or negative.</entry>
+          </row>
+          <row>
+            <entry>Complex-&gt;Complex (Complex Taps) (Interp)</entry>
+            <entry>Input and output streams are complex, with the option to interpolate the output. This filter will have only one pass band. High and low cutoff frequencies can be positive or negative.</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Complex (Complex Taps) (Decim)</entry>
+            <entry>Input stream is real while the output stream is complex, with the option to decimate the output. This filter will have only one pass band. High and low cutoff frequencies can be positive or negative.</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Complex (Complex Taps) (Interp)</entry>
+            <entry>Input stream is real while the output stream is complex, with the option to interpolate the output. This filter will have only one pass band. High and low cutoff frequencies can be positive or negative.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Decimation/Interpolation</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Decimation or interpolation can be selected through the FIR Type parameter. If resampling is not required set this parameter to 1.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Gain</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the gain of the filter.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Sample Rate</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the sample rate of the filter, in Hz.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Low Cutoff Freq</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the low cutoff frequency of the filter, in Hz. The low cutoff frequency must be less than the high cutoff frequency.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>High Cutoff Freq</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the high cutoff frequency of the filter, in Hz. The high cutoff frequency must be greater than the low cutoff frequency.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Transition Width</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the transition width between the pass band and stop band. A small transition width will increase the length of the FIR filter.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Window</title>
+    </sect3info>
+    <para>Specifies the window function that will be applied to the FIR filter.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Hamming</entry>
+            <entry>Apply a Hamming window.</entry>
+          </row>
+          <row>
+            <entry>Hann</entry>
+            <entry>Apply a Hann window.</entry>
+          </row>
+          <row>
+            <entry>Blackman</entry>
+            <entry>Apply a Blackman window.</entry>
+          </row>
+          <row>
+            <entry>Rectangular</entry>
+            <entry>Apply a rectangular window.</entry>
+          </row>
+          <row>
+            <entry>Kaiser</entry>
+            <entry>Apply a Kaiser window. The Beta parameter can be controlled.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Beta</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Beta parameter for the Kaiser window.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Band Reject Filter</title>
+  </sect2info>
+  <para>This filter is a convenience wrapper for an FIR filter and a firdes taps generating function. Sample rate, cutoff frequency, and transition width are in Hertz. The beta paramater only applies to the Kaiser window.
+	</para>
+  <screenshot>
+    <graphic fileref="images/band_reject_filter.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>FIR Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output streams, with the option of either decimation or interpolation. Also specifies whether the taps are real or complex. Complex taps allow the band reject filter to be asymmetric in the frequency domain, ie: complex poles don't necessarily appear in conjugate pairs.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex-&gt;Complex (Real Taps) (Decim)</entry>
+            <entry>Input and output streams are complex, with the option to decimate the output. This filter will have the same stop bands on both the positive and negative halves of the spectrum.</entry>
+          </row>
+          <row>
+            <entry>Complex-&gt;Complex (Real Taps) (Interp)</entry>
+            <entry>Input and output streams are complex, with the option to interpolate the output. This filter will have the same stop bands on both the positive and negative halves of the spectrum.</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Float (Real Taps) (Decim)</entry>
+            <entry>Input and output streams are real, with the option to decimate the output.</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Float (Real Taps) (Interp)</entry>
+            <entry>Input and output streams are real, with the option to interpolate the output.</entry>
+          </row>
+          <row>
+            <entry>Complex-&gt;Complex (Complex Taps) (Decim)</entry>
+            <entry>Input and output streams are complex, with the option to decimate the output. This filter will have only one stop band. High and low cutoff frequencies can be positive or negative.</entry>
+          </row>
+          <row>
+            <entry>Complex-&gt;Complex (Complex Taps) (Interp)</entry>
+            <entry>Input and output streams are complex, with the option to interpolate the output. This filter will have only one stop band. High and low cutoff frequencies can be positive or negative.</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Complex (Complex Taps) (Decim)</entry>
+            <entry>Input stream is real while the output stream is complex, with the option to decimate the output. This filter will have only one stop band. High and low cutoff frequencies can be positive or negative.</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Complex (Complex Taps) (Interp)</entry>
+            <entry>Input stream is real while the output stream is complex, with the option to interpolate the output. This filter will have only one stop band. High and low cutoff frequencies can be positive or negative.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Decimation/Interpolation</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Decimation or interpolation can be selected through the FIR Type parameter. If resampling is not required set this parameter to 1.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Gain</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the gain of the filter.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Sample Rate</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the sample rate of the filter, in Hz.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Low Cutoff Freq</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the low cutoff frequency of the filter, in Hz. The low cutoff frequency must be less than the high cutoff frequency.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>High Cutoff Freq</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the high cutoff frequency of the filter, in Hz. The high cutoff frequency must be greater than the low cutoff frequency.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Transition Width</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the transition width between the pass band and stop band. A small transition width will increase the length of the FIR filter.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Window</title>
+    </sect3info>
+    <para>Specifies the window function that will be applied to the FIR filter.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Hamming</entry>
+            <entry>Apply a Hamming window.</entry>
+          </row>
+          <row>
+            <entry>Hann</entry>
+            <entry>Apply a Hann window.</entry>
+          </row>
+          <row>
+            <entry>Blackman</entry>
+            <entry>Apply a Blackman window.</entry>
+          </row>
+          <row>
+            <entry>Rectangular</entry>
+            <entry>Apply a rectangular window.</entry>
+          </row>
+          <row>
+            <entry>Kaiser</entry>
+            <entry>Apply a Kaiser window. The Beta parameter can be controlled.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Beta</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Beta parameter for the Kaiser window.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>DC Blocker</title>
+  </sect2info>
+  <para>Blocks the DC component of a signal. This can be useful when working with AM signals, as taking the magnitude of the envelope will always be positive and thus introduce a DC bias on the signal.</para>
+  <screenshot>
+    <graphic fileref="images/dc_blocker_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>Sets the data type of the input and output streams.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex-&gt;Complex</entry>
+            <entry>Input and output streams are complex.</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Float</entry>
+            <entry>Input and output streams are real.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the length of the delay line used for determining the DC level. Only applicable to the long form.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Long Form</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>bool</para>
+    <para>True = use the long form DC blocker, with delay line. False = use the short form (faster).</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Hilbert</title>
+  </sect2info>
+  <para>Performs the Hilbert transform on the incoming real signal. The true Hilbert transform is a non-causal filter. This discrete version of the Hilbert transform works by truncating the filter to the specified number of taps and introducing a delay into the signal.</para>
+  <screenshot>
+    <graphic fileref="images/hilbert_fc.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Num Taps</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of taps to truncate the transform filter.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Rational Resampler</title>
+  </sect2info>
+  <para>Combined Interpolator and Decimator. This block is used to convert from one sample rate to another as long as they can be related by a ratio: Fs_out = Fs_in x Interpolation / Decimation. Note that all blocks following this block in the flowgraph should expect the output sample rate.</para>
+  <screenshot>
+    <graphic fileref="images/rational_resampler_xxx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output streams. For complex streams it also specifies the type of filter that can be applied.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex-&gt;Complex (Complex Taps)</entry>
+            <entry>Input and output streams are complex. Additionally, the antialiasing filter can have complex taps.</entry>
+          </row>
+          <row>
+            <entry>Complex-&gt;Complex (Real Taps)</entry>
+            <entry>Input and output streams are complex. The antialiasing filter has real taps.</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Float (Real Taps)</entry>
+            <entry>Input and output streams are real.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Decimation</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the decimation value.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Interpolation</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the interpolation value.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Taps</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>Same as Type field.</para>
+    <para>Leave empty for automatic value. Otherwise use a firdes expression to specify the filter to be used.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Fractional BW</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Set to 0 for automatic value.</para>
+  </sect3>
+</sect2>
+    <sect2>
+  <sect2info>
+    <title>Frequency Xlating FIR Filter</title>
+  </sect2info>
+  <para>Implements a frequency-translating FIR filter. This is often used as a utitility channel selection block, as it performs frequency translation, channel selection and decimation in one step.</para>
+  <screenshot>
+    <graphic fileref="images/freq_xlating_fir_filter_xxx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>Specifies the type of the input and output streams.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex-&gt;Complex (Complex Taps)</entry>
+            <entry>Input and output streams are complex. Additionally, the filter taps can be complex.</entry>
+          </row>
+          <row>
+            <entry>Complex-&gt;Complex (Real Taps)</entry>
+            <entry>Input and output streams are complex. Additionally, the filter taps must be real.</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Complex (Complex Taps)</entry>
+            <entry>The input stream is real while the output stream is complex. Additionally, the filter taps can be complex.</entry>
+          </row>
+          <row>
+            <entry>Float-&gt;Complex (Real Taps)</entry>
+            <entry>The input stream is real while the output stream is complex. Additionally, the filter taps must be real.</entry>
+          </row>
+          <row>
+            <entry>Short-&gt;Complex (Complex Taps)</entry>
+            <entry>The input stream is a 16-bit short integer while the output stream is complex. Additionally, the filter taps can be complex.</entry>
+          </row>
+          <row>
+            <entry>Short-&gt;Complex (Real Taps)</entry>
+            <entry>The input stream is a 16-bit short integer while the output stream is complex. Additionally, the filter taps must be real.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Decimation</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the decimation factor for the output. The output sample rate will be the specified sample rate divided by the decimation factor.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Taps</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>Same as Type.</para>
+    <para>Enter a valid firdes expression or a valid Python list containing the taps (if designing filters using another method).</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Center Frequency</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Specifies the center frequency. This is the frequency that will be shifted down to 0 Hz before the channel selection filter is applied.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Sample Rate</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Specifies the sample rate, in Hz.</para>
+  </sect3>
+</sect2>
+  </sect1>
+</article>

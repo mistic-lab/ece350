@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>WX GUI Chooser</title>
+  </sect2info>
+  <para>TODO 
+This block creates a variable with a drop down, radio buttons, or a button. \
+Leave the label blank to use the variable id as the label. \
+The value index is the index of a particular choice, \
+which defines the default choice when the flow graph starts. \
+The choices must be a list of possible values. \
+Leave labels empty to use the choices as the labels.
+
+Use the Grid Position (row, column, row span, column span) to position the graphical element in the window.
+
+Use the Notebook Param (notebook-id, page-index) to place the graphical element inside of a notebook page.
+	</para>
+  <screenshot>
+    <graphic fileref="images/variable_chooser.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Label</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Default Value</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>raw</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Choices</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>raw</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Labels</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>raw</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>TODO</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Drop Down</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Radio Buttons</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Button</entry>
+            <entry>TODO</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Style</title>
+    </sect3info>
+    <para>TODO</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Horizontal</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Vertical</entry>
+            <entry>TODO</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Grid Position</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>grid_pos</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Notebook</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>notebook</para>
+    <para>TODO</para>
+  </sect3>
+</sect2>

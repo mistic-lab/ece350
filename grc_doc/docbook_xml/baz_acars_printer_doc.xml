@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>ACARS Printer</title>
+  </sect2info>
+  <para>TODO ACARS printer</para>
+  <screenshot>
+    <graphic fileref="images/baz_acars_printer.png"/>
+  </screenshot>
+</sect2>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<block>
+  <name>Audio Sink</name>
+  <key>audio_sink</key>
+  <doc>Represents the audio output hardware within the GRC flowgraph. In the A309 lab, the signal will be played through the speakers unless there is something plugged into the headphone output on the front panel of the computer.</doc>
+  <param>
+    <name>Sample Rate</name>
+    <doc>Specifies the sampling rate to use. Not all sampling rates are supported by the audio hardware. For typical applications, this should be set to 48kHz.</doc>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Device Name</name>
+    <doc>Leave the device name blank to choose deafult audio device.</doc>
+    <type>string</type>
+  </param>
+  <param>
+    <name>OK to Block</name>
+    <doc>Defaults to True. Leave as Default.</doc>
+    <type>
+      <option>
+        <name>Yes</name>
+        <doc>Default setting.</doc>
+      </option>
+      <option>
+        <name>No</name>
+        <doc>Non-default setting.</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Num Inputs</name>
+    <doc>Specifies the number of channels to write to the audio output device. For typical applications with I/Q transmitters such as the Softrock kit, set this value to 2. For mono audio output applications, set this value to 1.</doc>
+    <type>int</type>
+  </param>
+</block>

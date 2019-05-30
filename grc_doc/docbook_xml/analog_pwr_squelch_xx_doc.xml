@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Power Squelch</title>
+  </sect2info>
+  <para>Implements a squelch control based on the power level of the incoming signal.  </para>
+  <screenshot>
+    <graphic fileref="images/analog_pwr_squelch_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>Sets the input and output data type.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input and output streams are complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input and output streams are real.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Threshold (dB)</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>Sets the threshold (in dB) where the squelch control switches between MUTED and UNMUTED states. If Ramp is enabled, there in an ATTACK state between MUTED and UNMUTED and a DECAY state between UNMUTED and MUTED.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Alpha</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>The Alpha parameter controls the filtering of the signal's power level. The filter's difference equation is y[i] = (1-Alpha) * y[i-1] + Alpha * x[i].</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Ramp</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Sets the number of samples that the MUTED to UNMUTED and UNMUTED to MUTED transitions will occur over. This is actually a raised cosine rather than a linear ramp: Envelope = (1 - cos(pi*x/Ramp))/2.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Gate</title>
+    </sect3info>
+    <para>Specifies whether the Squelch is gating the signal when MUTED.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Yes</entry>
+            <entry>Squelch is gating when MUTED (sets output to 0).</entry>
+          </row>
+          <row>
+            <entry>No</entry>
+            <entry>Squelch is non-gating.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+</sect2>

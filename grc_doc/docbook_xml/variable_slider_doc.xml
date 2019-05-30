@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>WX GUI Slider</title>
+  </sect2info>
+  <para>TODO 
+This block creates a variable with a slider. \
+Leave the label blank to use the variable id as the label. \
+The value must be a real number. \
+The value must be between the minimum and the maximum. \
+The number of steps must be between 0 and 1000.
+
+Use the Grid Position (row, column, row span, column span) to position the graphical element in the window.
+
+Use the Notebook Param (notebook-id, page-index) to place the graphical element inside of a notebook page.
+	</para>
+  <screenshot>
+    <graphic fileref="images/variable_slider.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Label</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Default Value</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Minimum</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Maximum</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Steps</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Style</title>
+    </sect3info>
+    <para>TODO</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Horizontal</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Vertical</entry>
+            <entry>TODO</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Converter</title>
+    </sect3info>
+    <para>TODO</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Float</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Integer</entry>
+            <entry>TODO</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Grid Position</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>grid_pos</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Notebook</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>notebook</para>
+    <para>TODO</para>
+  </sect3>
+</sect2>

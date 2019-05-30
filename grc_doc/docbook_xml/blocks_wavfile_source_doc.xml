@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Wav File Source</title>
+  </sect2info>
+  <para>Creates a data source from an audio wave file. This file can be captured in GNU Radio with a Wav File Sink or created in an audio editor such as Audacity (with the appropriate WAV options) in or MATLAB using the "wavwrite" command.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_wavfile_source.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>File</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>filename</para>
+    <para>Sets the name of the file to use as the data source.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Repeat</title>
+    </sect3info>
+    <para>Specifies whether to play the file in a loop.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Yes</entry>
+            <entry>Play the file continuously in a loop.</entry>
+          </row>
+          <row>
+            <entry>No</entry>
+            <entry>Do not output any samples once the end of file is reached. This may cause the flowgraph to appear to hang.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>N Channels</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of channels to read from the file. Wav files are typically mono (one channel, representing a single data stream) or stereo (two channels, representing either two independent data streams or the in-phase and quadrature components of a complex waveform).</para>
+  </sect3>
+</sect2>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>IQ Bal Fix</title>
+  </sect2info>
+  <para>TODO </para>
+  <screenshot>
+    <graphic fileref="images/iqbalance_fix_cc.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Magnitude</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Phase</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+</sect2>

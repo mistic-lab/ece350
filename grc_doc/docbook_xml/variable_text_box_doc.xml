@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>WX GUI Text Box</title>
+  </sect2info>
+  <para>TODO 
+This block creates a variable with a text box. \
+Leave the label blank to use the variable id as the label.
+
+Format should be a function/lambda that converts a value into a string or None for the default formatter.
+
+Use the Grid Position (row, column, row span, column span) to position the graphical element in the window.
+
+Use the Notebook Param (notebook-id, page-index) to place the graphical element inside of a notebook page.
+	</para>
+  <screenshot>
+    <graphic fileref="images/variable_text_box.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Label</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>string</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Default Value</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>raw</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Converter</title>
+    </sect3info>
+    <para>TODO</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Float</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Integer</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>String</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>Evaluate</entry>
+            <entry>TODO</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Formatter</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>raw</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Grid Position</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>grid_pos</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Notebook</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>notebook</para>
+    <para>TODO</para>
+  </sect3>
+</sect2>

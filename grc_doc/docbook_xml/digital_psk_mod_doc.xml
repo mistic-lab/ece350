@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>PSK Mod</title>
+  </sect2info>
+  <para>TODO </para>
+  <screenshot>
+    <graphic fileref="images/digital_psk_mod.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Number of Constellation Points</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Gray Code</title>
+    </sect3info>
+    <para>TODO</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Yes</entry>
+            <entry>TODO</entry>
+          </row>
+          <row>
+            <entry>No</entry>
+            <entry>TODO</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Differential Encoding</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>bool</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Samples/Symbol</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Excess BW</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Verbose</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>bool</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Logging</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>bool</para>
+    <para>TODO</para>
+  </sect3>
+</sect2>

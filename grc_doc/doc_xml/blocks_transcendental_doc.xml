@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<block>
+  <name>Transcendental</name>
+  <key>blocks_transcendental</key>
+  <doc>Implements various transcendental functions found in the cmath library, including: exp, log, log10, sqrt, acos, asin, atan, cos, sin, tan, acosh, asinh, atanh, cosh, sinh and tanh</doc>
+  <param>
+    <name>Type</name>
+    <doc>Specifies the data type of the input and output streams.</doc>
+    <type>
+      <option>
+        <name>Complex</name>
+        <doc>Input and output streams are complex.</doc>
+      </option>
+      <option>
+        <name>Float</name>
+        <doc>Input and output streams are real.</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Function Name</name>
+    <doc>Sets the name of the function that will be computed. See the documentation for the Python cmath library.</doc>
+    <type>string</type>
+  </param>
+</block>

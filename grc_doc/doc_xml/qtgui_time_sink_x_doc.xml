@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<block>
+  <name>QT GUI Time Sink</name>
+  <key>qtgui_time_sink_x</key>
+  <doc>TODO 
+The GUI hint can be used to position the widget within the application. \
+The hint is of the form [tab_id@tab_index]: [row, col, row_span, col_span]. \
+Both the tab specification and the grid position are optional.
+	</doc>
+  <param>
+    <name>Type</name>
+    <doc>TODO</doc>
+    <type>
+      <option>
+        <name>Complex</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>Float</name>
+        <doc>TODO</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Name</name>
+    <doc>TODO</doc>
+    <type>string</type>
+  </param>
+  <param>
+    <name>Number of Points</name>
+    <doc>TODO</doc>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Bandwidth (Hz)</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Number of Inputs</name>
+    <doc>TODO</doc>
+    <type>int</type>
+  </param>
+  <param>
+    <name>GUI Hint</name>
+    <doc>TODO</doc>
+    <type>gui_hint</type>
+  </param>
+</block>

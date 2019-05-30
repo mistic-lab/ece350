@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<block>
+  <name>Char To Short</name>
+  <key>blocks_char_to_short</key>
+  <doc>Converts a stream from char (byte) data type to short (16-bit) data type.</doc>
+  <param>
+    <name>Vec Length</name>
+    <doc>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</doc>
+    <type>int</type>
+  </param>
+</block>

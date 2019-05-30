@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<block>
+  <name>Max</name>
+  <key>blocks_max_xx</key>
+  <doc>TODO </doc>
+  <param>
+    <name>IO Type</name>
+    <doc>TODO</doc>
+    <type>
+      <option>
+        <name>Float</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>Int</name>
+        <doc>TODO</doc>
+      </option>
+      <option>
+        <name>Short</name>
+        <doc>TODO</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Num Inputs</name>
+    <doc>TODO</doc>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Vec Length</name>
+    <doc>TODO</doc>
+    <type>int</type>
+  </param>
+</block>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Costas Loop</title>
+  </sect2info>
+  <para>TODO </para>
+  <screenshot>
+    <graphic fileref="images/digital_costas_loop_cc.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Loop Bandwidth</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>real</para>
+    <para>TODO</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Order</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>TODO</para>
+  </sect3>
+</sect2>

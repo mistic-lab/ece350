@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Differential Phasor</title>
+  </sect2info>
+  <para>TODO </para>
+  <screenshot>
+    <graphic fileref="images/digital_diff_phasor_cc.png"/>
+  </screenshot>
+</sect2>

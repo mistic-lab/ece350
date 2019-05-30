@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<block>
+  <name>Hilbert</name>
+  <key>hilbert_fc</key>
+  <doc>Performs the Hilbert transform on the incoming real signal. The true Hilbert transform is a non-causal filter. This discrete version of the Hilbert transform works by truncating the filter to the specified number of taps and introducing a delay into the signal.</doc>
+  <param>
+    <name>Num Taps</name>
+    <doc>Specifies the number of taps to truncate the transform filter.</doc>
+    <type>int</type>
+  </param>
+</block>

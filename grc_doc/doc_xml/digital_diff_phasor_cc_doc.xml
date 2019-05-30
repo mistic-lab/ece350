@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<block>
+  <name>Differential Phasor</name>
+  <key>digital_diff_phasor_cc</key>
+  <doc>TODO </doc>
+</block>

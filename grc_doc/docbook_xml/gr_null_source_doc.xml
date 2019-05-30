@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Null Source</title>
+  </sect2info>
+  <para>Outputs zeros for each sample. This can be useful if you wish to create a complex value from a floating point value with the real or imaginary part set to zero.</para>
+  <screenshot>
+    <graphic fileref="images/gr_null_source.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Output Type</title>
+    </sect3info>
+    <para>Specifies the data type of the output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Output is complex value (0+j0).</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Output is floating point (real) value 0.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Output is integer (32-bit) value 0.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Output is short integer (16-bit) value 0.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Output is byte (8-bit) value 0.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3><sect3info><title>Vec Length</title></sect3info><para><emphasis>Type: </emphasis>int</para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</sect3>
+</sect2>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Divide</title>
+  </sect2info>
+  <para>Implements the function out = in0 / in1 / ... / in(N-1).</para>
+  <screenshot>
+    <graphic fileref="images/gr_divide_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>Specifies the data type of the inputs and output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Inputs and output are complex values.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Inputs and output are floating point (real) values.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Inputs and output are integer values.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Inputs and output are short integer values.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3><sect3info><title>Vec Length</title></sect3info><para><emphasis>Type: </emphasis>int</para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</sect3>
+  <sect3><sect3info><title>Num Inputs</title></sect3info><para><emphasis>Type: </emphasis>int</para>Specifies the number of inputs. Inputs will be labelled in0 through in(N-1). Setting this value to 1 computes the reciprocal of in0.</sect3>
+</sect2>

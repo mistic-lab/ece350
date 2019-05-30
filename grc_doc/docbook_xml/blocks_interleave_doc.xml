@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Interleave</title>
+  </sect2info>
+  <para>Interleave the input streams (in0, in1, ..., in(N-1)) into a single stream. Note that the data rate of the interleaved stream will be the rate of the input streams times the number of streams. All input streams should be the same rate for correct operation.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_interleave.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>IO Type</title>
+    </sect3info>
+    <para>Specifies the data type of the input and output streams.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input and output streams are complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input and output streams are real.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Input and output streams are 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Input and output streams are 16-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Input and output streams are 8-bit byte.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Num Streams</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the number of streams to interleave. The block will be created with the required number of inputs.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>

@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>Moving Average</title>
+  </sect2info>
+  <para>Implements a basic moving average filter. Can be used as a simple way to smooth out a noisy signal. The moving average is more of a "moving sum" in that to get a real average, the Scale parameter should be set to 1/Length.</para>
+  <screenshot>
+    <graphic fileref="images/blocks_moving_average_xx.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>Type</title>
+    </sect3info>
+    <para>Sets the data type of the input and output streams.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Input and output streams are complex.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Input and output streams are real.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Input and output streams are 32-bit integer.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Input and output streams are 16-bit integer.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Sets the length of the averaging filter. </para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Scale</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>Same as Type field.</para>
+    <para>Sets a scaling factor for the output. Since this filter really just sums all the previous values, it is necessary to set the Scale to the inverse of the Length to get a true average.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Max Iter</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Limits how long we go without flushing the accumulator. This is necessary to avoid numerical instability for float and complex. Leave as the default value unless there is some reason to do otherwise.</para>
+  </sect3>
+</sect2>

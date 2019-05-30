@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<sect2>
+  <sect2info>
+    <title>File Source</title>
+  </sect2info>
+  <para>Reads raw data values in binary format from the specified file. This file can be a file that was captured using a File Sink block, generated with a computer program or saved from an audio editor such as Audacity (using suitable RAW format options).</para>
+  <screenshot>
+    <graphic fileref="images/blocks_file_source.png"/>
+  </screenshot>
+  <sect3>
+    <sect3info>
+      <title>File</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>file_open</para>
+    <para>Specifies the input file name.</para>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Output Type</title>
+    </sect3info>
+    <para>Specifies the data type of the output.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Complex</entry>
+            <entry>Output is complex value.</entry>
+          </row>
+          <row>
+            <entry>Float</entry>
+            <entry>Output is floating point (real) value.</entry>
+          </row>
+          <row>
+            <entry>Int</entry>
+            <entry>Output is integer value.</entry>
+          </row>
+          <row>
+            <entry>Short</entry>
+            <entry>Output is short integer value.</entry>
+          </row>
+          <row>
+            <entry>Byte</entry>
+            <entry>Output is byte value.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Repeat</title>
+    </sect3info>
+    <para>Selects whether to read through the file once or play it in a loop.</para>
+    <informaltable frame="none">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>Yes</entry>
+            <entry>When the end of file is reached, loop back to the beginning of the file and continue.</entry>
+          </row>
+          <row>
+            <entry>No</entry>
+            <entry>Read through the data until the end of file is reached.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sect3>
+  <sect3>
+    <sect3info>
+      <title>Vec Length</title>
+    </sect3info>
+    <para><emphasis>Type: </emphasis>int</para>
+    <para>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</para>
+  </sect3>
+</sect2>

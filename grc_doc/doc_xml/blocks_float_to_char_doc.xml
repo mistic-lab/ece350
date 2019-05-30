@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<block>
+  <name>Float To Char</name>
+  <key>blocks_float_to_char</key>
+  <doc>Convert floating point value to char (byte) value.</doc>
+  <param>
+    <name>Vec Length</name>
+    <doc>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</doc>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Scale</name>
+    <doc>Specifies the scaling factor for the conversion.</doc>
+    <type>real</type>
+  </param>
+</block>

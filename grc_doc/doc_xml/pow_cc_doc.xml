@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<block>
+  <name>Power</name>
+  <key>pow_cc</key>
+  <doc>TODO 
+Raise signal to complex power.
+    </doc>
+  <param>
+    <name>Exponent</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Division exponent</name>
+    <doc>TODO</doc>
+    <type>real</type>
+  </param>
+</block>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<block>
+  <name>DC Blocker</name>
+  <key>dc_blocker_xx</key>
+  <doc>Blocks the DC component of a signal. This can be useful when working with AM signals, as taking the magnitude of the envelope will always be positive and thus introduce a DC bias on the signal.</doc>
+  <param>
+    <name>Type</name>
+    <doc>Sets the data type of the input and output streams.</doc>
+    <type>
+      <option>
+        <name>Complex-&gt;Complex</name>
+        <doc>Input and output streams are complex.</doc>
+      </option>
+      <option>
+        <name>Float-&gt;Float</name>
+        <doc>Input and output streams are real.</doc>
+      </option>
+    </type>
+  </param>
+  <param>
+    <name>Length</name>
+    <doc>Specifies the length of the delay line used for determining the DC level. Only applicable to the long form.</doc>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Long Form</name>
+    <doc>True = use the long form DC blocker, with delay line. False = use the short form (faster).</doc>
+    <type>bool</type>
+  </param>
+</block>
