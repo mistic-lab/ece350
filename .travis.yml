@@ -1,5 +1,8 @@
 before_install:
-- chmod +x ./ci/build.sh
+  chmod +x ./ci/build.sh
+
+before_script:
+  cd ci
 
 addons:
   apt:
@@ -9,7 +12,7 @@ addons:
 
 jobs:
   include:
-    script: ./ci/build.sh
+    script: ./build.sh
 
 deploy:
   provider: pages
