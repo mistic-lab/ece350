@@ -4,12 +4,15 @@
 # rm -rf ../build_output
 # mkdir ../build_output
 
+script_dir="${dirname $0}"
+html_dir=${script_dir}/../build_output
+
 # Build lab_manual
-bash ./lab_manual/gen_html.sh
+bash ${script_dir}/lab_manual/gen_html.sh
 
 # Shove in index.html and grc_doc
-cp index.html ../build_output/
-cp -r grc_doc/ ../build_output/
+cp ${script_dir}/index.html ${html_dir}
+cp -r ${script_dir}/grc_doc/ ${html_dir}
 
 #? Celebrate
 echo "Woohoo?"
