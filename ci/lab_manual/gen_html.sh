@@ -14,8 +14,9 @@ fi
 
 #TODO Doesn't exist anymore
 # # Move what is currently published and make space for ant
-# mv ${html_dir}/lab_manual/* lab_manual_old 
-# rm -rf ${html_dir}
+mkdir $html_dir}/lab_manual_old
+mv ${html_dir}/lab_manual/* lab_manual_old 
+rm -rf ${html_dir}/lab_manual
 
 # Render the HTML
 ant webhelp
@@ -24,6 +25,7 @@ ant webhelp
 if [ $? == 0 ] # If ant did not throw an error
   then 
     cp -r ../../lab_manual/data ${html_dir}/lab_manual
+    rm -rf ${html_dir}/lab_manual_old
 fi
 
 # chmod -R o+r ${html_dir}/lab_manual
