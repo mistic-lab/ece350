@@ -25,7 +25,7 @@ echo "#3: "
 ls ${html_dir}
 
 # Render the HTML
-ant webhelp
+ant webhelp ${script_dir}/build.xml
 echo "#4: "
 ls ${html_dir}
 
