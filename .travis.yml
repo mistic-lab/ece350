@@ -1,3 +1,7 @@
+jobs:
+  include:
+    script: ./ci/build.sh
+
 deploy:
   provider: pages
   skip_cleanup: true
