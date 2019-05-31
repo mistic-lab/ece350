@@ -1,6 +1,12 @@
 before_install:
 - chmod +x ./ci/build.sh
 
+addons:
+  apt:
+    packages:
+      # Needed for `xmllint`.
+      - libxml2-utils
+
 jobs:
   include:
     script: ./ci/build.sh
