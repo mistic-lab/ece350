@@ -3,10 +3,6 @@
 script_dir="$(dirname $0)"
 html_dir="${script_dir}/../../build_output"
 
-echo "#2: "
-ls ${html_dir}
-
-
 
 # Lint the XML
 xmllint --valid ${script_dir}/../../lab_manual/lab_manual.xml --noout
@@ -24,8 +20,7 @@ ant webhelp ${script_dir}/build.xml
 if [ $? == 0 ] # If ant did not throw an error
   then 
     cp -r ${script_dir}/../../lab_manual/data ${html_dir}/lab_manual
-elif [ $? != 0]
-  then
+else
   echo "ANT COMPLAINED"
 fi
 
