@@ -6,6 +6,7 @@
 
 script_dir="$(dirname $0)"
 html_dir="${script_dir}/../build_output"
+printenv
 
 # Build lab_manual
 bash ${script_dir}/lab_manual/gen_html.sh
