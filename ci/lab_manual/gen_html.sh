@@ -4,7 +4,7 @@ script_dir="$(dirname $0)"
 html_dir="${script_dir}/../../build_output"
 
 echo "#2: "
-ls ${html_dir}
+ls ${html_dir}/
 
 
 
@@ -22,12 +22,12 @@ fi
 # mv ${html_dir}/lab_manual/* ${html_dir}/lab_manual_old 
 # rm -rf ${html_dir}/lab_manual
 echo "#3: "
-ls ${html_dir}
+ls ${html_dir}/
 
 # Render the HTML
 ant webhelp
 echo "#4: "
-ls ${html_dir}
+ls ${html_dir}/
 
 # Copy to directory
 if [ $? == 0 ] # If ant did not throw an error
@@ -36,6 +36,6 @@ if [ $? == 0 ] # If ant did not throw an error
     # rm -rf ${html_dir}/lab_manual_old
 fi
 echo "#5: "
-ls ${html_dir}
+ls ${html_dir}/
 
 # chmod -R o+r ${html_dir}/lab_manual
