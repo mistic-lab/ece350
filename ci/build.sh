@@ -4,7 +4,7 @@
 # rm -rf ../build_output
 # mkdir ../build_output
 
-script_dir="${dirname $0}"
+script_dir="$(dirname $0)"
 html_dir=${script_dir}/../build_output
 
 # Build lab_manual
