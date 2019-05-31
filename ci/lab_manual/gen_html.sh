@@ -5,7 +5,7 @@ html_dir="${script_dir}/../../build_output"
 
 
 # Lint the XML
-xmllint --valid ${script_dir}/../../lab_manual/lab_manual.xml --noout
+xmllint --valid ${script_dir}/lab_manual/lab_manual.xml --noout
 
 if [ $? != 0 ] # I xmllint threw an error, bail out with exit code 1
   then
