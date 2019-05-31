@@ -5,10 +5,12 @@ html_dir="${script_dir}/../build_output"
 
 
 # Build lab_manual
-bash ${script_dir}/lab_manual/gen_html.sh
+cd lab_manual
+bash gen_html.sh
 
 # Shove in index.html and grc_doc
-cp ${script_dir}/index.html ${html_dir}
+cd ..
+cp index.html ${html_dir}
 
 #TODO Shove in grc_doc
 # mkdir ${html_dir}/grc_doc
