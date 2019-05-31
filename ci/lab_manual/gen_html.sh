@@ -14,7 +14,7 @@ fi
 
 
 # Render the HTML
-ant webhelp ${script_dir}/build.xml
+ant webhelp
 
 # Copy to directory
 if [ $? == 0 ] # If ant did not throw an error

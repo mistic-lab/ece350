@@ -1,5 +1,5 @@
 before_install:
-  chmod +x ./ci/build.sh
+  chmod +x ./ci/build.sh ./ci/lab_manual/gen_html.sh
 
 before_script:
   cd ci
