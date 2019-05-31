@@ -1,0 +1,1062 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      
+      <title>Float To Char -  - GNU Radio Companion</title>
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="index.html" title="GNU Radio Companion" />
+      <link rel="up" href="ar01s13.html" title="Type Converters" />
+      <link rel="prev" href="ar01s13s08.html" title="Complex to Arg" />
+      <link rel="next" href="ar01s13s10.html" title="Float To Complex" />
+      <meta name="Section-title" content="Float To Char" /><script type="text/javascript">
+            //The id for tree cookie
+            var treeCookieId = "treeview-6778";
+            var language = "en";
+            var w = new Object();
+            //Localization
+            txt_filesfound = 'Results';
+            txt_enter_at_least_1_char = "You must enter at least one character.";
+            txt_browser_not_supported = "JavaScript is disabled on your browser. Please enable JavaScript to enjoy all the features of this site.";
+            txt_please_wait = "Please wait. Search in progress...";
+            txt_results_for = "Results for: ";
+        </script><link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+      <link rel="stylesheet" type="text/css" href="common/css/positioning.css" />
+      <link rel="stylesheet" type="text/css" href="common/jquery/theme-redmond/jquery-ui-1.8.2.custom.css" />
+      <link rel="stylesheet" type="text/css" href="common/jquery/treeview/jquery.treeview.css" /><style type="text/css">
+
+#noscript{
+    font-weight:bold;
+	background-color: #55AA55;
+    font-weight: bold;
+    height: 25spx;
+    z-index: 3000;
+	top:0px;
+	width:100%;
+	position: relative;
+	border-bottom: solid 5px black;
+	text-align:center;
+	color: white;
+}
+
+input {
+    margin-bottom: 5px;
+    margin-top: 2px;
+}
+.folder {
+    display: block;
+    height: 22px;
+    padding-left: 20px;
+    background: transparent url(common/jquery/treeview/images/folder.gif) 0 0px no-repeat;
+}
+span.contentsTab {
+    padding-left: 20px;
+    background: url(common/images/toc-icon.png) no-repeat 0 center;
+}
+span.searchTab {
+    padding-left: 20px;
+    background: url(common/images/search-icon.png) no-repeat 0 center;
+}
+
+/* Overide jquery treeview's defaults for ul. */
+.treeview ul {
+    background-color: transparent;
+    margin-top: 4px;
+}		
+#webhelp-currentid {
+    background-color: #D8D8D8 !important;
+}
+.treeview .hover { color: black; }
+.filetree li span a { text-decoration: none; font-size: 12px; color: #517291; }
+
+/* Override jquery-ui's default css customizations. These are supposed to take precedence over those.*/
+.ui-widget-content {
+    border: 0px; 
+    background: none; 
+    color: none;     
+}
+.ui-widget-header {
+    color: #e9e8e9;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #bbc4c5;
+    border-top: 4px solid #e5e5e5;
+    border: medium none;
+    background: #F4F4F4; /* old browsers */
+    background: -moz-linear-gradient(top, #F4F4F4 0%, #E6E4E5 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F4F4F4), color-stop(100%,#E6E4E5)); /* webkit */    
+    font-weight: none;
+}
+.ui-widget-header a { color: none; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { 
+border: none; background: none; font-weight: none; color: none; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: black; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: none; background: none; font-weight: none; color: none; }
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: none; background: none; font-weight: none; color: none; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { 
+    color: black; text-decoration: none; 	
+    background: #C6C6C6; /* old browsers */
+    background: -moz-linear-gradient(top, #C6C6C6 0%, #D8D8D8 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C6C6C6), color-stop(100%,#D8D8D8)); /* webkit */
+    -webkit-border-radius:15px; -moz-border-radius:10px;
+    border: 1px solid #f1f1f1;
+}    
+.ui-corner-all { border-radius: 0 0 0 0; }
+
+.ui-tabs { padding: .2em;}
+.ui-tabs .ui-tabs-nav li { top: 0px; margin: -2px 0 1px; text-transform: uppercase; font-size: 10.5px;}
+.ui-tabs .ui-tabs-nav li a { padding: .25em 2em .25em 1em; margin: .5em; text-shadow: 0 1px 0 rgba(255,255,255,.5); }
+       /**
+	 *	Basic Layout Theme
+	 * 
+	 *	This theme uses the default layout class-names for all classes
+	 *	Add any 'custom class-names', from options: paneClass, resizerClass, togglerClass
+	 */
+
+	.ui-layout-pane { /* all 'panes' */ 
+		background: #FFF; 
+		border: 1px solid #BBB; 
+		padding: 05x; 
+		overflow: auto;
+	} 
+        
+	.ui-layout-resizer { /* all 'resizer-bars' */ 
+		background: #DDD; 
+                top:100px
+	} 
+
+	.ui-layout-toggler { /* all 'toggler-buttons' */ 
+		background: #AAA; 
+	} 
+    
+       </style>
+      <!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="../common/css/ie.css"/>
+	<![endif]--><script type="text/javascript" src="common/browserDetect.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery-1.7.2.min.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery.ui.all.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery.cookie.js">
+         <!----></script><script type="text/javascript" src="common/jquery/treeview/jquery.treeview.min.js">
+         <!----></script><script type="text/javascript" src="common/jquery/layout/jquery.layout.js">
+         <!----></script><script type="text/javascript" src="search/l10n.js">
+         <!----></script><script type="text/javascript" src="search/htmlFileInfoList.js">
+         <!----></script><script type="text/javascript" src="search/nwSearchFnt.js">
+         <!----></script><script type="text/javascript" src="search/stemmers/en_stemmer.js">
+         <!--//make this scalable to other languages as well.--></script><script type="text/javascript" src="search/index-1.js">
+         <!----></script><script type="text/javascript" src="search/index-2.js">
+         <!----></script><script type="text/javascript" src="search/index-3.js">
+         <!----></script></head>
+   <body>
+      <noscript>
+         <div id="noscript">JavaScript is disabled on your browser. Please enable JavaScript to enjoy all the features of this site.</div>
+      </noscript>
+      <div id="header"><a href="index.html"><img style="margin-right: 2px; height: 59px; padding-right: 25px; padding-top: 8px" align="right" src="common/images/logo.png" alt="DocBook Documentation" /></a><h1>GNU Radio Companion<br />Type Converters
+         </h1>
+         <div id="navheader">
+            <!---->
+            <table class="navLinks">
+               <tr>
+                  <td><a id="showHideButton" href="#" onclick="myLayout.toggle('west')" class="pointLeft" tabindex="5" title="Hide TOC tree">Sidebar
+                                                    </a></td>
+                  <td><a accesskey="p" class="navLinkPrevious" tabindex="5" href="ar01s13s08.html">Prev</a>
+                                                             |
+                                                             <a accesskey="u" class="navLinkUp" tabindex="5" href="ar01s13.html">Up</a>
+                                                         |
+                                                         <a accesskey="n" class="navLinkNext" tabindex="5" href="ar01s13s10.html">Next</a></td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      <div id="content">
+         <!---->
+         <div class="sect2">
+            <div xmlns="" class="titlepage">
+               <div>
+                  <div>
+                     <h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e3214"></a>Float To Char
+                     </h3>
+                  </div>
+               </div>
+            </div>
+            <div class="toc">
+               <dl class="toc">
+                  <dt><span class="sect3"><a href="ar01s13s09.html#d0e3222">Vec Length</a></span></dt>
+                  <dt><span class="sect3"><a href="ar01s13s09.html#d0e3232">Scale</a></span></dt>
+               </dl>
+            </div>
+            <p>Convert floating point value to char (byte) value.</p>
+            <div class="screenshot">
+               <div><img src="images/blocks_float_to_char.png" /></div>
+            </div>
+            <div class="sect3">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e3222"></a>Vec Length
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="emphasis"><em>Type: </em></span>int
+               </p>
+               <p>Specifies the vector length for vector processing. Typical applications will use the default value of 1.</p>
+            </div>
+            <div class="sect3">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e3232"></a>Scale
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="emphasis"><em>Type: </em></span>real
+               </p>
+               <p>Specifies the scaling factor for the conversion.</p>
+            </div>
+         </div><script type="text/javascript" src="common/main.js">
+            <!----></script><script type="text/javascript" src="common/splitterInit.js">
+            <!----></script><div class="navfooter">
+            <hr />
+            <table width="100%" summary="Navigation footer">
+               <tr>
+                  <td width="40%" align="left"><a accesskey="p" href="ar01s13s08.html">Prev</a> 
+                  </td>
+                  <td width="20%" align="center"><a accesskey="u" href="ar01s13.html">Up</a></td>
+                  <td width="40%" align="right"> <a accesskey="n" href="ar01s13s10.html">Next</a></td>
+               </tr>
+               <tr>
+                  <td width="40%" align="left" valign="top"> </td>
+                  <td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+                  <td width="40%" align="right" valign="top"> </td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      <div id="sidebar">
+         <div id="leftnavigation" style="padding-top:3px;">
+            <div id="tabs">
+               <ul>
+                  <li><a href="#treeDiv" style="outline:0;" tabindex="1"><span class="contentsTab">Contents</span></a></li>
+                  <li><a href="#searchDiv" style="outline:0;" tabindex="1" onclick="doSearch()"><span class="searchTab">Search</span></a></li>
+               </ul>
+               <div id="treeDiv"><img src="common/images/loading.gif" alt="loading table of contents..." id="tocLoading" style="display:block;" /><div id="ulTreeDiv" style="display:none">
+                     <ul id="tree" class="filetree">
+                        <li><span class="file"><a href="ar01s01.html" tabindex="1">Level Controllers</a></span><ul>
+                              <li><span class="file"><a href="ar01s01s01.html" tabindex="1">AGC</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s01.html#d0e31" tabindex="1">Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s01.html#d0e50" tabindex="1">Rate</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s01.html#d0e60" tabindex="1">Reference</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s01.html#d0e70" tabindex="1">Gain</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s01.html#d0e80" tabindex="1">Max Gain</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s01s02.html" tabindex="1">Feed Forward AGC</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e98" tabindex="1">Num Samples</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e108" tabindex="1">Reference</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s01s03.html" tabindex="1">Power Squelch</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e126" tabindex="1">Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e145" tabindex="1">Threshold (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e155" tabindex="1">Alpha</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e165" tabindex="1">Ramp</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e175" tabindex="1">Gate</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s01s04.html" tabindex="1">Rail</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s04.html#d0e202" tabindex="1">Low clipping</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s04.html#d0e212" tabindex="1">Hi clipping</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s01s05.html" tabindex="1">Mute</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s05.html#d0e230" tabindex="1">IO Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s05.html#d0e259" tabindex="1">Mute</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s01s06.html" tabindex="1">Sample and Hold</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e277" tabindex="1">Type</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s01s07.html" tabindex="1">Moving Average</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s07.html#d0e314" tabindex="1">Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s07.html#d0e343" tabindex="1">Length</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s07.html#d0e353" tabindex="1">Scale</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s07.html#d0e363" tabindex="1">Max Iter</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s01s08.html" tabindex="1">Threshold</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s08.html#d0e381" tabindex="1">Low</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s08.html#d0e391" tabindex="1">High</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s08.html#d0e401" tabindex="1">Initial State</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s02.html" tabindex="1">Modulators</a></span></li>
+                        <li><span class="file"><a href="ar01s03.html" tabindex="1">Waveform Generators</a></span><ul>
+                              <li><span class="file"><a href="ar01s03s01.html" tabindex="1">Signal Source</a></span><ul>
+                                    <li><span class="file"><a href="ar01s03s01.html#d0e427" tabindex="1">Output Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s03s01.html#d0e456" tabindex="1">Sample Rate</a></span></li>
+                                    <li><span class="file"><a href="ar01s03s01.html#d0e466" tabindex="1">Waveform</a></span></li>
+                                    <li><span class="file"><a href="ar01s03s01.html#d0e505" tabindex="1">Frequency</a></span></li>
+                                    <li><span class="file"><a href="ar01s03s01.html#d0e515" tabindex="1">Amplitude</a></span></li>
+                                    <li><span class="file"><a href="ar01s03s01.html#d0e525" tabindex="1">Offset</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s03s02.html" tabindex="1">Constant Source</a></span><ul>
+                                    <li><span class="file"><a href="ar01s03s02.html#d0e543" tabindex="1">Output Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s03s02.html#d0e572" tabindex="1">Constant</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s03s03.html" tabindex="1">Noise Source</a></span><ul>
+                                    <li><span class="file"><a href="ar01s03s03.html#d0e590" tabindex="1">Output Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s03s03.html#d0e619" tabindex="1">Noise Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s03s03.html#d0e648" tabindex="1">Amplitude</a></span></li>
+                                    <li><span class="file"><a href="ar01s03s03.html#d0e658" tabindex="1">Seed</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s03s04.html" tabindex="1">Random Source</a></span><ul>
+                                    <li><span class="file"><a href="ar01s03s04.html#d0e676" tabindex="1">Output Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s03s04.html#d0e700" tabindex="1">Minimum</a></span></li>
+                                    <li><span class="file"><a href="ar01s03s04.html#d0e710" tabindex="1">Maximum</a></span></li>
+                                    <li><span class="file"><a href="ar01s03s04.html#d0e720" tabindex="1">Num Samples</a></span></li>
+                                    <li><span class="file"><a href="ar01s03s04.html#d0e730" tabindex="1">Repeat</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s03s05.html" tabindex="1">VCO</a></span><ul>
+                                    <li><span class="file"><a href="ar01s03s05.html#d0e757" tabindex="1">Sample Rate</a></span></li>
+                                    <li><span class="file"><a href="ar01s03s05.html#d0e767" tabindex="1">Sensitivity</a></span></li>
+                                    <li><span class="file"><a href="ar01s03s05.html#d0e777" tabindex="1">Amplitude</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s04.html" tabindex="1">Misc</a></span><ul>
+                              <li><span class="file"><a href="ar01s04s01.html" tabindex="1">Virtual Source</a></span><ul>
+                                    <li><span class="file"><a href="ar01s04s01.html#d0e799" tabindex="1">Stream ID</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s04s02.html" tabindex="1">Virtual Sink</a></span><ul>
+                                    <li><span class="file"><a href="ar01s04s02.html#d0e817" tabindex="1">Stream ID</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s04s03.html" tabindex="1">Note</a></span><ul>
+                                    <li><span class="file"><a href="ar01s04s03.html#d0e835" tabindex="1">Note</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s04s04.html" tabindex="1">Import</a></span><ul>
+                                    <li><span class="file"><a href="ar01s04s04.html#d0e853" tabindex="1">Import</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s04s05.html" tabindex="1">Selector</a></span><ul>
+                                    <li><span class="file"><a href="ar01s04s05.html#d0e871" tabindex="1">Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s04s05.html#d0e905" tabindex="1">Num Inputs</a></span></li>
+                                    <li><span class="file"><a href="ar01s04s05.html#d0e915" tabindex="1">Num Outputs</a></span></li>
+                                    <li><span class="file"><a href="ar01s04s05.html#d0e925" tabindex="1">Input Index</a></span></li>
+                                    <li><span class="file"><a href="ar01s04s05.html#d0e935" tabindex="1">Output Index</a></span></li>
+                                    <li><span class="file"><a href="ar01s04s05.html#d0e945" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s04s06.html" tabindex="1">Valve</a></span><ul>
+                                    <li><span class="file"><a href="ar01s04s06.html#d0e963" tabindex="1">Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s04s06.html#d0e997" tabindex="1">Open</a></span></li>
+                                    <li><span class="file"><a href="ar01s04s06.html#d0e1007" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s04s07.html" tabindex="1">Throttle</a></span><ul>
+                                    <li><span class="file"><a href="ar01s04s07.html#d0e1025" tabindex="1">Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s04s07.html#d0e1059" tabindex="1">Sample Rate</a></span></li>
+                                    <li><span class="file"><a href="ar01s04s07.html#d0e1069" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s04s08.html" tabindex="1">Delay</a></span><ul>
+                                    <li><span class="file"><a href="ar01s04s08.html#d0e1087" tabindex="1">Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s04s08.html#d0e1121" tabindex="1">Delay</a></span></li>
+                                    <li><span class="file"><a href="ar01s04s08.html#d0e1131" tabindex="1">Num Ports</a></span></li>
+                                    <li><span class="file"><a href="ar01s04s08.html#d0e1141" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s04s09.html" tabindex="1">Null Source</a></span><ul>
+                                    <li><span class="file"><a href="ar01s04s09.html#d0e1159" tabindex="1">Output Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s04s09.html#d0e1193" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s04s10.html" tabindex="1">Null Sink</a></span><ul>
+                                    <li><span class="file"><a href="ar01s04s10.html#d0e1211" tabindex="1">Input Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s04s10.html#d0e1245" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s05.html" tabindex="1">Variables</a></span><ul>
+                              <li><span class="file"><a href="ar01s05s01.html" tabindex="1">Variable</a></span><ul>
+                                    <li><span class="file"><a href="ar01s05s01.html#d0e1267" tabindex="1">Value</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s05s02.html" tabindex="1">Variable Config</a></span><ul>
+                                    <li><span class="file"><a href="ar01s05s02.html#d0e1285" tabindex="1">Default Value</a></span></li>
+                                    <li><span class="file"><a href="ar01s05s02.html#d0e1295" tabindex="1">Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s05s02.html#d0e1324" tabindex="1">Config File</a></span></li>
+                                    <li><span class="file"><a href="ar01s05s02.html#d0e1334" tabindex="1">Section</a></span></li>
+                                    <li><span class="file"><a href="ar01s05s02.html#d0e1344" tabindex="1">Option</a></span></li>
+                                    <li><span class="file"><a href="ar01s05s02.html#d0e1354" tabindex="1">WriteBack</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s05s03.html" tabindex="1">Parameter</a></span><ul>
+                                    <li><span class="file"><a href="ar01s05s03.html#d0e1372" tabindex="1">Label</a></span></li>
+                                    <li><span class="file"><a href="ar01s05s03.html#d0e1382" tabindex="1">Value</a></span></li>
+                                    <li><span class="file"><a href="ar01s05s03.html#d0e1392" tabindex="1">Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s05s03.html#d0e1431" tabindex="1">Short ID</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s06.html" tabindex="1">Audio</a></span><ul>
+                              <li><span class="file"><a href="ar01s06s01.html" tabindex="1">Wav File Source</a></span><ul>
+                                    <li><span class="file"><a href="ar01s06s01.html#d0e1453" tabindex="1">File</a></span></li>
+                                    <li><span class="file"><a href="ar01s06s01.html#d0e1463" tabindex="1">Repeat</a></span></li>
+                                    <li><span class="file"><a href="ar01s06s01.html#d0e1482" tabindex="1">N Channels</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s06s02.html" tabindex="1">Wav File Sink</a></span><ul>
+                                    <li><span class="file"><a href="ar01s06s02.html#d0e1500" tabindex="1">File</a></span></li>
+                                    <li><span class="file"><a href="ar01s06s02.html#d0e1510" tabindex="1">N Channels</a></span></li>
+                                    <li><span class="file"><a href="ar01s06s02.html#d0e1520" tabindex="1">Sample Rate</a></span></li>
+                                    <li><span class="file"><a href="ar01s06s02.html#d0e1530" tabindex="1">Bits per Sample</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s06s03.html" tabindex="1">Audio Sink</a></span><ul>
+                                    <li><span class="file"><a href="ar01s06s03.html#d0e1548" tabindex="1">Sample Rate</a></span></li>
+                                    <li><span class="file"><a href="ar01s06s03.html#d0e1558" tabindex="1">Device Name</a></span></li>
+                                    <li><span class="file"><a href="ar01s06s03.html#d0e1568" tabindex="1">OK to Block</a></span></li>
+                                    <li><span class="file"><a href="ar01s06s03.html#d0e1587" tabindex="1">Num Inputs</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s06s04.html" tabindex="1">Audio Source</a></span><ul>
+                                    <li><span class="file"><a href="ar01s06s04.html#d0e1605" tabindex="1">Sample Rate</a></span></li>
+                                    <li><span class="file"><a href="ar01s06s04.html#d0e1615" tabindex="1">Device Name</a></span></li>
+                                    <li><span class="file"><a href="ar01s06s04.html#d0e1625" tabindex="1">OK to Block</a></span></li>
+                                    <li><span class="file"><a href="ar01s06s04.html#d0e1644" tabindex="1">Num Outputs</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s07.html" tabindex="1">Boolean Operators</a></span><ul>
+                              <li><span class="file"><a href="ar01s07s01.html" tabindex="1">And</a></span><ul>
+                                    <li><span class="file"><a href="ar01s07s01.html#d0e1666" tabindex="1">IO Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s07s01.html#d0e1690" tabindex="1">Num Inputs</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s07s02.html" tabindex="1">And Const</a></span><ul>
+                                    <li><span class="file"><a href="ar01s07s02.html#d0e1708" tabindex="1">IO Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s07s02.html#d0e1732" tabindex="1">Constant</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s07s03.html" tabindex="1">Not</a></span><ul>
+                                    <li><span class="file"><a href="ar01s07s03.html#d0e1750" tabindex="1">IO Type</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s07s04.html" tabindex="1">Or</a></span><ul>
+                                    <li><span class="file"><a href="ar01s07s04.html#d0e1782" tabindex="1">IO Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s07s04.html#d0e1806" tabindex="1">Num Inputs</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s07s05.html" tabindex="1">Xor</a></span><ul>
+                                    <li><span class="file"><a href="ar01s07s05.html#d0e1824" tabindex="1">IO Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s07s05.html#d0e1848" tabindex="1">Num Inputs</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s08.html" tabindex="1">File Operators</a></span><ul>
+                              <li><span class="file"><a href="ar01s08s01.html" tabindex="1">Wav File Source</a></span><ul>
+                                    <li><span class="file"><a href="ar01s08s01.html#d0e1870" tabindex="1">File</a></span></li>
+                                    <li><span class="file"><a href="ar01s08s01.html#d0e1880" tabindex="1">Repeat</a></span></li>
+                                    <li><span class="file"><a href="ar01s08s01.html#d0e1899" tabindex="1">N Channels</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s08s02.html" tabindex="1">Wav File Sink</a></span><ul>
+                                    <li><span class="file"><a href="ar01s08s02.html#d0e1917" tabindex="1">File</a></span></li>
+                                    <li><span class="file"><a href="ar01s08s02.html#d0e1927" tabindex="1">N Channels</a></span></li>
+                                    <li><span class="file"><a href="ar01s08s02.html#d0e1937" tabindex="1">Sample Rate</a></span></li>
+                                    <li><span class="file"><a href="ar01s08s02.html#d0e1947" tabindex="1">Bits per Sample</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s08s03.html" tabindex="1">File Source</a></span><ul>
+                                    <li><span class="file"><a href="ar01s08s03.html#d0e1965" tabindex="1">File</a></span></li>
+                                    <li><span class="file"><a href="ar01s08s03.html#d0e1975" tabindex="1">Output Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s08s03.html#d0e2009" tabindex="1">Repeat</a></span></li>
+                                    <li><span class="file"><a href="ar01s08s03.html#d0e2028" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s08s04.html" tabindex="1">File Sink</a></span><ul>
+                                    <li><span class="file"><a href="ar01s08s04.html#d0e2046" tabindex="1">File</a></span></li>
+                                    <li><span class="file"><a href="ar01s08s04.html#d0e2056" tabindex="1">Input Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s08s04.html#d0e2090" tabindex="1">Vec Length</a></span></li>
+                                    <li><span class="file"><a href="ar01s08s04.html#d0e2100" tabindex="1">Unbuffered</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s09.html" tabindex="1">Math Operators</a></span><ul>
+                              <li><span class="file"><a href="ar01s09s01.html" tabindex="1">Add</a></span><ul>
+                                    <li><span class="file"><a href="ar01s09s01.html#d0e2122" tabindex="1">IO Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s09s01.html#d0e2151" tabindex="1">Num Inputs</a></span></li>
+                                    <li><span class="file"><a href="ar01s09s01.html#d0e2161" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s09s02.html" tabindex="1">Add Const</a></span><ul>
+                                    <li><span class="file"><a href="ar01s09s02.html#d0e2179" tabindex="1">IO Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s09s02.html#d0e2208" tabindex="1">Constant</a></span></li>
+                                    <li><span class="file"><a href="ar01s09s02.html#d0e2219" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s09s03.html" tabindex="1">Divide</a></span><ul>
+                                    <li><span class="file"><a href="ar01s09s03.html#d0e2237" tabindex="1">IO Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s09s03.html#d0e2266" tabindex="1">Vec Length</a></span></li>
+                                    <li><span class="file"><a href="ar01s09s03.html#d0e2276" tabindex="1">Num Inputs</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s09s04.html" tabindex="1">Multiply</a></span><ul>
+                                    <li><span class="file"><a href="ar01s09s04.html#d0e2294" tabindex="1">IO Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s09s04.html#d0e2323" tabindex="1">Num Inputs</a></span></li>
+                                    <li><span class="file"><a href="ar01s09s04.html#d0e2333" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s09s05.html" tabindex="1">Multiply Const</a></span><ul>
+                                    <li><span class="file"><a href="ar01s09s05.html#d0e2351" tabindex="1">IO Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s09s05.html#d0e2380" tabindex="1">Constant</a></span></li>
+                                    <li><span class="file"><a href="ar01s09s05.html#d0e2391" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s09s06.html" tabindex="1">Multiply Conjugate</a></span><ul>
+                                    <li><span class="file"><a href="ar01s09s06.html#d0e2409" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s09s07.html" tabindex="1">Subtract</a></span><ul>
+                                    <li><span class="file"><a href="ar01s09s07.html#d0e2427" tabindex="1">IO Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s09s07.html#d0e2456" tabindex="1">Vec Length</a></span></li>
+                                    <li><span class="file"><a href="ar01s09s07.html#d0e2466" tabindex="1">Num Inputs</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s09s08.html" tabindex="1">Complex Conjugate</a></span></li>
+                              <li><span class="file"><a href="ar01s09s09.html" tabindex="1">Integrate</a></span><ul>
+                                    <li><span class="file"><a href="ar01s09s09.html#d0e2492" tabindex="1">IO Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s09s09.html#d0e2521" tabindex="1">Decimation</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s09s10.html" tabindex="1">Log10</a></span><ul>
+                                    <li><span class="file"><a href="ar01s09s10.html#d0e2539" tabindex="1">n</a></span></li>
+                                    <li><span class="file"><a href="ar01s09s10.html#d0e2549" tabindex="1">k</a></span></li>
+                                    <li><span class="file"><a href="ar01s09s10.html#d0e2559" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s09s11.html" tabindex="1">RMS</a></span><ul>
+                                    <li><span class="file"><a href="ar01s09s11.html#d0e2577" tabindex="1">Input Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s09s11.html#d0e2596" tabindex="1">Alpha</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s09s12.html" tabindex="1">Transcendental</a></span><ul>
+                                    <li><span class="file"><a href="ar01s09s12.html#d0e2614" tabindex="1">Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s09s12.html#d0e2633" tabindex="1">Function Name</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s10.html" tabindex="1">Message Tools</a></span><ul>
+                              <li><span class="file"><a href="ar01s10s01.html" tabindex="1">Message Source</a></span><ul>
+                                    <li><span class="file"><a href="ar01s10s01.html#d0e2655" tabindex="1">Output Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s10s01.html#d0e2689" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s10s02.html" tabindex="1">Message Sink</a></span><ul>
+                                    <li><span class="file"><a href="ar01s10s02.html#d0e2707" tabindex="1">Input Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s10s02.html#d0e2741" tabindex="1">Don't Block</a></span></li>
+                                    <li><span class="file"><a href="ar01s10s02.html#d0e2752" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s11.html" tabindex="1">Peak Detectors</a></span><ul>
+                              <li><span class="file"><a href="ar01s11s01.html" tabindex="1">Peak Detector</a></span><ul>
+                                    <li><span class="file"><a href="ar01s11s01.html#d0e2774" tabindex="1">Input Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s11s01.html#d0e2798" tabindex="1">TH Factor Rise</a></span></li>
+                                    <li><span class="file"><a href="ar01s11s01.html#d0e2808" tabindex="1">TH Factor Fall</a></span></li>
+                                    <li><span class="file"><a href="ar01s11s01.html#d0e2818" tabindex="1">Look Ahead</a></span></li>
+                                    <li><span class="file"><a href="ar01s11s01.html#d0e2828" tabindex="1">Alpha</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s11s02.html" tabindex="1">Plateau Detector</a></span><ul>
+                                    <li><span class="file"><a href="ar01s11s02.html#d0e2846" tabindex="1">Max. plateau length</a></span></li>
+                                    <li><span class="file"><a href="ar01s11s02.html#d0e2856" tabindex="1">Threshold</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s12.html" tabindex="1">Stream Operators</a></span><ul>
+                              <li><span class="file"><a href="ar01s12s01.html" tabindex="1">Deinterleave</a></span><ul>
+                                    <li><span class="file"><a href="ar01s12s01.html#d0e2878" tabindex="1">IO Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s12s01.html#d0e2912" tabindex="1">Num Streams</a></span></li>
+                                    <li><span class="file"><a href="ar01s12s01.html#d0e2922" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s12s02.html" tabindex="1">Interleave</a></span><ul>
+                                    <li><span class="file"><a href="ar01s12s02.html#d0e2940" tabindex="1">IO Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s12s02.html#d0e2974" tabindex="1">Num Streams</a></span></li>
+                                    <li><span class="file"><a href="ar01s12s02.html#d0e2984" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s12s03.html" tabindex="1">Repeat</a></span><ul>
+                                    <li><span class="file"><a href="ar01s12s03.html#d0e3002" tabindex="1">Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s12s03.html#d0e3036" tabindex="1">Interpolation</a></span></li>
+                                    <li><span class="file"><a href="ar01s12s03.html#d0e3046" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s13.html" tabindex="1">Type Converters</a></span><ul>
+                              <li><span class="file"><a href="ar01s13s01.html" tabindex="1">Char To Float</a></span><ul>
+                                    <li><span class="file"><a href="ar01s13s01.html#d0e3068" tabindex="1">Vec Length</a></span></li>
+                                    <li><span class="file"><a href="ar01s13s01.html#d0e3078" tabindex="1">Scale</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s13s02.html" tabindex="1">Char To Short</a></span><ul>
+                                    <li><span class="file"><a href="ar01s13s02.html#d0e3096" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s13s03.html" tabindex="1">Complex To Float</a></span><ul>
+                                    <li><span class="file"><a href="ar01s13s03.html#d0e3114" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s13s04.html" tabindex="1">Complex to Imag</a></span><ul>
+                                    <li><span class="file"><a href="ar01s13s04.html#d0e3132" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s13s05.html" tabindex="1">Complex to Real</a></span><ul>
+                                    <li><span class="file"><a href="ar01s13s05.html#d0e3150" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s13s06.html" tabindex="1">Complex to Mag</a></span><ul>
+                                    <li><span class="file"><a href="ar01s13s06.html#d0e3168" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s13s07.html" tabindex="1">Complex to Mag^2</a></span><ul>
+                                    <li><span class="file"><a href="ar01s13s07.html#d0e3186" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s13s08.html" tabindex="1">Complex to Arg</a></span><ul>
+                                    <li><span class="file"><a href="ar01s13s08.html#d0e3204" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li id="webhelp-currentid"><span class="file"><a href="ar01s13s09.html" tabindex="1">Float To Char</a></span><ul>
+                                    <li><span class="file"><a href="ar01s13s09.html#d0e3222" tabindex="1">Vec Length</a></span></li>
+                                    <li><span class="file"><a href="ar01s13s09.html#d0e3232" tabindex="1">Scale</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s13s10.html" tabindex="1">Float To Complex</a></span><ul>
+                                    <li><span class="file"><a href="ar01s13s10.html#d0e3250" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s13s11.html" tabindex="1">Float To Int</a></span><ul>
+                                    <li><span class="file"><a href="ar01s13s11.html#d0e3268" tabindex="1">Vec Length</a></span></li>
+                                    <li><span class="file"><a href="ar01s13s11.html#d0e3278" tabindex="1">Scale</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s13s12.html" tabindex="1">Float To Short</a></span><ul>
+                                    <li><span class="file"><a href="ar01s13s12.html#d0e3296" tabindex="1">Vec Length</a></span></li>
+                                    <li><span class="file"><a href="ar01s13s12.html#d0e3306" tabindex="1">Scale</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s13s13.html" tabindex="1">Float To UChar</a></span></li>
+                              <li><span class="file"><a href="ar01s13s14.html" tabindex="1">Int To Float</a></span><ul>
+                                    <li><span class="file"><a href="ar01s13s14.html#d0e3332" tabindex="1">Vec Length</a></span></li>
+                                    <li><span class="file"><a href="ar01s13s14.html#d0e3342" tabindex="1">Scale</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s13s15.html" tabindex="1">Short To Char</a></span><ul>
+                                    <li><span class="file"><a href="ar01s13s15.html#d0e3360" tabindex="1">Vec Length</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s13s16.html" tabindex="1">Short To Float</a></span><ul>
+                                    <li><span class="file"><a href="ar01s13s16.html#d0e3378" tabindex="1">Vec Length</a></span></li>
+                                    <li><span class="file"><a href="ar01s13s16.html#d0e3388" tabindex="1">Scale</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s13s17.html" tabindex="1">UChar To Float</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s14.html" tabindex="1">Symbol Coding</a></span></li>
+                        <li><span class="file"><a href="ar01s15.html" tabindex="1">Synchronizers</a></span></li>
+                        <li><span class="file"><a href="ar01s16.html" tabindex="1">Filters</a></span><ul>
+                              <li><span class="file"><a href="ar01s16s01.html" tabindex="1">Low Pass Filter</a></span><ul>
+                                    <li><span class="file"><a href="ar01s16s01.html#d0e3426" tabindex="1">FIR Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s01.html#d0e3455" tabindex="1">Decimation/Interpolation</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s01.html#d0e3465" tabindex="1">Gain</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s01.html#d0e3475" tabindex="1">Sample Rate</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s01.html#d0e3485" tabindex="1">Cutoff Freq</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s01.html#d0e3495" tabindex="1">Transition Width</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s01.html#d0e3505" tabindex="1">Window</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s01.html#d0e3539" tabindex="1">Beta</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s16s02.html" tabindex="1">High Pass Filter</a></span><ul>
+                                    <li><span class="file"><a href="ar01s16s02.html#d0e3557" tabindex="1">FIR Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s02.html#d0e3586" tabindex="1">Decimation/Interpolation</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s02.html#d0e3596" tabindex="1">Gain</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s02.html#d0e3606" tabindex="1">Sample Rate</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s02.html#d0e3616" tabindex="1">Cutoff Freq</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s02.html#d0e3626" tabindex="1">Transition Width</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s02.html#d0e3636" tabindex="1">Window</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s02.html#d0e3670" tabindex="1">Beta</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s16s03.html" tabindex="1">Band Pass Filter</a></span><ul>
+                                    <li><span class="file"><a href="ar01s16s03.html#d0e3688" tabindex="1">FIR Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s03.html#d0e3737" tabindex="1">Decimation/Interpolation</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s03.html#d0e3747" tabindex="1">Gain</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s03.html#d0e3757" tabindex="1">Sample Rate</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s03.html#d0e3767" tabindex="1">Low Cutoff Freq</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s03.html#d0e3777" tabindex="1">High Cutoff Freq</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s03.html#d0e3787" tabindex="1">Transition Width</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s03.html#d0e3797" tabindex="1">Window</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s03.html#d0e3831" tabindex="1">Beta</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s16s04.html" tabindex="1">Band Reject Filter</a></span><ul>
+                                    <li><span class="file"><a href="ar01s16s04.html#d0e3849" tabindex="1">FIR Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s04.html#d0e3898" tabindex="1">Decimation/Interpolation</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s04.html#d0e3908" tabindex="1">Gain</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s04.html#d0e3918" tabindex="1">Sample Rate</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s04.html#d0e3928" tabindex="1">Low Cutoff Freq</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s04.html#d0e3938" tabindex="1">High Cutoff Freq</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s04.html#d0e3948" tabindex="1">Transition Width</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s04.html#d0e3958" tabindex="1">Window</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s04.html#d0e3992" tabindex="1">Beta</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s16s05.html" tabindex="1">DC Blocker</a></span><ul>
+                                    <li><span class="file"><a href="ar01s16s05.html#d0e4010" tabindex="1">Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s05.html#d0e4029" tabindex="1">Length</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s05.html#d0e4039" tabindex="1">Long Form</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s16s06.html" tabindex="1">Hilbert</a></span><ul>
+                                    <li><span class="file"><a href="ar01s16s06.html#d0e4057" tabindex="1">Num Taps</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s16s07.html" tabindex="1">Rational Resampler</a></span><ul>
+                                    <li><span class="file"><a href="ar01s16s07.html#d0e4075" tabindex="1">Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s07.html#d0e4099" tabindex="1">Decimation</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s07.html#d0e4109" tabindex="1">Interpolation</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s07.html#d0e4119" tabindex="1">Taps</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s07.html#d0e4129" tabindex="1">Fractional BW</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s16s08.html" tabindex="1">Frequency Xlating FIR Filter</a></span><ul>
+                                    <li><span class="file"><a href="ar01s16s08.html#d0e4147" tabindex="1">Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s08.html#d0e4186" tabindex="1">Decimation</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s08.html#d0e4196" tabindex="1">Taps</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s08.html#d0e4206" tabindex="1">Center Frequency</a></span></li>
+                                    <li><span class="file"><a href="ar01s16s08.html#d0e4216" tabindex="1">Sample Rate</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s17.html" tabindex="1">UHD</a></span><ul>
+                              <li><span class="file"><a href="ar01s17s01.html" tabindex="1">UHD: USRP Source</a></span><ul>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4238" tabindex="1">Output Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4262" tabindex="1">Wire Format</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4272" tabindex="1">Stream args</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4282" tabindex="1">Device Addr</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4292" tabindex="1">Sync</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4316" tabindex="1">Clock Rate (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4326" tabindex="1">Num Mboards</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4336" tabindex="1">Mb0: Clock Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4346" tabindex="1">Mb0: Time Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4356" tabindex="1">Mb0: Subdev Spec</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4366" tabindex="1">Mb1: Clock Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4376" tabindex="1">Mb1: Time Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4386" tabindex="1">Mb1: Subdev Spec</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4396" tabindex="1">Mb2: Clock Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4406" tabindex="1">Mb2: Time Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4416" tabindex="1">Mb2: Subdev Spec</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4426" tabindex="1">Mb3: Clock Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4436" tabindex="1">Mb3: Time Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4446" tabindex="1">Mb3: Subdev Spec</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4456" tabindex="1">Mb4: Clock Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4466" tabindex="1">Mb4: Time Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4476" tabindex="1">Mb4: Subdev Spec</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4486" tabindex="1">Mb5: Clock Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4496" tabindex="1">Mb5: Time Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4506" tabindex="1">Mb5: Subdev Spec</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4516" tabindex="1">Mb6: Clock Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s01.html#d0e4526" tabindex="1">Mb6: Time Source</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s17s02.html" tabindex="1">UHD: USRP Sink</a></span><ul>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4544" tabindex="1">Input Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4568" tabindex="1">Wire Format</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4578" tabindex="1">Stream args</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4588" tabindex="1">Device Addr</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4598" tabindex="1">Sync</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4622" tabindex="1">Clock Rate (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4632" tabindex="1">Num Mboards</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4642" tabindex="1">Mb0: Clock Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4652" tabindex="1">Mb0: Time Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4662" tabindex="1">Mb0: Subdev Spec</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4672" tabindex="1">Mb1: Clock Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4682" tabindex="1">Mb1: Time Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4692" tabindex="1">Mb1: Subdev Spec</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4702" tabindex="1">Mb2: Clock Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4712" tabindex="1">Mb2: Time Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4722" tabindex="1">Mb2: Subdev Spec</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4732" tabindex="1">Mb3: Clock Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4742" tabindex="1">Mb3: Time Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4752" tabindex="1">Mb3: Subdev Spec</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4762" tabindex="1">Mb4: Clock Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4772" tabindex="1">Mb4: Time Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4782" tabindex="1">Mb4: Subdev Spec</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4792" tabindex="1">Mb5: Clock Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4802" tabindex="1">Mb5: Time Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4812" tabindex="1">Mb5: Subdev Spec</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4822" tabindex="1">Mb6: Clock Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4832" tabindex="1">Mb6: Time Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4842" tabindex="1">Mb6: Subdev Spec</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4852" tabindex="1">Mb7: Clock Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4862" tabindex="1">Mb7: Time Source</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4872" tabindex="1">Mb7: Subdev Spec</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4882" tabindex="1">Num Channels</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4892" tabindex="1">Samp Rate (Sps)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4902" tabindex="1">Ch0: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4912" tabindex="1">Ch0: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4922" tabindex="1">Ch0: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4932" tabindex="1">Ch0: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4942" tabindex="1">Ch1: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4952" tabindex="1">Ch1: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4962" tabindex="1">Ch1: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4972" tabindex="1">Ch1: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4982" tabindex="1">Ch2: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e4992" tabindex="1">Ch2: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5002" tabindex="1">Ch2: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5012" tabindex="1">Ch2: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5022" tabindex="1">Ch3: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5032" tabindex="1">Ch3: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5042" tabindex="1">Ch3: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5052" tabindex="1">Ch3: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5062" tabindex="1">Ch4: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5072" tabindex="1">Ch4: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5082" tabindex="1">Ch4: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5092" tabindex="1">Ch4: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5102" tabindex="1">Ch5: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5112" tabindex="1">Ch5: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5122" tabindex="1">Ch5: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5132" tabindex="1">Ch5: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5142" tabindex="1">Ch6: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5152" tabindex="1">Ch6: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5162" tabindex="1">Ch6: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5172" tabindex="1">Ch6: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5182" tabindex="1">Ch7: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5192" tabindex="1">Ch7: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5202" tabindex="1">Ch7: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5212" tabindex="1">Ch7: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5222" tabindex="1">Ch8: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5232" tabindex="1">Ch8: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5242" tabindex="1">Ch8: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5252" tabindex="1">Ch8: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5262" tabindex="1">Ch9: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5272" tabindex="1">Ch9: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5282" tabindex="1">Ch9: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5292" tabindex="1">Ch9: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5302" tabindex="1">Ch10: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5312" tabindex="1">Ch10: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5322" tabindex="1">Ch10: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5332" tabindex="1">Ch10: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5342" tabindex="1">Ch11: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5352" tabindex="1">Ch11: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5362" tabindex="1">Ch11: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5372" tabindex="1">Ch11: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5382" tabindex="1">Ch12: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5392" tabindex="1">Ch12: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5402" tabindex="1">Ch12: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5412" tabindex="1">Ch12: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5422" tabindex="1">Ch13: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5432" tabindex="1">Ch13: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5442" tabindex="1">Ch13: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5452" tabindex="1">Ch13: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5462" tabindex="1">Ch14: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5472" tabindex="1">Ch14: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5482" tabindex="1">Ch14: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5492" tabindex="1">Ch14: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5502" tabindex="1">Ch15: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5512" tabindex="1">Ch15: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5522" tabindex="1">Ch15: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5532" tabindex="1">Ch15: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5542" tabindex="1">Ch16: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5552" tabindex="1">Ch16: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5562" tabindex="1">Ch16: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5572" tabindex="1">Ch16: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5582" tabindex="1">Ch17: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5592" tabindex="1">Ch17: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5602" tabindex="1">Ch17: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5612" tabindex="1">Ch17: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5622" tabindex="1">Ch18: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5632" tabindex="1">Ch18: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5642" tabindex="1">Ch18: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5652" tabindex="1">Ch18: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5662" tabindex="1">Ch19: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5672" tabindex="1">Ch19: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5682" tabindex="1">Ch19: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5692" tabindex="1">Ch19: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5702" tabindex="1">Ch20: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5712" tabindex="1">Ch20: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5722" tabindex="1">Ch20: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5732" tabindex="1">Ch20: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5742" tabindex="1">Ch21: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5752" tabindex="1">Ch21: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5762" tabindex="1">Ch21: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5772" tabindex="1">Ch21: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5782" tabindex="1">Ch22: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5792" tabindex="1">Ch22: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5802" tabindex="1">Ch22: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5812" tabindex="1">Ch22: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5822" tabindex="1">Ch23: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5832" tabindex="1">Ch23: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5842" tabindex="1">Ch23: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5852" tabindex="1">Ch23: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5862" tabindex="1">Ch24: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5872" tabindex="1">Ch24: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5882" tabindex="1">Ch24: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5892" tabindex="1">Ch24: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5902" tabindex="1">Ch25: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5912" tabindex="1">Ch25: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5922" tabindex="1">Ch25: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5932" tabindex="1">Ch25: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5942" tabindex="1">Ch26: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5952" tabindex="1">Ch26: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5962" tabindex="1">Ch26: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5972" tabindex="1">Ch26: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5982" tabindex="1">Ch27: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e5992" tabindex="1">Ch27: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e6002" tabindex="1">Ch27: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e6012" tabindex="1">Ch27: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e6022" tabindex="1">Ch28: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e6032" tabindex="1">Ch28: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e6042" tabindex="1">Ch28: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e6052" tabindex="1">Ch28: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e6062" tabindex="1">Ch29: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e6072" tabindex="1">Ch29: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e6082" tabindex="1">Ch29: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e6092" tabindex="1">Ch29: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e6102" tabindex="1">Ch30: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e6112" tabindex="1">Ch30: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e6122" tabindex="1">Ch30: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e6132" tabindex="1">Ch30: Bandwidth (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e6142" tabindex="1">Ch31: Center Freq (Hz)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e6152" tabindex="1">Ch31: Gain (dB)</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e6162" tabindex="1">Ch31: Antenna</a></span></li>
+                                    <li><span class="file"><a href="ar01s17s02.html#d0e6172" tabindex="1">Ch31: Bandwidth (Hz)</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s18.html" tabindex="1">ACARS</a></span></li>
+                        <li><span class="file"><a href="ar01s19.html" tabindex="1">IQ Balance</a></span><ul>
+                              <li><span class="file"><a href="ar01s19s01.html" tabindex="1">IQ Bal Fix</a></span><ul>
+                                    <li><span class="file"><a href="ar01s19s01.html#d0e6198" tabindex="1">Magnitude</a></span></li>
+                                    <li><span class="file"><a href="ar01s19s01.html#d0e6208" tabindex="1">Phase</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s19s02.html" tabindex="1">IQ Bal Optimize</a></span><ul>
+                                    <li><span class="file"><a href="ar01s19s02.html#d0e6226" tabindex="1">Period</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s20.html" tabindex="1">GUI Widgets (WX)</a></span><ul>
+                              <li><span class="file"><a href="ar01s20s01.html" tabindex="1">WX GUI Notebook</a></span><ul>
+                                    <li><span class="file"><a href="ar01s20s01.html#d0e6248" tabindex="1">Tab Orientation</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s01.html#d0e6277" tabindex="1">Labels</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s01.html#d0e6287" tabindex="1">Grid Position</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s01.html#d0e6297" tabindex="1">Notebook</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s20s02.html" tabindex="1">WX GUI Check Box</a></span><ul>
+                                    <li><span class="file"><a href="ar01s20s02.html#d0e6315" tabindex="1">Label</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s02.html#d0e6325" tabindex="1">Default Value</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s02.html#d0e6335" tabindex="1">True</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s02.html#d0e6345" tabindex="1">False</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s02.html#d0e6355" tabindex="1">Grid Position</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s02.html#d0e6365" tabindex="1">Notebook</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s20s03.html" tabindex="1">WX GUI Chooser</a></span><ul>
+                                    <li><span class="file"><a href="ar01s20s03.html#d0e6383" tabindex="1">Label</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s03.html#d0e6393" tabindex="1">Default Value</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s03.html#d0e6403" tabindex="1">Choices</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s03.html#d0e6413" tabindex="1">Labels</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s03.html#d0e6423" tabindex="1">Type</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s03.html#d0e6447" tabindex="1">Style</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s03.html#d0e6466" tabindex="1">Grid Position</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s03.html#d0e6476" tabindex="1">Notebook</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s20s04.html" tabindex="1">WX GUI Slider</a></span><ul>
+                                    <li><span class="file"><a href="ar01s20s04.html#d0e6494" tabindex="1">Label</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s04.html#d0e6504" tabindex="1">Default Value</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s04.html#d0e6514" tabindex="1">Minimum</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s04.html#d0e6524" tabindex="1">Maximum</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s04.html#d0e6534" tabindex="1">Num Steps</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s04.html#d0e6544" tabindex="1">Style</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s04.html#d0e6563" tabindex="1">Converter</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s04.html#d0e6582" tabindex="1">Grid Position</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s04.html#d0e6592" tabindex="1">Notebook</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s20s05.html" tabindex="1">WX GUI Static Text</a></span><ul>
+                                    <li><span class="file"><a href="ar01s20s05.html#d0e6610" tabindex="1">Label</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s05.html#d0e6620" tabindex="1">Default Value</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s05.html#d0e6630" tabindex="1">Converter</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s05.html#d0e6654" tabindex="1">Formatter</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s05.html#d0e6664" tabindex="1">Grid Position</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s05.html#d0e6674" tabindex="1">Notebook</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s20s06.html" tabindex="1">WX GUI Text Box</a></span><ul>
+                                    <li><span class="file"><a href="ar01s20s06.html#d0e6692" tabindex="1">Label</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s06.html#d0e6702" tabindex="1">Default Value</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s06.html#d0e6712" tabindex="1">Converter</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s06.html#d0e6741" tabindex="1">Formatter</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s06.html#d0e6751" tabindex="1">Grid Position</a></span></li>
+                                    <li><span class="file"><a href="ar01s20s06.html#d0e6761" tabindex="1">Notebook</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s21.html" tabindex="1">Instrumentation (WX)</a></span></li>
+                        <li><span class="file"><a href="ar01s22.html" tabindex="1">ELEC350</a></span></li>
+                     </ul>
+                  </div>
+               </div>
+               <div id="searchDiv">
+                  <div id="search">
+                     <form onsubmit="Verifie(searchForm);return false" name="searchForm" class="searchForm">
+                        <div><input id="textToSearch" name="textToSearch" type="search" placeholder="Search" class="searchText" tabindex="1" /> &nbsp; <input onclick="Verifie(searchForm)" type="button" class="searchButton" value="Go" id="doSearch" tabindex="1" /></div>
+                     </form>
+                  </div>
+                  <div id="searchResults">
+                     <center></center>
+                  </div>
+                  <p class="searchHighlight"><a href="#" onclick="toggleHighlight()">Search Highlighter (On/Off)</a></p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
