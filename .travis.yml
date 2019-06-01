@@ -9,7 +9,8 @@ addons:
     packages:
       # Needed for `xmllint`.
       libxml2-utils
-      ant=1.9.4
+      ant
+      docbook-xsl
 
 jobs:
   include:
