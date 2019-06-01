@@ -2,5 +2,5 @@
   <property name="input-xml" value="lab_manual/lab_manual.xml"/>
   <property name="input-images-dirs" value="lab_manual/images/**"/>
   <property name="output-dir" value="built_lab_manual"/>
-  <import file="../docbook-xsl-1.78.1/webhelp/build.xml"/> 
+  <!-- <import file="../docbook-xsl-1.78.1/webhelp/build.xml"/>  -->
 </project>
