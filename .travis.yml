@@ -7,11 +7,12 @@ before_script:
 addons:
   apt:
     packages:
-      libxml2-utils # Needed for `xmllint`.
-      ant
+      libxml2-utils #xmllint
+      ant #apache ant
       xsltproc
       docbook-xsl-ns
-      docbook5-xml fop
+      docbook5-xml
+      fop
 
 jobs:
   include:
