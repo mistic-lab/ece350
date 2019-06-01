@@ -7,8 +7,8 @@ before_script:
 addons:
   apt:
     packages:
-      libxml2-utils #xmllint
-      ant #apache ant
+      libxml2-utils
+      ant
       xsltproc
       docbook-xsl-ns
       docbook5-xml
