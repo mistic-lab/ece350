@@ -13,7 +13,7 @@ addons:
       docbook-xsl-ns
       docbook5-xml
       fop
-
+      openjdk
 jobs:
   include:
     script: ./build.sh
