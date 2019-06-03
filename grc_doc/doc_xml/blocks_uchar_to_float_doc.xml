@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<block>
-  <name>UChar To Float</name>
-  <key>blocks_uchar_to_float</key>
-  <doc>Convert an unsigned char stream to a floating point (real) stream.</doc>
-</block>

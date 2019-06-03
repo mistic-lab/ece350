@@ -1,0 +1,1026 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      
+      <title>1.5. Tutorial 3B: Receiving AM Signals -  - ELEC350: Communications Theory and Systems I</title>
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="index.html" title="ELEC350: Communications Theory and Systems I" />
+      <link rel="up" href="ar01s01.html" title="1. Lab 1. GNU Radio Tutorials" />
+      <link rel="prev" href="ar01s01s04.html" title="1.4. Tutorial 3A: AM Signal waveforms" />
+      <link rel="next" href="ar01s01s06.html" title="1.6. Tutorial 4: Complex Signals and Receiving SSB" />
+      <meta name="Section-title" content="1.5. Tutorial 3B: Receiving AM Signals" /><script type="text/javascript">
+            //The id for tree cookie
+            var treeCookieId = "treeview-2881";
+            var language = "en";
+            var w = new Object();
+            //Localization
+            txt_filesfound = 'Results';
+            txt_enter_at_least_1_char = "You must enter at least one character.";
+            txt_browser_not_supported = "JavaScript is disabled on your browser. Please enable JavaScript to enjoy all the features of this site.";
+            txt_please_wait = "Please wait. Search in progress...";
+            txt_results_for = "Results for: ";
+        </script><link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+      <link rel="stylesheet" type="text/css" href="common/css/positioning.css" />
+      <link rel="stylesheet" type="text/css" href="common/jquery/theme-redmond/jquery-ui-1.8.2.custom.css" />
+      <link rel="stylesheet" type="text/css" href="common/jquery/treeview/jquery.treeview.css" /><style type="text/css">
+
+#noscript{
+    font-weight:bold;
+	background-color: #55AA55;
+    font-weight: bold;
+    height: 25spx;
+    z-index: 3000;
+	top:0px;
+	width:100%;
+	position: relative;
+	border-bottom: solid 5px black;
+	text-align:center;
+	color: white;
+}
+
+input {
+    margin-bottom: 5px;
+    margin-top: 2px;
+}
+.folder {
+    display: block;
+    height: 22px;
+    padding-left: 20px;
+    background: transparent url(common/jquery/treeview/images/folder.gif) 0 0px no-repeat;
+}
+span.contentsTab {
+    padding-left: 20px;
+    background: url(common/images/toc-icon.png) no-repeat 0 center;
+}
+span.searchTab {
+    padding-left: 20px;
+    background: url(common/images/search-icon.png) no-repeat 0 center;
+}
+
+/* Overide jquery treeview's defaults for ul. */
+.treeview ul {
+    background-color: transparent;
+    margin-top: 4px;
+}		
+#webhelp-currentid {
+    background-color: #D8D8D8 !important;
+}
+.treeview .hover { color: black; }
+.filetree li span a { text-decoration: none; font-size: 12px; color: #517291; }
+
+/* Override jquery-ui's default css customizations. These are supposed to take precedence over those.*/
+.ui-widget-content {
+    border: 0px; 
+    background: none; 
+    color: none;     
+}
+.ui-widget-header {
+    color: #e9e8e9;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #bbc4c5;
+    border-top: 4px solid #e5e5e5;
+    border: medium none;
+    background: #F4F4F4; /* old browsers */
+    background: -moz-linear-gradient(top, #F4F4F4 0%, #E6E4E5 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F4F4F4), color-stop(100%,#E6E4E5)); /* webkit */    
+    font-weight: none;
+}
+.ui-widget-header a { color: none; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { 
+border: none; background: none; font-weight: none; color: none; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: black; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: none; background: none; font-weight: none; color: none; }
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: none; background: none; font-weight: none; color: none; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { 
+    color: black; text-decoration: none; 	
+    background: #C6C6C6; /* old browsers */
+    background: -moz-linear-gradient(top, #C6C6C6 0%, #D8D8D8 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C6C6C6), color-stop(100%,#D8D8D8)); /* webkit */
+    -webkit-border-radius:15px; -moz-border-radius:10px;
+    border: 1px solid #f1f1f1;
+}    
+.ui-corner-all { border-radius: 0 0 0 0; }
+
+.ui-tabs { padding: .2em;}
+.ui-tabs .ui-tabs-nav li { top: 0px; margin: -2px 0 1px; text-transform: uppercase; font-size: 10.5px;}
+.ui-tabs .ui-tabs-nav li a { padding: .25em 2em .25em 1em; margin: .5em; text-shadow: 0 1px 0 rgba(255,255,255,.5); }
+       /**
+	 *	Basic Layout Theme
+	 * 
+	 *	This theme uses the default layout class-names for all classes
+	 *	Add any 'custom class-names', from options: paneClass, resizerClass, togglerClass
+	 */
+
+	.ui-layout-pane { /* all 'panes' */ 
+		background: #FFF; 
+		border: 1px solid #BBB; 
+		padding: 05x; 
+		overflow: auto;
+	} 
+        
+	.ui-layout-resizer { /* all 'resizer-bars' */ 
+		background: #DDD; 
+                top:100px
+	} 
+
+	.ui-layout-toggler { /* all 'toggler-buttons' */ 
+		background: #AAA; 
+	} 
+    
+       </style>
+      <!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="../common/css/ie.css"/>
+	<![endif]--><script type="text/javascript" src="common/browserDetect.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery-1.7.2.min.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery.ui.all.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery.cookie.js">
+         <!----></script><script type="text/javascript" src="common/jquery/treeview/jquery.treeview.min.js">
+         <!----></script><script type="text/javascript" src="common/jquery/layout/jquery.layout.js">
+         <!----></script><script type="text/javascript" src="search/l10n.js">
+         <!----></script><script type="text/javascript" src="search/htmlFileInfoList.js">
+         <!----></script><script type="text/javascript" src="search/nwSearchFnt.js">
+         <!----></script><script type="text/javascript" src="search/stemmers/en_stemmer.js">
+         <!--//make this scalable to other languages as well.--></script><script type="text/javascript" src="search/index-1.js">
+         <!----></script><script type="text/javascript" src="search/index-2.js">
+         <!----></script><script type="text/javascript" src="search/index-3.js">
+         <!----></script></head>
+   <body>
+      <noscript>
+         <div id="noscript">JavaScript is disabled on your browser. Please enable JavaScript to enjoy all the features of this site.</div>
+      </noscript>
+      <div id="header"><a href="index.html"><img style="margin-right: 2px; height: 59px; padding-right: 25px; padding-top: 8px" align="right" src="common/images/logo.png" alt="DocBook Documentation" /></a><h1>ELEC350: Communications Theory and Systems I<br />1. Lab 1. GNU Radio Tutorials
+         </h1>
+         <div id="navheader">
+            <!---->
+            <table class="navLinks">
+               <tr>
+                  <td><a id="showHideButton" href="#" onclick="myLayout.toggle('west')" class="pointLeft" tabindex="5" title="Hide TOC tree">Sidebar
+                                                    </a></td>
+                  <td><a accesskey="p" class="navLinkPrevious" tabindex="5" href="ar01s01s04.html">Prev</a>
+                                                             |
+                                                             <a accesskey="u" class="navLinkUp" tabindex="5" href="ar01s01.html">Up</a>
+                                                         |
+                                                         <a accesskey="n" class="navLinkNext" tabindex="5" href="ar01s01s06.html">Next</a></td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      <div id="content">
+         <!---->
+         <div class="section">
+            <div xmlns="" class="titlepage">
+               <div>
+                  <div>
+                     <h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e997"></a>1.5. Tutorial 3B: Receiving AM Signals
+                     </h3>
+                  </div>
+               </div>
+            </div>
+            <div class="toc">
+               <dl class="toc">
+                  <dt><span class="section"><a href="ar01s01s05.html#d0e1001">1.5.1. Objectives</a></span></dt>
+                  <dt><span class="section"><a href="ar01s01s05.html#d0e1021">1.5.2. Real signals, basic AM receiver</a></span></dt>
+                  <dt><span class="section"><a href="ar01s01s05.html#d0e1040">1.5.3. Complex signals, receiver with channel selection
+                                   (tuning)</a></span></dt>
+               </dl>
+            </div>
+            <div class="section">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e1001"></a>1.5.1. Objectives
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p>This tutorial is a guide to building a practical AM receiver for
+                          receiving real AM signals. In section 2.5.2 you will learn how to
+                          demodulate an AM signal using only real signals. A data file with one
+                          AM signal, which was generated using the flowgraphs in section 3A,
+                          will be used.
+               </p>
+               <p>In section 2.5.2, a data file will be used that contains several
+                          seconds of recorded signals from the AM broadcast band. In this
+                          section you will learn how to: 
+               </p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>use a pre-recorded file as the input to your
+                                         flowgraph.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>tune to a specific (desired) AM signal on a given carrier
+                                         frequency.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>filter out the undesired signals using other (different)
+                                         carrier frequencies.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>demodulate the desired AM signal using complex
+                                         signals.
+                        </p>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="section">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e1021"></a>1.5.2. Real signals, basic AM receiver
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>Review the <a class="ulink" href="data/AM_theory_RX.pdf" target="_top">theory of AM
+                                          receivers using real signals</a></p>
+                     </li>
+                     <li class="listitem">
+                        <p>Using the following file as a starting point:</p>
+                        <p><a class="ulink" href="data/AM_PB_RX.grc" target="_top">AM_PB_RX.grc</a></p>
+                        <p>Carry out the steps in the <a class="ulink" href="data/AM_procedures_RX.pdf" target="_top">AM receiver
+                                          procedures</a></p>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="section">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e1040"></a>1.5.3. Complex signals, receiver with channel selection
+                                   (tuning)
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>Review the <a class="ulink" href="data/35015-PSK-FSK-12.pdf" target="_top">theory of
+                                          AM receivers using complex signals</a> section 3.2.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>Click on the link below to download the data file used in
+                                       this section. Save it in a location that you can access later.
+                                       This file was created using a USRP receiver.
+                        </p>
+                        <div class="itemizedlist">
+                           <ul class="itemizedlist" style="list-style-type: circle; ">
+                              <li class="listitem">
+                                 <p><a class="ulink" href="data/am_usrp710.dat" target="_top">am_usrp710.dat</a></p>
+                              </li>
+                           </ul>
+                        </div>
+                     </li>
+                     <li class="listitem">
+                        <p>Start GRC as was done in the previous tutorials. If GRC is
+                                       already open, simply create a new flowgraph by selecting
+                                       File-&gt;New.
+                        </p>
+                     </li>
+                  </ul>
+               </div>
+               <div class="section">
+                  <div xmlns="" class="titlepage">
+                     <div>
+                        <div>
+                           <h5 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e1062"></a>1.5.3.1. Playing a Data File
+                           </h5>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>Construct the flow graph shown in <a class="xref" href="ar01s01s05.html#am_data_file" title="Figure 20. Complex Flow graph with a File Source block">Figure 20</a> consisting of
+                                            a <a class="ulink" href="http://www.ece.uvic.ca/~ece350/grc_doc/ar01s07s03.html" target="_top">
+                                               File Source</a>, <span class="emphasis"><em>Throttle</em></span>, and
+                                            <span class="emphasis"><em>WX GUI FFT Sink</em></span>. Set the sample rate in the
+                                            variable block to 256000. This is the rate at which the saved
+                                            data was sampled.
+                           </p>
+                           <div class="figure"><a id="am_data_file"></a><p class="title"><strong>Figure 20. Complex Flow graph with a File Source block</strong></p>
+                              <div class="figure-contents">
+                                 <div class="screenshot">
+                                    <div align="center">
+                                       <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="50%">
+                                          <tr>
+                                             <td align="center"><img src="images/am_data_file.png" align="middle" width="100%" alt="Complex Flow graph with a File Source block" /></td>
+                                          </tr>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <p><br class="figure-break" /></p>
+                        </li>
+                        <li class="listitem">
+                           <p>Double-click on the <span class="emphasis"><em>File Source</em></span>
+                                            block. Click on the ellipsis (…) next to the
+                                            <span class="emphasis"><em>File</em></span> entry box. Locate the am_usrp710.dat
+                                            file that you saved in the previous step. The path to your file
+                                            will appear as shown in <a class="xref" href="ar01s01s05.html#file_source_dialog" title="Figure 21. Properties of the File Source block">Figure 21</a>. Set the <span class="emphasis"><em>Output
+                                                  Type</em></span> to <span class="emphasis"><em>Complex</em></span>. The use of
+                                            complex data to describe and process waveforms in SDR will be
+                                            discussed in the next tutorial. Set <span class="emphasis"><em>Repeat</em></span>
+                                            to <span class="emphasis"><em>Yes</em></span>. This will cause the data to repeat
+                                            so that you have a continuously playing signal.
+                           </p>
+                           <div class="figure"><a id="file_source_dialog"></a><p class="title"><strong>Figure 21. Properties of the File Source block</strong></p>
+                              <div class="figure-contents">
+                                 <div class="screenshot">
+                                    <div align="center">
+                                       <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="50%">
+                                          <tr>
+                                             <td align="center"><img src="images/file_source_dialog.png" align="middle" width="100%" alt="Properties of the File Source block" /></td>
+                                          </tr>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <p><br class="figure-break" /></p>
+                        </li>
+                        <li class="listitem">
+                           <p>Save and execute the flow graph. You should observe an FFT
+                                            display similar to the one shown in <a class="xref" href="ar01s01s05.html#am_fft" title="Figure 22. AM signals in frequency domain">Figure 22</a>. You may need to click on
+                                            <span class="emphasis"><em>Autoscale</em></span> button to scale the data as
+                                            shown. Note the following: 
+                           </p>
+                           <div class="itemizedlist">
+                              <ul class="itemizedlist" style="list-style-type: circle; ">
+                                 <li class="listitem">
+                                    <p>This data was recorded with a USRP set to 710KHz.
+                                                           Thus, the signal you see at the center (indicated as 0
+                                                           KHz) is actually at 710 KHz. Similarly, the signal at 80
+                                                           KHz is actually at 710KHz + 80KHz = 790KHz.
+                                    </p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>The display spans a frequency range from just below
+                                                           -120KHz to just above 120KHz. This exact span is 256KHz,
+                                                           which corresponds to the sample rate that the data was
+                                                           recorded at.
+                                    </p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>The peaks that you observe on this display
+                                                           correspond to the carriers for AM broadcast signals. You
+                                                           should also be able to observe the sidebands for the
+                                                           stronger waveforms.
+                                    </p>
+                                 </li>
+                              </ul>
+                           </div>
+                           <div class="figure"><a id="am_fft"></a><p class="title"><strong>Figure 22. AM signals in frequency domain</strong></p>
+                              <div class="figure-contents">
+                                 <div class="screenshot">
+                                    <div align="center">
+                                       <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="75%">
+                                          <tr>
+                                             <td align="center"><img src="images/am_fft.png" align="middle" width="100%" alt="AM signals in frequency domain" /></td>
+                                          </tr>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <p><br class="figure-break" /></p>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="section">
+                  <div xmlns="" class="titlepage">
+                     <div>
+                        <div>
+                           <h5 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e1139"></a>1.5.3.2. Frequency Display Resolution
+                           </h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>In this step we will expand the frequency scale on the FFT
+                               display so that you can view the signals with greater resolution.
+                               Recall from the previous tutorial that the span of the frequency
+                               axis is determined by the sample rate (256 kHz for this file). While
+                               we cannot change the original data, we can resample it to either
+                               increase or decrease the sample rate. We will decrease the sample
+                               rate by using decimation. Modify the flow graph as follows:
+                  </p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>Add a <span class="emphasis"><em>Variable</em></span> block (under
+                                            <span class="emphasis"><em>Variables</em></span> category). Set the ID to
+                                            resamp_factor and the Value to 4 as shown in <a class="xref" href="ar01s01s05.html#resamp_factor" title="Figure 23. Properties of the Variable block">Figure 23</a>.
+                           </p>
+                           <div class="figure"><a id="resamp_factor"></a><p class="title"><strong>Figure 23. Properties of the Variable block</strong></p>
+                              <div class="figure-contents">
+                                 <div class="screenshot">
+                                    <div align="center">
+                                       <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="50%">
+                                          <tr>
+                                             <td align="center"><img src="images/resamp_factor.png" align="middle" width="100%" alt="Properties of the Variable block" /></td>
+                                          </tr>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <p><br class="figure-break" /></p>
+                        </li>
+                        <li class="listitem">
+                           <p>Add the <span class="emphasis"><em>Rational Resampler</em></span> block from
+                                            the <span class="emphasis"><em>Filters</em></span> menu as shown below. Set its
+                                            decimation factor to resamp_factor. It will use the value of the
+                                            variable set in the previous step (4) to decimate the incoming
+                                            data. That means that it will divide the incoming data rate by
+                                            the decimation factor. In this example, the incoming 256K
+                                            samp/sec data will be converted down to 256K/4 = 64K
+                                            samp/sec.
+                           </p>
+                        </li>
+                        <li class="listitem">
+                           <p>Note that the <span class="emphasis"><em>Throttle</em></span> and
+                                            <span class="emphasis"><em>FFT Sink</em></span> now need their sample rates
+                                            changed to correspond to this new rate. Change the sample rate
+                                            in both of these blocks to samp_rate/resamp_factor. Now we can
+                                            change the decimation factor in the
+                                            <span class="emphasis"><em>Variable</em></span> block and it will be reflected in
+                                            each of the other blocks automatically.
+                           </p>
+                        </li>
+                        <li class="listitem">
+                           <p>Your flow graph should now appear as shown in <a class="xref" href="ar01s01s05.html#fft_decim_graph" title="Figure 24. Complex flow graph with Rational Resampler included">Figure 24</a>.
+                           </p>
+                           <div class="figure"><a id="fft_decim_graph"></a><p class="title"><strong>Figure 24. Complex flow graph with Rational Resampler
+                                                      included</strong></p>
+                              <div class="figure-contents">
+                                 <div class="screenshot">
+                                    <div align="center">
+                                       <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="75%">
+                                          <tr>
+                                             <td align="center"><img src="images/fft_decim_graph.png" align="middle" width="100%" alt="Complex flow graph with Rational Resampler included" /></td>
+                                          </tr>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <p><br class="figure-break" /></p>
+                        </li>
+                        <li class="listitem">
+                           <p>Execute the new flow graph. You should now observe a
+                                            frequency span of only 64 kHz (-32 kHz to +32 kHz). What actual
+                                            frequency range does this correspond to?
+                           </p>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="section">
+                  <div xmlns="" class="titlepage">
+                     <div>
+                        <div>
+                           <h5 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e1197"></a>1.5.3.3. Selecting one channel by filtering
+                           </h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>The bandwidth of an AM broadcast signal is 10 kHz (+/- 5 kHz
+                               from the carrier frequency). You may find it useful to click the
+                               <span class="emphasis"><em>Stop</em></span> button on the FFT plot to see this more
+                               clearly. Also, note that many stations also include additional
+                               information outside of the 10 kHz bandwidth.
+                  </p>
+                  <p>In order to select the station at 710 kHz (0 kHz on the FFT
+                               display) we need to insert a filter to eliminate all but the one
+                               station that we want to receive. This is often referred to as a
+                               channel filter. Since the station at 710 kHz has been moved to 0 kHz
+                               (in the USRP) we will use a low pass filter. The station bandwidth
+                               is 10 kHz, so we will use a low pass filter that cuts off at 5
+                               kHz.
+                  </p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>Insert the <a class="ulink" href="http://www.ece.uvic.ca/~ece350/grc_doc/ar01s12s01.html" target="_top">
+                                               Low Pass Filter</a> (from the <span class="emphasis"><em>Filters</em></span>
+                                            menu) between the <a class="ulink" href="http://www.ece.uvic.ca/~ece350/grc_doc/ar01s12s07.html" target="_top">
+                                               Rational Resampler</a> and the <span class="emphasis"><em>Throttle.
+                                                  </em></span>Set the parameters as shown in <a class="xref" href="ar01s01s05.html#low_pass_dialog" title="Figure 25. Properties of the Low Pass Filter block">Figure 25</a>.
+                           </p>
+                           <div class="figure"><a id="low_pass_dialog"></a><p class="title"><strong>Figure 25. Properties of the Low Pass Filter block</strong></p>
+                              <div class="figure-contents">
+                                 <div class="screenshot">
+                                    <div align="center">
+                                       <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="50%">
+                                          <tr>
+                                             <td align="center"><img src="images/low_pass_dialog.png" align="middle" width="100%" alt="Properties of the Low Pass Filter block" /></td>
+                                          </tr>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <p><br class="figure-break" /></p>
+                        </li>
+                        <li class="listitem">
+                           <p>Execute the flow graph. You should see that only the
+                                            station between +/- 5 kHz remains.
+                           </p>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="section">
+                  <div xmlns="" class="titlepage">
+                     <div>
+                        <div>
+                           <h5 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e1234"></a>1.5.3.4. AM Demodulation
+                           </h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>The next step is to demodulate the signal. In the case of AM,
+                               the baseband signal is the envelope or the magnitude of the
+                               modulated waveform. GNU Radio contains a <span class="emphasis"><em>Complex to
+                                     Mag</em></span> block (in the <span class="emphasis"><em>Type Converters</em></span>
+                               category) that can be used for this purpose. Again, the use of
+                               complex signal representation will be dealt with in depth in the
+                               future.
+                  </p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>Insert the <a class="ulink" href="http://www.ece.uvic.ca/~ece350/grc_doc/ar01s11s06.html" target="_top">
+                                               Complex to Mag</a> block between the <span class="emphasis"><em>Low Pass
+                                                  Filter</em></span> and the <span class="emphasis"><em>Throttle </em></span>.
+                           </p>
+                           <div class="itemizedlist">
+                              <ul class="itemizedlist" style="list-style-type: circle; ">
+                                 <li class="listitem">
+                                    <p>Note that the titles of some of the blocks are now red
+                                                         and the Execute Flow Graph icon is dimmed. This indicates an
+                                                         error. Prior to adding this block, all of the block inputs
+                                                         and outputs were complex values. However, the output of the
+                                                         <span class="emphasis"><em>Complex to Mag</em></span> block is
+                                                         <span class="emphasis"><em>Float</em></span> (a real number). Thus, any blocks
+                                                         following this block should be Type: Float. <span class="bold"><strong>Modify the</strong></span>
+                                                         <span class="emphasis"><em>Throttle</em></span> <span class="bold"><strong>and</strong></span> <span class="emphasis"><em>WX GUI FFT
+                                                               Sink</em></span> <span class="bold"><strong>accordingly</strong></span>.
+                                    </p>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                        <li class="listitem">
+                           <p>Execute the flow graph. You should now observe the
+                                            spectrum of the baseband signal in the <span class="emphasis"><em>FFT
+                                                  Sink</em></span>. Note that since the input data type to the
+                                            <span class="emphasis"><em>FFT Sink</em></span> is Float, only the positive
+                                            frequency spectrum is displayed.
+                           </p>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="section">
+                  <div xmlns="" class="titlepage">
+                     <div>
+                        <div>
+                           <h5 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e1292"></a>1.5.3.5. Matching the Audio Sample Rate
+                           </h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>The next step is to listen to this demodulated waveform to
+                               confirm that it is in fact receiving the baseband signal.
+                  </p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>Remove the <span class="emphasis"><em>Throttle</em></span> and the
+                                            <span class="emphasis"><em>FFT Blocks</em></span>.
+                           </p>
+                        </li>
+                        <li class="listitem">
+                           <p>Add an <span class="emphasis"><em>Audio Sink</em></span> block to the output
+                                            of the <span class="emphasis"><em>Complex to Mag</em></span> block. Set the sample
+                                            rate of the <span class="emphasis"><em>Audio Sink</em></span> to 48 kHz.
+                           </p>
+                        </li>
+                        <li class="listitem">
+                           <p>Note that the sample rate out of the <span class="emphasis"><em>Complex to
+                                                  Mag</em></span> block is 64 kHz and the input to the
+                                            <span class="emphasis"><em>Audio Sink</em></span> is 48 kHz. In order to convert
+                                            64 kHz to 48 kHz we need to divide (decimate) by 4 and multiply
+                                            (interpolate) by 3. Insert a <span class="emphasis"><em>Rational
+                                                  Resampler</em></span> between the <span class="emphasis"><em>Complex to
+                                                  Mag</em></span> and <span class="emphasis"><em>Audio Sink</em></span> blocks and
+                                            set the decimation and interpolation as noted above. Also set
+                                            its Type to <span class="emphasis"><em>Float-&gt;Float (Real
+                                                  Taps)</em></span>.
+                           </p>
+                        </li>
+                        <li class="listitem">
+                           <p>Since the output of the <span class="emphasis"><em>Complex to
+                                                  Mag</em></span> is always positive, there will be a DC offset on
+                                            the audio signal. The signal going to the audio hardware should
+                                            not have any DC offset. Place a <a class="ulink" href="http://www.ece.uvic.ca/~ece350/grc_doc/ar01s12s05.html" target="_top">
+                                               DC Blocker</a> (in the <span class="emphasis"><em>Filters</em></span>
+                                            category) between the <span class="emphasis"><em>Complex to Mag</em></span> block
+                                            and the <span class="emphasis"><em>Rational Resampler</em></span> added in the
+                                            previous step.
+                           </p>
+                        </li>
+                        <li class="listitem">
+                           <p>Place a <span class="emphasis"><em>WX GUI Scope Sink</em></span> at the
+                                            output of the <span class="emphasis"><em>Rational Resampler</em></span> (in
+                                            addition to the <span class="emphasis"><em>Audio Sink</em></span>). Change its
+                                            Type to Float and set its sample rate to 48000. The flow graph
+                                            should be similar to the one shown in <a class="xref" href="ar01s01s05.html#am_receiver_no_tuning_no_volume" title="Figure 26. Flow graph with DC Blocker and Rational Resampler for rate matching">Figure 26</a>.
+                           </p>
+                           <div class="figure"><a id="am_receiver_no_tuning_no_volume"></a><p class="title"><strong>Figure 26. Flow graph with DC Blocker and Rational Resampler for
+                                                      rate matching</strong></p>
+                              <div class="figure-contents">
+                                 <div class="screenshot">
+                                    <div align="center">
+                                       <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="75%">
+                                          <tr>
+                                             <td align="center"><img src="images/am_receiver_no_tuning_no_volume.png" align="middle" width="100%" alt="Flow graph with DC Blocker and Rational Resampler for rate matching" /></td>
+                                          </tr>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <p><br class="figure-break" /></p>
+                        </li>
+                        <li class="listitem">
+                           <p>Execute the flow graph. The <span class="emphasis"><em>WX GUI Scope
+                                                  Sink</em></span> should open and display the output waveform.
+                                            However, you may not yet hear the audio from your speaker or it
+                                            may be very distorted. This is due to the fact that the values
+                                            of the samples going in to the <span class="emphasis"><em>Audio Sink</em></span>
+                                            block are outside the range expected by the <span class="emphasis"><em>Audio
+                                                  Sink</em></span>. The <span class="emphasis"><em>Audio Sink</em></span> requires
+                                            that the sample values are between -1.0 and 1.0 in order to play
+                                            them back through the audio hardware.
+                           </p>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="section">
+                  <div xmlns="" class="titlepage">
+                     <div>
+                        <div>
+                           <h5 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e1393"></a>1.5.3.6. Adding a Volume Control
+                           </h5>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>Insert a <a class="ulink" href="http://www.ece.uvic.ca/~ece350/grc_doc/ar01s08s05.html" target="_top">
+                                               Multiply Const</a> block from the <span class="emphasis"><em>Math
+                                                  Operators</em></span> category between the <span class="emphasis"><em>DC
+                                                  Blocker</em></span> and the <span class="emphasis"><em>Rational
+                                                  Resampler</em></span>. Set the IO Type of the block to
+                                            Float.
+                           </p>
+                        </li>
+                        <li class="listitem">
+                           <p>Add a <span class="emphasis"><em>WX GUI Slider</em></span> block. Set the
+                                            parameters as shown in <a class="xref" href="ar01s01s05.html#am_volume" title="Figure 27. Properties of the WX GUI Slider block">Figure 27</a>.
+                           </p>
+                           <div class="figure"><a id="am_volume"></a><p class="title"><strong>Figure 27. Properties of the WX GUI Slider block</strong></p>
+                              <div class="figure-contents">
+                                 <div class="screenshot">
+                                    <div align="center">
+                                       <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="50%">
+                                          <tr>
+                                             <td align="center"><img src="images/am_volume.png" align="middle" width="100%" alt="Properties of the WX GUI Slider block" /></td>
+                                          </tr>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <p><br class="figure-break" /></p>
+                        </li>
+                        <li class="listitem">
+                           <p>Set the constant in the <span class="emphasis"><em>Multiply
+                                                  Const</em></span> block to "volume" so that the slider controls
+                                            it. The final flow graph is shown in <a class="xref" href="ar01s01s05.html#am_receiver_no_tuning" title="Figure 28. Complete flow graph for AM Receiver with no tuning">Figure 28</a>.
+                           </p>
+                           <div class="figure"><a id="am_receiver_no_tuning"></a><p class="title"><strong>Figure 28. Complete flow graph for AM Receiver with no
+                                                      tuning</strong></p>
+                              <div class="figure-contents">
+                                 <div class="screenshot">
+                                    <div align="center">
+                                       <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="75%">
+                                          <tr>
+                                             <td align="center"><img src="images/am_receiver_no_tuning.png" align="middle" width="100%" alt="Complete flow graph for AM Receiver with no tuning" /></td>
+                                          </tr>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <p><br class="figure-break" /></p>
+                        </li>
+                        <li class="listitem">
+                           <p>Execute the flow graph. You should now hear the
+                                            demodulated AM signal. Stop the flowgraph.
+                           </p>
+                        </li>
+                        <li class="listitem">
+                           <p>Double click on the <span class="emphasis"><em>Low Pass Filter</em></span>.
+                                            Note that it can also decimate. Change the decimation in the
+                                            <span class="emphasis"><em>Low Pass Filter</em></span> block to resamp_factor and
+                                            set the sample rate back to samp_rate. Remove the
+                                            <span class="emphasis"><em>Rational Resampler</em></span> between the
+                                            <span class="emphasis"><em>File Source</em></span> and the <span class="emphasis"><em>Low Pass
+                                                  Filter</em></span>. The filter now handles both operations. Test
+                                            the receiver again.
+                           </p>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="section">
+                  <div xmlns="" class="titlepage">
+                     <div>
+                        <div>
+                           <h5 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e1461"></a>1.5.3.7. Tuning to a desired station (channel)
+                           </h5>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>Review the <a class="ulink" href="data/35015-PSK-FSK-12.pdf" target="_top">section
+                                               3.2.2 theory of tuning to a radio station</a>.
+                           </p>
+                        </li>
+                        <li class="listitem">
+                           <p>Place an <span class="emphasis"><em>FFT Sink</em></span> at the output of
+                                            the <span class="emphasis"><em>File Source</em></span>, leaving the rest of the
+                                            flow graph unchanged as shown in <a class="xref" href="ar01s01s05.html#am_receiver_fixed_tuning" title="Figure 29. Complete flow graph for AM Receiver with tuning capability">Figure 29</a>.
+                           </p>
+                        </li>
+                        <li class="listitem">
+                           <p>Execute the flow graph and observe the location of the
+                                            other stations in the spectrum. Note that there is a fairly
+                                            strong signal at 80 KHz (really 710 + 80 = 790 KHz).
+                           </p>
+                        </li>
+                        <li class="listitem">
+                           <p>In order to receive this signal we need to shift it down
+                                            to zero frequency so that it will pass through the low pass
+                                            filter. One way to accomplish this is to multiply it by a
+                                            sinusoid. Modify the flow graph as shown below. Add a
+                                            <span class="emphasis"><em>Signal Source</em></span> and set its parameters to
+                                            output a cosine at a frequency of -80000. This negative
+                                            frequency will shift the entire spectrum to the left by 80KHz.
+                                            Use a <span class="emphasis"><em>Multiply</em></span> block and move the
+                                            <span class="emphasis"><em>FFT Sink</em></span> to observe its output. Test this
+                                            receiver.
+                           </p>
+                           <div class="figure"><a id="am_receiver_fixed_tuning"></a><p class="title"><strong>Figure 29. Complete flow graph for AM Receiver with tuning
+                                                      capability</strong></p>
+                              <div class="figure-contents">
+                                 <div class="screenshot">
+                                    <div align="center">
+                                       <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="75%">
+                                          <tr>
+                                             <td align="center"><img src="images/am_receiver_fixed_tuning.png" align="middle" width="100%" alt="Complete flow graph for AM Receiver with tuning capability" /></td>
+                                          </tr>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <p><br class="figure-break" /></p>
+                        </li>
+                        <li class="listitem">
+                           <p>Add another <span class="emphasis"><em>WX GUI Slider</em></span> so that you
+                                            can adjust the frequency with a slider. Set the minimum to
+                                            (-samp_rate/2) and the maximum to (samp_rate/2). Test your flow
+                                            graph and demonstrate that it works. You may need to adjust your
+                                            volume slider for each station. This is because the stations are
+                                            at varying distances away from the receiver and have different
+                                            transmitted power. (Remember the link equation?)
+                           </p>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="section">
+                  <div xmlns="" class="titlepage">
+                     <div>
+                        <div>
+                           <h5 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e1509"></a>1.5.3.8. Automatic Gain Control
+                           </h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>The volume adjustment can be automated with an <a class="ulink" href="http://www.ece.uvic.ca/~ece350/grc_doc/ar01s01s01.html" target="_top">
+                                  Automatic Gain Control (AGC) block</a>. This block works by
+                               sampling its own output and adjusting its gain to keep the average
+                               output at a particular level.
+                  </p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>Insert the <span class="emphasis"><em>AGC</em></span> block (found under
+                                            <span class="emphasis"><em>Level Controls</em></span>) between the <span class="emphasis"><em>Low
+                                                  Pass Filter</em></span> and the <span class="emphasis"><em>Complex to
+                                                  Mag</em></span> block. The <span class="emphasis"><em>AGC</em></span> will adjust
+                                            the gain so that the sample values are always in a suitable
+                                            range for the audio hardware. Leave the parameters at their
+                                            default values.
+                           </p>
+                        </li>
+                        <li class="listitem">
+                           <p>You can now remove the <span class="emphasis"><em>Multiply Const</em></span>
+                                            and volume slider. Test the receiver again. Adjust the volume to
+                                            a comfortable level using the computer's volume control on the
+                                            first station you hear. Now tune up and down the band and notice
+                                            that you no longer need to adjust the volume, but the noise
+                                            level increases for weaker stations. The radio functions the
+                                            same as a hardware radio.
+                           </p>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div><script type="text/javascript" src="common/main.js">
+            <!----></script><script type="text/javascript" src="common/splitterInit.js">
+            <!----></script><div class="navfooter">
+            <hr />
+            <table width="100%" summary="Navigation footer">
+               <tr>
+                  <td width="40%" align="left"><a accesskey="p" href="ar01s01s04.html">Prev</a> 
+                  </td>
+                  <td width="20%" align="center"><a accesskey="u" href="ar01s01.html">Up</a></td>
+                  <td width="40%" align="right"> <a accesskey="n" href="ar01s01s06.html">Next</a></td>
+               </tr>
+               <tr>
+                  <td width="40%" align="left" valign="top"> </td>
+                  <td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+                  <td width="40%" align="right" valign="top"> </td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      <div id="sidebar">
+         <div id="leftnavigation" style="padding-top:3px;">
+            <div id="tabs">
+               <ul>
+                  <li><a href="#treeDiv" style="outline:0;" tabindex="1"><span class="contentsTab">Contents</span></a></li>
+                  <li><a href="#searchDiv" style="outline:0;" tabindex="1" onclick="doSearch()"><span class="searchTab">Search</span></a></li>
+               </ul>
+               <div id="treeDiv"><img src="common/images/loading.gif" alt="loading table of contents..." id="tocLoading" style="display:block;" /><div id="ulTreeDiv" style="display:none">
+                     <ul id="tree" class="filetree">
+                        <li><span class="file"><a href="ar01s01.html" tabindex="1">Lab 1. GNU Radio Tutorials</a></span><ul>
+                              <li><span class="file"><a href="ar01s01s01.html" tabindex="1">Deliverables</a></span></li>
+                              <li><span class="file"><a href="ar01s01s02.html" tabindex="1">Tutorial 1: Using GNU Radio Companion</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e179" tabindex="1">Objectives</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e197" tabindex="1">Launching GNU Radio Companion</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e217" tabindex="1">Configuring the Flowgraph</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e262" tabindex="1">Adding Blocks to the Flowgraph</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e413" tabindex="1">Executing the Flowgraph</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e439" tabindex="1">Working with the Scope Sink</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e475" tabindex="1">Working with the FFT Sink</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e535" tabindex="1">Working with Audio I/O</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e575" tabindex="1">Math Operations</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e632" tabindex="1">Filters</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e684" tabindex="1">Running Generated Python Code</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e739" tabindex="1">Conclusions</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s01s03.html" tabindex="1">Tutorial 2: Variables and Controls</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e748" tabindex="1">Objectives</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e762" tabindex="1">Working with Sliders</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e812" tabindex="1">Working with Text Boxes</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e836" tabindex="1">Working with Choosers</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e857" tabindex="1">Working with Notebooks</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e915" tabindex="1">Conclusions</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s01s04.html" tabindex="1">Tutorial 3A: AM Signal waveforms</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s04.html#d0e924" tabindex="1">Objectives</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s04.html#d0e942" tabindex="1">AM flowgraphs</a></span></li>
+                                 </ul>
+                              </li>
+                              <li id="webhelp-currentid"><span class="file"><a href="ar01s01s05.html" tabindex="1">Tutorial 3B: Receiving AM Signals</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s05.html#d0e1001" tabindex="1">Objectives</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s05.html#d0e1021" tabindex="1">Real signals, basic AM receiver</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s05.html#d0e1040" tabindex="1">Complex signals, receiver with channel selection
+                                                     (tuning)</a></span><ul>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1062" tabindex="1">Playing a Data File</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1139" tabindex="1">Frequency Display Resolution</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1197" tabindex="1">Selecting one channel by filtering</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1234" tabindex="1">AM Demodulation</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1292" tabindex="1">Matching the Audio Sample Rate</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1393" tabindex="1">Adding a Volume Control</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1461" tabindex="1">Tuning to a desired station (channel)</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1509" tabindex="1">Automatic Gain Control</a></span></li>
+                                       </ul>
+                                    </li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s01s06.html" tabindex="1">Tutorial 4: Complex Signals and Receiving SSB</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e1546" tabindex="1">Objectives</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e1561" tabindex="1">Complex/Analytic Signals</a></span><ul>
+                                          <li><span class="file"><a href="ar01s01s06.html#d0e1571" tabindex="1">Hilbert Transforms</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s06.html#d0e1667" tabindex="1">Complex Multiplication</a></span></li>
+                                       </ul>
+                                    </li>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e1688" tabindex="1">Single Sideband (SSB) Signals</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e1734" tabindex="1">Frequency Translating Filter</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e1822" tabindex="1">Using the firdes Module</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e1862" tabindex="1">Weaver Demodulator</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s02.html" tabindex="1">Lab 2. FM, IQ and USRP Tutorial</a></span><ul>
+                              <li><span class="file"><a href="ar01s02s01.html" tabindex="1">Deliverables</a></span></li>
+                              <li><span class="file"><a href="ar01s02s02.html" tabindex="1">Setup</a></span></li>
+                              <li><span class="file"><a href="ar01s02s03.html" tabindex="1">FM Signal waveforms</a></span><ul>
+                                    <li><span class="file"><a href="ar01s02s03.html#d0e2098" tabindex="1">Objectives</a></span></li>
+                                    <li><span class="file"><a href="ar01s02s03.html#d0e2113" tabindex="1">FM flowgraphs</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s02s04.html" tabindex="1">FM Receivers</a></span><ul>
+                                    <li><span class="file"><a href="ar01s02s04.html#d0e2149" tabindex="1">FM broadcast receiver</a></span></li>
+                                    <li><span class="file"><a href="ar01s02s04.html#d0e2192" tabindex="1">FM data receiver</a></span></li>
+                                    <li><span class="file"><a href="ar01s02s04.html#d0e2222" tabindex="1">Dynamic Range with FM</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s02s05.html" tabindex="1">I/Q Receiver</a></span><ul>
+                                    <li><span class="file"><a href="ar01s02s05.html#d0e2265" tabindex="1">I/Q Receiver output</a></span></li>
+                                    <li><span class="file"><a href="ar01s02s05.html#d0e2385" tabindex="1">Dynamic range with IQ signals</a></span></li>
+                                    <li><span class="file"><a href="ar01s02s05.html#d0e2399" tabindex="1">Noise figure</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s02s06.html" tabindex="1">Carrier Wave Transmitter</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s03.html" tabindex="1">Lab 3. FLEX Frame Synchronizer</a></span><ul>
+                              <li><span class="file"><a href="ar01s03s01.html" tabindex="1">Deliverables</a></span></li>
+                              <li><span class="file"><a href="ar01s03s02.html" tabindex="1">Frame Capture</a></span></li>
+                              <li><span class="file"><a href="ar01s03s03.html" tabindex="1">Bit and Frame Sync</a></span></li>
+                              <li><span class="file"><a href="ar01s03s04.html" tabindex="1">Decoding text</a></span></li>
+                              <li><span class="file"><a href="ar01s03s05.html" tabindex="1">Other data signals</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s04.html" tabindex="1">Lab 4. PSK systems</a></span><ul>
+                              <li><span class="file"><a href="ar01s04s01.html" tabindex="1">Deliverables</a></span></li>
+                              <li><span class="file"><a href="ar01s04s02.html" tabindex="1">Testing a PSK system</a></span></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div id="searchDiv">
+                  <div id="search">
+                     <form onsubmit="Verifie(searchForm);return false" name="searchForm" class="searchForm">
+                        <div><input id="textToSearch" name="textToSearch" type="search" placeholder="Search" class="searchText" tabindex="1" /> &nbsp; <input onclick="Verifie(searchForm)" type="button" class="searchButton" value="Go" id="doSearch" tabindex="1" /></div>
+                     </form>
+                  </div>
+                  <div id="searchResults">
+                     <center></center>
+                  </div>
+                  <p class="searchHighlight"><a href="#" onclick="toggleHighlight()">Search Highlighter (On/Off)</a></p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

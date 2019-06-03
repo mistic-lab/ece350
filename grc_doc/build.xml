@@ -1,6 +1,0 @@
-<project>
-  <property name="input-xml" value="grc_doc.xml"/>
-  <property name="input-images-dirs" value="images/**"/>
-  <property name="output-dir" value="grc_doc"/>
-  <import file="../docbook-xsl-1.78.1/webhelp/build.xml"/> 
-</project>

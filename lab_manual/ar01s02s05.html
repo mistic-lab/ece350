@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      
+      <title>2.5. I/Q Receiver -  - ELEC350: Communications Theory and Systems I</title>
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="index.html" title="ELEC350: Communications Theory and Systems I" />
+      <link rel="up" href="ar01s02.html" title="2. Lab 2. FM, IQ and USRP Tutorial" />
+      <link rel="prev" href="ar01s02s04.html" title="2.4. FM Receivers" />
+      <link rel="next" href="ar01s02s06.html" title="2.6. Carrier Wave Transmitter" />
+      <meta name="Section-title" content="2.5. I/Q Receiver" /><script type="text/javascript">
+            //The id for tree cookie
+            var treeCookieId = "treeview-2881";
+            var language = "en";
+            var w = new Object();
+            //Localization
+            txt_filesfound = 'Results';
+            txt_enter_at_least_1_char = "You must enter at least one character.";
+            txt_browser_not_supported = "JavaScript is disabled on your browser. Please enable JavaScript to enjoy all the features of this site.";
+            txt_please_wait = "Please wait. Search in progress...";
+            txt_results_for = "Results for: ";
+        </script><link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+      <link rel="stylesheet" type="text/css" href="common/css/positioning.css" />
+      <link rel="stylesheet" type="text/css" href="common/jquery/theme-redmond/jquery-ui-1.8.2.custom.css" />
+      <link rel="stylesheet" type="text/css" href="common/jquery/treeview/jquery.treeview.css" /><style type="text/css">
+
+#noscript{
+    font-weight:bold;
+	background-color: #55AA55;
+    font-weight: bold;
+    height: 25spx;
+    z-index: 3000;
+	top:0px;
+	width:100%;
+	position: relative;
+	border-bottom: solid 5px black;
+	text-align:center;
+	color: white;
+}
+
+input {
+    margin-bottom: 5px;
+    margin-top: 2px;
+}
+.folder {
+    display: block;
+    height: 22px;
+    padding-left: 20px;
+    background: transparent url(common/jquery/treeview/images/folder.gif) 0 0px no-repeat;
+}
+span.contentsTab {
+    padding-left: 20px;
+    background: url(common/images/toc-icon.png) no-repeat 0 center;
+}
+span.searchTab {
+    padding-left: 20px;
+    background: url(common/images/search-icon.png) no-repeat 0 center;
+}
+
+/* Overide jquery treeview's defaults for ul. */
+.treeview ul {
+    background-color: transparent;
+    margin-top: 4px;
+}		
+#webhelp-currentid {
+    background-color: #D8D8D8 !important;
+}
+.treeview .hover { color: black; }
+.filetree li span a { text-decoration: none; font-size: 12px; color: #517291; }
+
+/* Override jquery-ui's default css customizations. These are supposed to take precedence over those.*/
+.ui-widget-content {
+    border: 0px; 
+    background: none; 
+    color: none;     
+}
+.ui-widget-header {
+    color: #e9e8e9;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #bbc4c5;
+    border-top: 4px solid #e5e5e5;
+    border: medium none;
+    background: #F4F4F4; /* old browsers */
+    background: -moz-linear-gradient(top, #F4F4F4 0%, #E6E4E5 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F4F4F4), color-stop(100%,#E6E4E5)); /* webkit */    
+    font-weight: none;
+}
+.ui-widget-header a { color: none; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { 
+border: none; background: none; font-weight: none; color: none; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: black; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: none; background: none; font-weight: none; color: none; }
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: none; background: none; font-weight: none; color: none; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { 
+    color: black; text-decoration: none; 	
+    background: #C6C6C6; /* old browsers */
+    background: -moz-linear-gradient(top, #C6C6C6 0%, #D8D8D8 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C6C6C6), color-stop(100%,#D8D8D8)); /* webkit */
+    -webkit-border-radius:15px; -moz-border-radius:10px;
+    border: 1px solid #f1f1f1;
+}    
+.ui-corner-all { border-radius: 0 0 0 0; }
+
+.ui-tabs { padding: .2em;}
+.ui-tabs .ui-tabs-nav li { top: 0px; margin: -2px 0 1px; text-transform: uppercase; font-size: 10.5px;}
+.ui-tabs .ui-tabs-nav li a { padding: .25em 2em .25em 1em; margin: .5em; text-shadow: 0 1px 0 rgba(255,255,255,.5); }
+       /**
+	 *	Basic Layout Theme
+	 * 
+	 *	This theme uses the default layout class-names for all classes
+	 *	Add any 'custom class-names', from options: paneClass, resizerClass, togglerClass
+	 */
+
+	.ui-layout-pane { /* all 'panes' */ 
+		background: #FFF; 
+		border: 1px solid #BBB; 
+		padding: 05x; 
+		overflow: auto;
+	} 
+        
+	.ui-layout-resizer { /* all 'resizer-bars' */ 
+		background: #DDD; 
+                top:100px
+	} 
+
+	.ui-layout-toggler { /* all 'toggler-buttons' */ 
+		background: #AAA; 
+	} 
+    
+       </style>
+      <!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="../common/css/ie.css"/>
+	<![endif]--><script type="text/javascript" src="common/browserDetect.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery-1.7.2.min.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery.ui.all.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery.cookie.js">
+         <!----></script><script type="text/javascript" src="common/jquery/treeview/jquery.treeview.min.js">
+         <!----></script><script type="text/javascript" src="common/jquery/layout/jquery.layout.js">
+         <!----></script><script type="text/javascript" src="search/l10n.js">
+         <!----></script><script type="text/javascript" src="search/htmlFileInfoList.js">
+         <!----></script><script type="text/javascript" src="search/nwSearchFnt.js">
+         <!----></script><script type="text/javascript" src="search/stemmers/en_stemmer.js">
+         <!--//make this scalable to other languages as well.--></script><script type="text/javascript" src="search/index-1.js">
+         <!----></script><script type="text/javascript" src="search/index-2.js">
+         <!----></script><script type="text/javascript" src="search/index-3.js">
+         <!----></script></head>
+   <body>
+      <noscript>
+         <div id="noscript">JavaScript is disabled on your browser. Please enable JavaScript to enjoy all the features of this site.</div>
+      </noscript>
+      <div id="header"><a href="index.html"><img style="margin-right: 2px; height: 59px; padding-right: 25px; padding-top: 8px" align="right" src="common/images/logo.png" alt="DocBook Documentation" /></a><h1>ELEC350: Communications Theory and Systems I<br />2. Lab 2. FM, IQ and USRP Tutorial
+         </h1>
+         <div id="navheader">
+            <!---->
+            <table class="navLinks">
+               <tr>
+                  <td><a id="showHideButton" href="#" onclick="myLayout.toggle('west')" class="pointLeft" tabindex="5" title="Hide TOC tree">Sidebar
+                                                    </a></td>
+                  <td><a accesskey="p" class="navLinkPrevious" tabindex="5" href="ar01s02s04.html">Prev</a>
+                                                             |
+                                                             <a accesskey="u" class="navLinkUp" tabindex="5" href="ar01s02.html">Up</a>
+                                                         |
+                                                         <a accesskey="n" class="navLinkNext" tabindex="5" href="ar01s02s06.html">Next</a></td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      <div id="content">
+         <!---->
+         <div class="section">
+            <div xmlns="" class="titlepage">
+               <div>
+                  <div>
+                     <h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e2262"></a>2.5. I/Q Receiver
+                     </h3>
+                  </div>
+               </div>
+            </div>
+            <div class="toc">
+               <dl class="toc">
+                  <dt><span class="section"><a href="ar01s02s05.html#d0e2265">2.5.1. I/Q Receiver output</a></span></dt>
+                  <dt><span class="section"><a href="ar01s02s05.html#d0e2385">2.5.2. Dynamic range with IQ signals</a></span></dt>
+                  <dt><span class="section"><a href="ar01s02s05.html#d0e2399">2.5.3. Noise figure</a></span></dt>
+               </dl>
+            </div>
+            <div class="section">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e2265"></a>2.5.1. I/Q Receiver output
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>Review <a class="ulink" href="data/35015-PSK-FSK-12.pdf" target="_top">sections 1.2
+                                          and 1.3 IQ theory</a></p>
+                     </li>
+                     <li class="listitem">
+                        <p>Open the GRC patch <a class="ulink" href="data/ra5.grc" target="_top">ra5.grc</a>. This flowgraph implements the
+                                       mathematics on the last page of the IQ theory document.
+                        </p>
+                        <div class="itemizedlist">
+                           <ul class="itemizedlist" style="list-style-type: circle; ">
+                              <li class="listitem">
+                                 <p>The USRP source does IQ downconversion on the WBX
+                                                    daughtercard and outputs the complex signals I(t) +
+                                                    jQ(t).
+                                 </p>
+                              </li>
+                              <li class="listitem">
+                                 <p>This output is connected to 4 blocks that extract the
+                                                    magnitude, phase, real and imaginary parts of the complex
+                                                    signal, as well as an XY scope.
+                                 </p>
+                              </li>
+                              <li class="listitem">
+                                 <p>The USRP source is tuned to a fixed frequency of 200
+                                                    MHz, i.e. the LO frequency synthesizer in the WBX daughtercard
+                                                    is set to 200 MHz.
+                                 </p>
+                              </li>
+                           </ul>
+                        </div>
+                     </li>
+                     <li class="listitem">
+                        <p>Double‐click the USRP source block to bring up a window with
+                                       all of the USRP parameters. This general I/Q receiver is set up to
+                                       receive a signal in a range around 200 MHz at level -40 dBm from
+                                       the signal generator at the back of the lab.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>Execute the flowgraph. Observe the Output Display window
+                                       with 5 tabs labelled <span class="bold"><strong>Scope Plot, Magnitude,
+                                             Phase, Real</strong></span> and <span class="bold"><strong>Imaginary</strong></span>.
+                        </p>
+                        <div class="itemizedlist">
+                           <ul class="itemizedlist" style="list-style-type: circle; ">
+                              <li class="listitem">
+                                 <p>The Scope Plot tab should show a circle</p>
+                              </li>
+                              <li class="listitem">
+                                 <p>Magnitude will show a (noisy) DC level</p>
+                              </li>
+                              <li class="listitem">
+                                 <p>Phase will show a phase ramp wrapping between -π and
+                                                    π
+                                 </p>
+                              </li>
+                              <li class="listitem">
+                                 <p>Real and Imaginary will show (noisy) sine waves.</p>
+                              </li>
+                           </ul>
+                        </div>
+                     </li>
+                     <li class="listitem">
+                        <p>The scope autorange may need to be switched off and the time
+                                       base adjusted to get good displays.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>Determine the frequency
+                                       <span class="emphasis"><em>f<sub>b</sub></em></span> of the sine waves
+                                       using the Phase display as well as the Real and Imaginary displays
+                                       by placing your mouse cursor over the scope plot to show the time
+                                       offset at different points on the waveform. This frequency
+                                       <span class="emphasis"><em>f<sub>b</sub></em></span> represents the
+                                       offset between the received RF signal
+                                       <span class="emphasis"><em>f<sub>c</sub></em></span> and the USRP local
+                                       oscillator <span class="emphasis"><em>f<sub>LO</sub></em></span>, so
+                                       that
+                        </p>
+                        <p><span class="emphasis"><em>f<sub>b</sub> </em></span> =
+                                       <span class="emphasis"><em>f<sub>c</sub> -
+                                             f<sub>LO</sub></em></span></p>
+                     </li>
+                     <li class="listitem">
+                        <p>Confirm that <span class="emphasis"><em>f<sub>b</sub></em></span>
+                                       is as expected.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>The USRP source block has the <span class="emphasis"><em>clock
+                                             source</em></span> set to use an <span class="emphasis"><em>external</em></span> 10
+                                       MHz clock reference frequency, and the same external reference is
+                                       used for the signal generator. Thus the frequency difference
+                                       between the USRP source block (local oscillator) and signal
+                                       generator RF frequency will be observed to be exactly as expected
+                                       from their respective frequency settings.
+                        </p>
+                        <div class="itemizedlist">
+                           <ul class="itemizedlist" style="list-style-type: circle; ">
+                              <li class="listitem">
+                                 <p>If we change the USRP source block to use an
+                                                    <span class="emphasis"><em>internal</em></span> clock reference, then expect to
+                                                    observe some frequency error between the signal generator and
+                                                    the USRP frequency settings as they are running from
+                                                    independent oscillators.
+                                 </p>
+                              </li>
+                              <li class="listitem">
+                                 <p>Try changing the USRP clock source to
+                                                    <span class="emphasis"><em>internal</em></span> and repeat the frequency
+                                                    measurement of the I and Q outputs.
+                                 </p>
+                              </li>
+                           </ul>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="section">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e2385"></a>2.5.2. Dynamic range with IQ signals
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>Ask the TA to vary the 200 MHz signal generator level from
+                                       ‐100 dBm to 0 dBm in 20 dB steps (or do it yourself is there are
+                                       no other groups working).
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>Observe and describe how the signals look at each signal
+                                       level, and explain why.
+                        </p>
+                        <div class="itemizedlist">
+                           <ul class="itemizedlist" style="list-style-type: circle; ">
+                              <li class="listitem">
+                                 <p>The waveform appearance results from clipping in the 2
+                                                    ADCs (one ADC for I, one ADC for Q).
+                                 </p>
+                              </li>
+                           </ul>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="section">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e2399"></a>2.5.3. Noise figure
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>Review <a class="ulink" href="data/350link4.pdf" target="_top">link budget
+                                          notes</a> with particular attention to <span class="bold"><strong>equation (14)</strong></span>.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>When you tune the receiver to a frequency where there is no
+                                       station broadcasting, there is still a residual noise floor
+                                       visible on the spectrum display. The noise level can be estimated
+                                       by looking at the display and observing the level in dBm (dB
+                                       relative to one milliwatt). This is thermal noise that is
+                                       calculated from the formula
+                        </p>
+                        <p><span class="emphasis"><em>P<sub>noise</sub> =
+                                             kT(S/N)WF</em></span></p>
+                        <p>where</p>
+                        <div class="itemizedlist">
+                           <ul class="itemizedlist" style="list-style-type: circle; ">
+                              <li class="listitem">
+                                 <p>k is Boltzmann's constant</p>
+                              </li>
+                              <li class="listitem">
+                                 <p>T is the noise temperature, typically 290 degrees
+                                                    Kelvin
+                                 </p>
+                              </li>
+                              <li class="listitem">
+                                 <p>W is the bandwidth in Hz and</p>
+                              </li>
+                              <li class="listitem">
+                                 <p>F is a dimensionless noise figure representing imperfect
+                                                    amplifiers.
+                                 </p>
+                              </li>
+                           </ul>
+                        </div>
+                     </li>
+                     <li class="listitem">
+                        <p>By substituting values for <span class="emphasis"><em>k</em></span> and
+                                       <span class="emphasis"><em>T</em></span> and taking logs of both sides of this
+                                       formula, we can write in dB:
+                        </p>
+                        <p>P<sub>noise</sub> = -228.6 + T + (S/N) + W +
+                                       F.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>Estimate the noise figure of the receiver based on the noise
+                                       level in dBm on the computer spectrum display and the receiver
+                                       bandwidth of 250 KHz.
+                        </p>
+                        <div class="itemizedlist">
+                           <ul class="itemizedlist" style="list-style-type: circle; ">
+                              <li class="listitem">
+                                 <p>All the variables in the noise figure equation except F
+                                                    are known or can be measured, so the equation can be solved
+                                                    for F.
+                                 </p>
+                              </li>
+                              <li class="listitem">
+                                 <p>The specified value for the URSP with WBX board is 5.5
+                                                    dB.
+                                 </p>
+                              </li>
+                           </ul>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div><script type="text/javascript" src="common/main.js">
+            <!----></script><script type="text/javascript" src="common/splitterInit.js">
+            <!----></script><div class="navfooter">
+            <hr />
+            <table width="100%" summary="Navigation footer">
+               <tr>
+                  <td width="40%" align="left"><a accesskey="p" href="ar01s02s04.html">Prev</a> 
+                  </td>
+                  <td width="20%" align="center"><a accesskey="u" href="ar01s02.html">Up</a></td>
+                  <td width="40%" align="right"> <a accesskey="n" href="ar01s02s06.html">Next</a></td>
+               </tr>
+               <tr>
+                  <td width="40%" align="left" valign="top"> </td>
+                  <td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+                  <td width="40%" align="right" valign="top"> </td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      <div id="sidebar">
+         <div id="leftnavigation" style="padding-top:3px;">
+            <div id="tabs">
+               <ul>
+                  <li><a href="#treeDiv" style="outline:0;" tabindex="1"><span class="contentsTab">Contents</span></a></li>
+                  <li><a href="#searchDiv" style="outline:0;" tabindex="1" onclick="doSearch()"><span class="searchTab">Search</span></a></li>
+               </ul>
+               <div id="treeDiv"><img src="common/images/loading.gif" alt="loading table of contents..." id="tocLoading" style="display:block;" /><div id="ulTreeDiv" style="display:none">
+                     <ul id="tree" class="filetree">
+                        <li><span class="file"><a href="ar01s01.html" tabindex="1">Lab 1. GNU Radio Tutorials</a></span><ul>
+                              <li><span class="file"><a href="ar01s01s01.html" tabindex="1">Deliverables</a></span></li>
+                              <li><span class="file"><a href="ar01s01s02.html" tabindex="1">Tutorial 1: Using GNU Radio Companion</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e179" tabindex="1">Objectives</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e197" tabindex="1">Launching GNU Radio Companion</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e217" tabindex="1">Configuring the Flowgraph</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e262" tabindex="1">Adding Blocks to the Flowgraph</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e413" tabindex="1">Executing the Flowgraph</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e439" tabindex="1">Working with the Scope Sink</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e475" tabindex="1">Working with the FFT Sink</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e535" tabindex="1">Working with Audio I/O</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e575" tabindex="1">Math Operations</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e632" tabindex="1">Filters</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e684" tabindex="1">Running Generated Python Code</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e739" tabindex="1">Conclusions</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s01s03.html" tabindex="1">Tutorial 2: Variables and Controls</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e748" tabindex="1">Objectives</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e762" tabindex="1">Working with Sliders</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e812" tabindex="1">Working with Text Boxes</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e836" tabindex="1">Working with Choosers</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e857" tabindex="1">Working with Notebooks</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e915" tabindex="1">Conclusions</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s01s04.html" tabindex="1">Tutorial 3A: AM Signal waveforms</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s04.html#d0e924" tabindex="1">Objectives</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s04.html#d0e942" tabindex="1">AM flowgraphs</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s01s05.html" tabindex="1">Tutorial 3B: Receiving AM Signals</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s05.html#d0e1001" tabindex="1">Objectives</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s05.html#d0e1021" tabindex="1">Real signals, basic AM receiver</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s05.html#d0e1040" tabindex="1">Complex signals, receiver with channel selection
+                                                     (tuning)</a></span><ul>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1062" tabindex="1">Playing a Data File</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1139" tabindex="1">Frequency Display Resolution</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1197" tabindex="1">Selecting one channel by filtering</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1234" tabindex="1">AM Demodulation</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1292" tabindex="1">Matching the Audio Sample Rate</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1393" tabindex="1">Adding a Volume Control</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1461" tabindex="1">Tuning to a desired station (channel)</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1509" tabindex="1">Automatic Gain Control</a></span></li>
+                                       </ul>
+                                    </li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s01s06.html" tabindex="1">Tutorial 4: Complex Signals and Receiving SSB</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e1546" tabindex="1">Objectives</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e1561" tabindex="1">Complex/Analytic Signals</a></span><ul>
+                                          <li><span class="file"><a href="ar01s01s06.html#d0e1571" tabindex="1">Hilbert Transforms</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s06.html#d0e1667" tabindex="1">Complex Multiplication</a></span></li>
+                                       </ul>
+                                    </li>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e1688" tabindex="1">Single Sideband (SSB) Signals</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e1734" tabindex="1">Frequency Translating Filter</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e1822" tabindex="1">Using the firdes Module</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e1862" tabindex="1">Weaver Demodulator</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s02.html" tabindex="1">Lab 2. FM, IQ and USRP Tutorial</a></span><ul>
+                              <li><span class="file"><a href="ar01s02s01.html" tabindex="1">Deliverables</a></span></li>
+                              <li><span class="file"><a href="ar01s02s02.html" tabindex="1">Setup</a></span></li>
+                              <li><span class="file"><a href="ar01s02s03.html" tabindex="1">FM Signal waveforms</a></span><ul>
+                                    <li><span class="file"><a href="ar01s02s03.html#d0e2098" tabindex="1">Objectives</a></span></li>
+                                    <li><span class="file"><a href="ar01s02s03.html#d0e2113" tabindex="1">FM flowgraphs</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s02s04.html" tabindex="1">FM Receivers</a></span><ul>
+                                    <li><span class="file"><a href="ar01s02s04.html#d0e2149" tabindex="1">FM broadcast receiver</a></span></li>
+                                    <li><span class="file"><a href="ar01s02s04.html#d0e2192" tabindex="1">FM data receiver</a></span></li>
+                                    <li><span class="file"><a href="ar01s02s04.html#d0e2222" tabindex="1">Dynamic Range with FM</a></span></li>
+                                 </ul>
+                              </li>
+                              <li id="webhelp-currentid"><span class="file"><a href="ar01s02s05.html" tabindex="1">I/Q Receiver</a></span><ul>
+                                    <li><span class="file"><a href="ar01s02s05.html#d0e2265" tabindex="1">I/Q Receiver output</a></span></li>
+                                    <li><span class="file"><a href="ar01s02s05.html#d0e2385" tabindex="1">Dynamic range with IQ signals</a></span></li>
+                                    <li><span class="file"><a href="ar01s02s05.html#d0e2399" tabindex="1">Noise figure</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s02s06.html" tabindex="1">Carrier Wave Transmitter</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s03.html" tabindex="1">Lab 3. FLEX Frame Synchronizer</a></span><ul>
+                              <li><span class="file"><a href="ar01s03s01.html" tabindex="1">Deliverables</a></span></li>
+                              <li><span class="file"><a href="ar01s03s02.html" tabindex="1">Frame Capture</a></span></li>
+                              <li><span class="file"><a href="ar01s03s03.html" tabindex="1">Bit and Frame Sync</a></span></li>
+                              <li><span class="file"><a href="ar01s03s04.html" tabindex="1">Decoding text</a></span></li>
+                              <li><span class="file"><a href="ar01s03s05.html" tabindex="1">Other data signals</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s04.html" tabindex="1">Lab 4. PSK systems</a></span><ul>
+                              <li><span class="file"><a href="ar01s04s01.html" tabindex="1">Deliverables</a></span></li>
+                              <li><span class="file"><a href="ar01s04s02.html" tabindex="1">Testing a PSK system</a></span></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div id="searchDiv">
+                  <div id="search">
+                     <form onsubmit="Verifie(searchForm);return false" name="searchForm" class="searchForm">
+                        <div><input id="textToSearch" name="textToSearch" type="search" placeholder="Search" class="searchText" tabindex="1" /> &nbsp; <input onclick="Verifie(searchForm)" type="button" class="searchButton" value="Go" id="doSearch" tabindex="1" /></div>
+                     </form>
+                  </div>
+                  <div id="searchResults">
+                     <center></center>
+                  </div>
+                  <p class="searchHighlight"><a href="#" onclick="toggleHighlight()">Search Highlighter (On/Off)</a></p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,1140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      
+      <title>1.2. Tutorial 1: Using GNU Radio Companion -  - ELEC350: Communications Theory and Systems I</title>
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="index.html" title="ELEC350: Communications Theory and Systems I" />
+      <link rel="up" href="ar01s01.html" title="1. Lab 1. GNU Radio Tutorials" />
+      <link rel="prev" href="ar01s01s01.html" title="1.1. Deliverables" />
+      <link rel="next" href="ar01s01s03.html" title="1.3. Tutorial 2: Variables and Controls" />
+      <meta name="Section-title" content="1.2. Tutorial 1: Using GNU Radio Companion" /><script type="text/javascript">
+            //The id for tree cookie
+            var treeCookieId = "treeview-2881";
+            var language = "en";
+            var w = new Object();
+            //Localization
+            txt_filesfound = 'Results';
+            txt_enter_at_least_1_char = "You must enter at least one character.";
+            txt_browser_not_supported = "JavaScript is disabled on your browser. Please enable JavaScript to enjoy all the features of this site.";
+            txt_please_wait = "Please wait. Search in progress...";
+            txt_results_for = "Results for: ";
+        </script><link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+      <link rel="stylesheet" type="text/css" href="common/css/positioning.css" />
+      <link rel="stylesheet" type="text/css" href="common/jquery/theme-redmond/jquery-ui-1.8.2.custom.css" />
+      <link rel="stylesheet" type="text/css" href="common/jquery/treeview/jquery.treeview.css" /><style type="text/css">
+
+#noscript{
+    font-weight:bold;
+	background-color: #55AA55;
+    font-weight: bold;
+    height: 25spx;
+    z-index: 3000;
+	top:0px;
+	width:100%;
+	position: relative;
+	border-bottom: solid 5px black;
+	text-align:center;
+	color: white;
+}
+
+input {
+    margin-bottom: 5px;
+    margin-top: 2px;
+}
+.folder {
+    display: block;
+    height: 22px;
+    padding-left: 20px;
+    background: transparent url(common/jquery/treeview/images/folder.gif) 0 0px no-repeat;
+}
+span.contentsTab {
+    padding-left: 20px;
+    background: url(common/images/toc-icon.png) no-repeat 0 center;
+}
+span.searchTab {
+    padding-left: 20px;
+    background: url(common/images/search-icon.png) no-repeat 0 center;
+}
+
+/* Overide jquery treeview's defaults for ul. */
+.treeview ul {
+    background-color: transparent;
+    margin-top: 4px;
+}		
+#webhelp-currentid {
+    background-color: #D8D8D8 !important;
+}
+.treeview .hover { color: black; }
+.filetree li span a { text-decoration: none; font-size: 12px; color: #517291; }
+
+/* Override jquery-ui's default css customizations. These are supposed to take precedence over those.*/
+.ui-widget-content {
+    border: 0px; 
+    background: none; 
+    color: none;     
+}
+.ui-widget-header {
+    color: #e9e8e9;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #bbc4c5;
+    border-top: 4px solid #e5e5e5;
+    border: medium none;
+    background: #F4F4F4; /* old browsers */
+    background: -moz-linear-gradient(top, #F4F4F4 0%, #E6E4E5 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F4F4F4), color-stop(100%,#E6E4E5)); /* webkit */    
+    font-weight: none;
+}
+.ui-widget-header a { color: none; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { 
+border: none; background: none; font-weight: none; color: none; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: black; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: none; background: none; font-weight: none; color: none; }
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: none; background: none; font-weight: none; color: none; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { 
+    color: black; text-decoration: none; 	
+    background: #C6C6C6; /* old browsers */
+    background: -moz-linear-gradient(top, #C6C6C6 0%, #D8D8D8 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C6C6C6), color-stop(100%,#D8D8D8)); /* webkit */
+    -webkit-border-radius:15px; -moz-border-radius:10px;
+    border: 1px solid #f1f1f1;
+}    
+.ui-corner-all { border-radius: 0 0 0 0; }
+
+.ui-tabs { padding: .2em;}
+.ui-tabs .ui-tabs-nav li { top: 0px; margin: -2px 0 1px; text-transform: uppercase; font-size: 10.5px;}
+.ui-tabs .ui-tabs-nav li a { padding: .25em 2em .25em 1em; margin: .5em; text-shadow: 0 1px 0 rgba(255,255,255,.5); }
+       /**
+	 *	Basic Layout Theme
+	 * 
+	 *	This theme uses the default layout class-names for all classes
+	 *	Add any 'custom class-names', from options: paneClass, resizerClass, togglerClass
+	 */
+
+	.ui-layout-pane { /* all 'panes' */ 
+		background: #FFF; 
+		border: 1px solid #BBB; 
+		padding: 05x; 
+		overflow: auto;
+	} 
+        
+	.ui-layout-resizer { /* all 'resizer-bars' */ 
+		background: #DDD; 
+                top:100px
+	} 
+
+	.ui-layout-toggler { /* all 'toggler-buttons' */ 
+		background: #AAA; 
+	} 
+    
+       </style>
+      <!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="../common/css/ie.css"/>
+	<![endif]--><script type="text/javascript" src="common/browserDetect.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery-1.7.2.min.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery.ui.all.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery.cookie.js">
+         <!----></script><script type="text/javascript" src="common/jquery/treeview/jquery.treeview.min.js">
+         <!----></script><script type="text/javascript" src="common/jquery/layout/jquery.layout.js">
+         <!----></script><script type="text/javascript" src="search/l10n.js">
+         <!----></script><script type="text/javascript" src="search/htmlFileInfoList.js">
+         <!----></script><script type="text/javascript" src="search/nwSearchFnt.js">
+         <!----></script><script type="text/javascript" src="search/stemmers/en_stemmer.js">
+         <!--//make this scalable to other languages as well.--></script><script type="text/javascript" src="search/index-1.js">
+         <!----></script><script type="text/javascript" src="search/index-2.js">
+         <!----></script><script type="text/javascript" src="search/index-3.js">
+         <!----></script></head>
+   <body>
+      <noscript>
+         <div id="noscript">JavaScript is disabled on your browser. Please enable JavaScript to enjoy all the features of this site.</div>
+      </noscript>
+      <div id="header"><a href="index.html"><img style="margin-right: 2px; height: 59px; padding-right: 25px; padding-top: 8px" align="right" src="common/images/logo.png" alt="DocBook Documentation" /></a><h1>ELEC350: Communications Theory and Systems I<br />1. Lab 1. GNU Radio Tutorials
+         </h1>
+         <div id="navheader">
+            <!---->
+            <table class="navLinks">
+               <tr>
+                  <td><a id="showHideButton" href="#" onclick="myLayout.toggle('west')" class="pointLeft" tabindex="5" title="Hide TOC tree">Sidebar
+                                                    </a></td>
+                  <td><a accesskey="p" class="navLinkPrevious" tabindex="5" href="ar01s01s01.html">Prev</a>
+                                                             |
+                                                             <a accesskey="u" class="navLinkUp" tabindex="5" href="ar01s01.html">Up</a>
+                                                         |
+                                                         <a accesskey="n" class="navLinkNext" tabindex="5" href="ar01s01s03.html">Next</a></td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      <div id="content">
+         <!---->
+         <div class="section">
+            <div xmlns="" class="titlepage">
+               <div>
+                  <div>
+                     <h3 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e175"></a>1.2. Tutorial 1: Using GNU Radio Companion
+                     </h3>
+                  </div>
+               </div>
+            </div>
+            <div class="toc">
+               <dl class="toc">
+                  <dt><span class="section"><a href="ar01s01s02.html#d0e179">1.2.1. Objectives</a></span></dt>
+                  <dt><span class="section"><a href="ar01s01s02.html#d0e197">1.2.2. Launching GNU Radio Companion</a></span></dt>
+                  <dt><span class="section"><a href="ar01s01s02.html#d0e217">1.2.3. Configuring the Flowgraph</a></span></dt>
+                  <dt><span class="section"><a href="ar01s01s02.html#d0e262">1.2.4. Adding Blocks to the Flowgraph</a></span></dt>
+                  <dt><span class="section"><a href="ar01s01s02.html#d0e413">1.2.5. Executing the Flowgraph</a></span></dt>
+                  <dt><span class="section"><a href="ar01s01s02.html#d0e439">1.2.6. Working with the Scope Sink</a></span></dt>
+                  <dt><span class="section"><a href="ar01s01s02.html#d0e475">1.2.7. Working with the FFT Sink</a></span></dt>
+                  <dt><span class="section"><a href="ar01s01s02.html#d0e535">1.2.8. Working with Audio I/O</a></span></dt>
+                  <dt><span class="section"><a href="ar01s01s02.html#d0e575">1.2.9. Math Operations</a></span></dt>
+                  <dt><span class="section"><a href="ar01s01s02.html#d0e632">1.2.10. Filters</a></span></dt>
+                  <dt><span class="section"><a href="ar01s01s02.html#d0e684">1.2.11. Running Generated Python Code</a></span></dt>
+                  <dt><span class="section"><a href="ar01s01s02.html#d0e739">1.2.12. Conclusions</a></span></dt>
+               </dl>
+            </div>
+            <div class="section">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e179"></a>1.2.1. Objectives
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p>GNU Radio Companion (GRC) is a graphical user interface that
+                          allows you to build GNU Radio flowgraphs. It is an excellent way to
+                          learn the basics of GNU Radio. This is the first in a series of
+                          tutorials that will introduce you to the use of GRC. In this tutorial
+                          you will learn how to:
+               </p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>launch the GNU Radio Companion (GRC) software.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>create and execute a GRC flowgraph.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>use basic blocks such as signal sources and graphical
+                                       sinks.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>use the computer's audio hardware with GRC.</p>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="section">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e197"></a>1.2.2. Launching GNU Radio Companion
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p>Launch GNU Radio companion by selecting
+                          Applications-&gt;Programming-&gt;GRC as shown in <a class="xref" href="ar01s01s02.html#GRC_Location" title="Figure 1. Location of GNU Radio Companion on lab computers">Figure 1</a>.
+               </p>
+               <div class="figure"><a id="GRC_Location"></a><p class="title"><strong>Figure 1. Location of GNU Radio Companion on lab computers</strong></p>
+                  <div class="figure-contents">
+                     <div align="center">
+                        <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="50%">
+                           <tr>
+                              <td align="center"><img src="images/GRC_Location.png" align="middle" width="100%" alt="Location of GNU Radio Companion on lab computers" /></td>
+                           </tr>
+                        </table>
+                     </div>
+                  </div>
+               </div><br class="figure-break" /><p>An untitled GRC window similar to <a class="xref" href="ar01s01s02.html#blank_flowgraph" title="Figure 2. Blank Gnu Radio Companion flowgraph">Figure 2</a> should
+                          open.
+               </p>
+               <div class="figure"><a id="blank_flowgraph"></a><p class="title"><strong>Figure 2. Blank Gnu Radio Companion flowgraph</strong></p>
+                  <div class="figure-contents">
+                     <div class="screenshot">
+                        <div align="center">
+                           <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="75%">
+                              <tr>
+                                 <td align="center"><img src="images/blank_flowgraph.png" align="middle" width="100%" alt="Blank Gnu Radio Companion flowgraph" /></td>
+                              </tr>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div><br class="figure-break" /></div>
+            <div class="section">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e217"></a>1.2.3. Configuring the Flowgraph
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p>The <span class="emphasis"><em>Options</em></span> block sets some general
+                          parameters for the flow graph. Double-click on the
+                          <span class="emphasis"><em>Options</em></span> block. You should now see a properties
+                          dialog similar to <a class="xref" href="ar01s01s02.html#options_properties" title="Figure 3. Properties dialog box for top block">Figure 3</a>.
+               </p>
+               <div class="figure"><a id="options_properties"></a><p class="title"><strong>Figure 3. Properties dialog box for top block</strong></p>
+                  <div class="figure-contents">
+                     <div class="screenshot">
+                        <div align="center">
+                           <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="50%">
+                              <tr>
+                                 <td align="center"><img src="images/options_properties.png" align="middle" width="100%" alt="Properties dialog box for top block" /></td>
+                              </tr>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div><br class="figure-break" /><div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>Leave the ID as "top_block".</p>
+                     </li>
+                     <li class="listitem">
+                        <p>Enter "Tutorial 1" as the title.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>Enter your name as the Author.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>Set Generate Options to WX GUI.</p>
+                        <p>Note: This setting controls the way that GUIs are generated
+                                       for flow graph output. Many of the output plots used in these labs
+                                       will not be available if this option is set to the default QT
+                                       GUI
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>Set Run to Autostart, and Realtime Scheduling to Off.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>Click OK to close the properties dialog.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>The other block in the flowgraph is a <a class="ulink" href="http://www.ece.uvic.ca/~ece350/grc_doc/ar01s04s01.html" target="_top">
+                                          variable</a> block that sets the sample rate. Click on this
+                                       block to see the variable name and value. The variable block will
+                                       be discussed later in the tutorial.
+                        </p>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="section">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e262"></a>1.2.4. Adding Blocks to the Flowgraph
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p>On the right side of the window is a list of the blocks that are
+                          available. By expanding any of the categories (click on triangle to
+                          the left) you can see the blocks available. Explore each of the
+                          categories so that you have an idea of what blocks are
+                          available.
+               </p>
+               <p>You can also click on the magnifying glass in the upper right
+                          side of the window and simply type a search term (e.g.
+                          <span class="emphasis"><em>receiver</em></span>) to search all categories. A small text
+                          window will appear above the list of blocks in which your search term
+                          will be entered. This will filter the list leaving only blocks with
+                          <span class="emphasis"><em>receiver</em></span> in their name. Try a few searches such
+                          as <span class="emphasis"><em>filter</em></span> and <span class="emphasis"><em>source</em></span> to see
+                          what comes up.
+               </p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>Open the <span class="emphasis"><em>Waveform Generators</em></span> category
+                                       and double-click on the <a class="ulink" href="http://www.ece.uvic.ca/~ece350/grc_doc/ar01s02s01.html" target="_top">
+                                          Signal Source</a>. Note that a <span class="emphasis"><em>Signal
+                                             Source</em></span> block will now appear in the main window.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>Double-click on the <span class="emphasis"><em>Signal Source</em></span> block
+                                       and the properties dialog will open. Adjust the settings to match
+                                       those as shown in <a class="xref" href="ar01s01s02.html#signal_source_properties" title="Figure 4. Properties dialog box for signal source">Figure 4</a> and close the dialog.
+                        </p>
+                        <div class="figure"><a id="signal_source_properties"></a><p class="title"><strong>Figure 4. Properties dialog box for signal source</strong></p>
+                           <div class="figure-contents">
+                              <div class="screenshot">
+                                 <div align="center">
+                                    <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="50%">
+                                       <tr>
+                                          <td align="center"><img src="images/signal_source_properties.png" align="middle" width="100%" alt="Properties dialog box for signal source" /></td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div><br class="figure-break" /><p>This <span class="emphasis"><em>Signal Source</em></span> is now set to output
+                                       a real-valued 1 kHz sinusoid with a peak amplitude of 0.5.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>In the flowgraph, the <span class="emphasis"><em>Signal Source</em></span>
+                                       block will have an orange output tab, representing a float (real)
+                                       data type. If the block settings is chosen as complex instead of
+                                       float, then the output tab will be blue. In order to view this
+                                       wave we need one of the graphical sinks. Expand the
+                                       <span class="emphasis"><em>Instrumentation</em></span> category and then the
+                                       <span class="emphasis"><em>WX</em></span> subcategory.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>Double-click on the <span class="emphasis"><em>WX GUI Scope Sink</em></span>.
+                                       It should appear in the main window. Double-click on the block and
+                                       change the <span class="emphasis"><em>Type</em></span> to
+                                       <span class="emphasis"><em>Float</em></span>. Leave the other Parameters at their
+                                       default values as shown in <a class="xref" href="ar01s01s02.html#scope_sink_properties" title="Figure 5. Properties dialog box for scope sink">Figure 5</a>. Click <span class="emphasis"><em>OK</em></span> to
+                                       close the properties dialog.
+                        </p>
+                        <div class="figure"><a id="scope_sink_properties"></a><p class="title"><strong>Figure 5. Properties dialog box for scope sink</strong></p>
+                           <div class="figure-contents">
+                              <div class="screenshot">
+                                 <div align="center">
+                                    <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="50%">
+                                       <tr>
+                                          <td align="center"><img src="images/scope_sink_properties.png" align="middle" width="100%" alt="Properties dialog box for scope sink" /></td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <p><br class="figure-break" /></p>
+                     </li>
+                     <li class="listitem">
+                        <p>In order to connect these two blocks, click once on the
+                                       <span class="emphasis"><em>out</em></span> port of the <span class="emphasis"><em>Signal
+                                             Source</em></span>, and then once on the <span class="emphasis"><em>in</em></span>
+                                       port of the <span class="emphasis"><em>Scope Sink</em></span>. The flow graph in
+                                       <a class="xref" href="ar01s01s02.html#signal_source_scope_sink_only" title="Figure 6. Flowgraph with signal source and scope sink">Figure 6</a> should be displayed.
+                        </p>
+                        <div class="figure"><a id="signal_source_scope_sink_only"></a><p class="title"><strong>Figure 6. Flowgraph with signal source and scope sink</strong></p>
+                           <div class="figure-contents">
+                              <div class="screenshot">
+                                 <div align="center">
+                                    <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="75%">
+                                       <tr>
+                                          <td align="center"><img src="images/signal_source_scope_sink_only.png" align="middle" width="100%" alt="Flowgraph with signal source and scope sink" /></td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <p><br class="figure-break" /></p>
+                     </li>
+                     <li class="listitem">
+                        <p>The problem with this flowgraph is that although the sample
+                                       rate is set to 32000, there is no block which enforces this sample
+                                       rate. Therefore, the flowgraph will consume as much of the
+                                       computer's resources as it possibly can which can cause the GRC
+                                       software to lock up. To fix this problem, disconnect the
+                                       <span class="emphasis"><em>Signal Source</em></span> from the <span class="emphasis"><em>WX GUI Scope
+                                             Sink</em></span> by clicking on the arrow and pressing the Delete
+                                       key. Expand the <span class="emphasis"><em>Misc</em></span> category and
+                                       double-click on the <a class="ulink" href="http://www.ece.uvic.ca/~ece350/grc_doc/ar01s03s07.html" target="_top">Throttle</a>.
+                                       Connect this block between the <span class="emphasis"><em>Signal Source</em></span>
+                                       and the <span class="emphasis"><em>WX GUI Scope Sink</em></span> as shown in <a class="xref" href="ar01s01s02.html#scope_source_scope_sink" title="Figure 7. Flowgraph with throttle added">Figure 7</a>
+                                       (click once on the out port of one block and the in port of the
+                                       next block).
+                        </p>
+                        <div class="figure"><a id="scope_source_scope_sink"></a><p class="title"><strong>Figure 7. Flowgraph with throttle added</strong></p>
+                           <div class="figure-contents">
+                              <div class="screenshot">
+                                 <div align="center">
+                                    <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="75%">
+                                       <tr>
+                                          <td align="center"><img src="images/signal_source_scope_sink.png" align="middle" width="100%" alt="Flowgraph with throttle added" /></td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <p><br class="figure-break" /></p>
+                     </li>
+                     <li class="listitem">
+                        <p>Note that the input and output arrowheads will change to
+                                       red. This indicates a problem with the flowgraph, in this case,
+                                       the data types do not match. To fix the problem, double-click the
+                                       <span class="emphasis"><em>Throttle</em></span> and change the
+                                       <span class="emphasis"><em>Type</em></span> to <span class="emphasis"><em>Float</em></span>.
+                        </p>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="section">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e413"></a>1.2.5. Executing the Flowgraph
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p>In order to observe the operation of this simple system we must
+                          generate the flowgraph and then execute it.
+               </p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>Click first on the <span class="inlinemediaobject"><img src="images/generate.png" /></span> icon (or press F5) to generate the
+                                       flowgraph.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>If the flowgraph has not yet been saved, a file dialog will
+                                       appear when you click this button. Name this file
+                                       <span class="emphasis"><em>tutorial1.grc</em></span> and save it to a folder on your
+                                       home drive. The generation stage converts your flowgraph into
+                                       executable Python code.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>Click the <span class="inlinemediaobject"><img src="images/execute.png" /></span> icon (or press F6) to execute the
+                                       flowgraph. The execution stage runs the Python code that was
+                                       generated in the previous step. A scope plot should open
+                                       displaying several cycles of the sinusoid. Confirm that the
+                                       frequency and amplitude match the value that you expect. What is
+                                       the period of one cycle of the sine wave, and thus what is the
+                                       frequency? Experiment with the controls on the scope plot.
+                        </p>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="section">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e439"></a>1.2.6. Working with the Scope Sink
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>Change the <span class="emphasis"><em>Channel Options / Marker</em></span>
+                                       setting to <span class="emphasis"><em>Dot Large</em></span>. As shown in <a class="xref" href="ar01s01s02.html#scope_sink_dot_large" title="Figure 8. Scope sink with large dot markers">Figure 8</a>, you
+                                       can now see the actual sample values. Recall that the
+                                       <span class="emphasis"><em>Variable</em></span> block set the sampling rate to 32000
+                                       samples/second or 32 samples/ms. Note that there are in fact 32
+                                       samples within one cycle of the wave.
+                        </p>
+                        <div class="figure"><a id="scope_sink_dot_large"></a><p class="title"><strong>Figure 8. Scope sink with large dot markers</strong></p>
+                           <div class="figure-contents">
+                              <div class="screenshot">
+                                 <div align="center">
+                                    <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="75%">
+                                       <tr>
+                                          <td align="center"><img src="images/scope_sink_dot_large.png" align="middle" width="100%" alt="Scope sink with large dot markers" /></td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <p><br class="figure-break" /></p>
+                     </li>
+                     <li class="listitem">
+                        <p>Close the scope and reduce the sample rate to 10000 by
+                                       double-clicking on the <span class="emphasis"><em>Variable</em></span> block and
+                                       entering 10e3 in the <span class="emphasis"><em>Value</em></span> box. Note that you
+                                       can use this exponential notation anywhere that GNURadio requires
+                                       a number.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>Re-generate and execute the flow graph. Note that there are
+                                       now fewer points per cycle. How low can you drop the sample rate?
+                                       Recall that the Nyquist sampling theorem requires that we sample
+                                       at more than two times the highest frequency. Experiment with this
+                                       and see how the output changes as you drop below the Nyquist
+                                       rate.
+                        </p>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="section">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e475"></a>1.2.7. Working with the FFT Sink
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>The FFT Sink acts as a Spectrum Analyzer by doing a short
+                                       time discrete Fourier transform (STFT). Review the <a class="ulink" href="data/Theory_Spectrum_Analyzer.pdf" target="_top">theory of the Spectrum
+                                          Analyzer</a></p>
+                     </li>
+                     <li class="listitem">
+                        <p>Close the scope and change the sample rate back to 32000.
+                                       Add a <span class="emphasis"><em>WX GUI FFT Sink</em></span> (under
+                                       <span class="emphasis"><em>Instrumentation-&gt;WX</em></span>) to your window.
+                                       Change the Type to Float and leave the remaining parameters at
+                                       their default values.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>Connect this to the output of the <span class="emphasis"><em>Signal
+                                             Source</em></span> by clicking on the <span class="emphasis"><em>out</em></span> port
+                                       of the <span class="emphasis"><em>Throttle</em></span> and then the
+                                       <span class="emphasis"><em>in</em></span> port of the <span class="emphasis"><em>WX GUI FFT
+                                             Sink</em></span>. Generate and execute the flow graph. You should
+                                       observe the scope as before along with an FFT plot correctly
+                                       showing the frequency of the input at 1KHz. Close the output
+                                       windows.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>Explore other graphical sinks (<span class="emphasis"><em>WX GUI Number
+                                             Sink</em></span>, <span class="emphasis"><em>WX GUI Waterfall Sink</em></span>, and
+                                       <span class="emphasis"><em>WX GUI Histo Sink</em></span>) to see how they display
+                                       the <span class="emphasis"><em>Signal Source</em></span></p>
+                        <div class="itemizedlist">
+                           <ul class="itemizedlist" style="list-style-type: circle; ">
+                              <li class="listitem">
+                                 <p>The number sink is typically used to monitor
+                                                    slowly-changing signals such as the RMS input level. In this
+                                                    example, the sine wave changes too fast for the numbers to
+                                                    keep up.
+                                 </p>
+                              </li>
+                              <li class="listitem">
+                                 <p>The waterfall sink is used to display amplitude vs.
+                                                    frequency vs. time with amplitude represented as a variation
+                                                    in color. The waterfall is a time frequency diagram with time
+                                                    on the vertical axis. Note that for a single 1 Khz sine wave
+                                                    input, the frequency does not change with time, thus a
+                                                    vertical line is displayed at 1 Khz.
+                                 </p>
+                              </li>
+                              <li class="listitem">
+                                 <p>The histo sink displays a histogram of the input values,
+                                                    which can be used to monitor the symbol distribution in a
+                                                    digital signal or the distribution of a noise source.
+                                 </p>
+                              </li>
+                           </ul>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="section">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e535"></a>1.2.8. Working with Audio I/O
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>Create the flow graph shown in <a class="xref" href="ar01s01s02.html#signal_source_fft_sink_audio_sink" title="Figure 9. Flow graph for audio I/O demonstration">Figure 9</a>.
+                        </p>
+                        <div class="figure"><a id="signal_source_fft_sink_audio_sink"></a><p class="title"><strong>Figure 9. Flow graph for audio I/O demonstration</strong></p>
+                           <div class="figure-contents">
+                              <div class="screenshot">
+                                 <div align="center">
+                                    <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="75%">
+                                       <tr>
+                                          <td align="center"><img src="images/signal_source_fft_sink_audio_sink.png" align="middle" width="100%" alt="Flow graph for audio I/O demonstration" /></td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <p><br class="figure-break" /></p>
+                     </li>
+                     <li class="listitem">
+                        <p>The <span class="emphasis"><em>Audio Sink</em></span> is found in the
+                                       <span class="emphasis"><em>Audio</em></span> category. The <a class="ulink" href="http://www.ece.uvic.ca/~ece350/grc_doc/ar01s05s03.html" target="_top">
+                                          Audio Sink</a> block directs the signal to the audio card of
+                                       your computer. Note that the sample rate is set to 48000, a sample
+                                       rate that is usually, but not always supported by computer audio
+                                       hardware. 44100 is supported by every sound card. Other
+                                       commonly-supported rates are 8000, 11025 and 22050. Some audio
+                                       hardware may support higher rates such as 88200 and 96000. Also
+                                       note that there is no <span class="emphasis"><em>Throttle</em></span> block. This is
+                                       because the audio hardware enforces the desired sample rate by
+                                       only accepting samples at this rate.
+                        </p>
+                        <div class="itemizedlist">
+                           <ul class="itemizedlist" style="list-style-type: circle; ">
+                              <li class="listitem">
+                                 <p>It is worth noting that sample rates, especially
+                                                      related to audio output are a common source of frustration
+                                                      in these labs so it is worth spending some time to ensure
+                                                      the concepts are understood here. More information about how
+                                                      GNU Radio communicates with the computer's audio hardware
+                                                      can be found <a class="ulink" href="http://gnuradio.org/redmine/projects/gnuradio/wiki/ALSAPulseAudio#Solution" target="_top">here</a></p>
+                              </li>
+                           </ul>
+                        </div>
+                     </li>
+                     <li class="listitem">
+                        <p>Generate and execute this flow graph. The graphical display
+                                       of the scope and FFT should open as before. However, now you
+                                       should also hear the 1 kHz tone. If you do not hear the tone,
+                                       ensure that the output from the computer is connected to the
+                                       speakers and that the volume is turned up. Experiment with
+                                       changing both the overall sample rate in the flow graph as well as
+                                       the sample rate in the audio sink to see how the tone is
+                                       affected.
+                        </p>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="section">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e575"></a>1.2.9. Math Operations
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>Construct the flow graph in <a class="xref" href="ar01s01s02.html#add_sinusoids" title="Figure 10. Flow graph with Add block">Figure 10</a>. Set the sample rate to 32000. The two
+                                       Signal Sources should have frequencies of 1000 and 800,
+                                       respectively. The <a class="ulink" href="http://www.ece.uvic.ca/~ece350/grc_doc/ar01s08s01.html" target="_top">
+                                          Add</a> block is found in the <span class="emphasis"><em>Math
+                                             Operators</em></span> category.
+                        </p>
+                        <div class="figure"><a id="add_sinusoids"></a><p class="title"><strong>Figure 10. Flow graph with Add block</strong></p>
+                           <div class="figure-contents">
+                              <div class="screenshot">
+                                 <div align="center">
+                                    <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="75%">
+                                       <tr>
+                                          <td align="center"><img src="images/add_sinusoids.png" align="middle" width="100%" alt="Flow graph with Add block" /></td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <p><br class="figure-break" /></p>
+                     </li>
+                     <li class="listitem">
+                        <p>Generate and execute the flow graph. On the Scope plot you
+                                       should observe a waveform corresponding to the sum of two
+                                       sinusoids. On the FFT plot you should see components at both 800
+                                       and 1000 Hz. Unfortunately, the FFT plot does not provide enough
+                                       resolution to clearly see the two distinct components. Note that
+                                       the maximum frequency displayed on this plot is 16 kHz. This is
+                                       one-half of the 32 kHz sample rate. In order to obtain better
+                                       resolution, we can lower the sample rate. Try lowering the sample
+                                       rate to 10 kHz. Recall that for an FFT, the frequency resolution
+                                       <span class="emphasis"><em>f0=fs/N</em></span> where <span class="emphasis"><em>fs</em></span> is the
+                                       sample rate and <span class="emphasis"><em>N</em></span> is the FFT block size. Thus
+                                       for fixed value of <span class="emphasis"><em>N</em></span>, <span class="emphasis"><em>f0</em></span>
+                                       goes down as <span class="emphasis"><em>fs</em></span> goes down.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>Replace the <span class="emphasis"><em>Add</em></span> block with a <a class="ulink" href="http://www.ece.uvic.ca/~ece350/grc_doc/ar01s08s04.html" target="_top">
+                                          Multiply</a> block. What output do you expect from the product
+                                       of two sinusoids? Confirm your result on the Scope and FFT
+                                       displays.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>Take note of the other math operations under the
+                                       <span class="emphasis"><em>Math Operators</em></span> category and experiment with a
+                                       few to see if the result is as expected.
+                        </p>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="section">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e632"></a>1.2.10. Filters
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>Modify the flow graph to include a <a class="ulink" href="http://www.ece.uvic.ca/~ece350/grc_doc/ar01s12s01.html" target="_top"> Low
+                                          Pass Filter</a> block as shown in <a class="xref" href="ar01s01s02.html#lowpass_filter" title="Figure 11. Flow graph with Multiply and Low Pass Filter blocks">Figure 11</a>. This block
+                                       is found in the <span class="emphasis"><em>Filters</em></span> category and is the
+                                       first Low Pass Filter listed.
+                        </p>
+                        <div class="figure"><a id="lowpass_filter"></a><p class="title"><strong>Figure 11. Flow graph with Multiply and Low Pass Filter
+                                                 blocks</strong></p>
+                           <div class="figure-contents">
+                              <div class="screenshot">
+                                 <div align="center">
+                                    <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="75%">
+                                       <tr>
+                                          <td align="center"><img src="images/lowpass_filter.png" align="middle" width="100%" alt="Flow graph with Multiply and Low Pass Filter blocks" /></td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <p><br class="figure-break" /></p>
+                     </li>
+                     <li class="listitem">
+                        <p>Recall that the Multiply block outputs a 200 Hz and a 1.8
+                                       kHz sinusoid. We want to create a filter that will pass the 200 Hz
+                                       and block the 1.8 kHz component. This can be done with a low pass
+                                       filter, whose frequency response is shown in <a class="xref" href="ar01s01s02.html#transition_band" title="Figure 12. Frequency response of a low pass filter">Figure 12</a>.
+                                       Double-click the block to open the properties dialog. Set the low
+                                       pass filter to have a cutoff frequency of 1 kHz and a transition
+                                       width of 200 Hz.
+                        </p>
+                        <div class="figure"><a id="transition_band"></a><p class="title"><strong>Figure 12. Frequency response of a low pass filter</strong></p>
+                           <div class="figure-contents">
+                              <div class="screenshot">
+                                 <div align="center">
+                                    <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="75%">
+                                       <tr>
+                                          <td align="center"><img src="images/transition_band.gif" align="middle" width="100%" alt="Frequency response of a low pass filter" /></td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <p><br class="figure-break" /></p>
+                        <p>Select the <span class="emphasis"><em>FIR Type</em></span> to be
+                                       <span class="emphasis"><em>Float-&gt;Float (Decimating)</em></span>.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>Generate and execute the flow graph. You should observe that
+                                       only the 200 Hz component passes through the filter and the 1.8
+                                       KHz component is attenuated. How many dB down is the 1.8. KHz wave
+                                       compared to the 200 Hz wave? Experiment with the High Pass
+                                       Filter.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>Using the same flow graph, change the sample rate variable
+                                       to 20000. Change the Decimation in the Low Pass Filter to 2.
+                                       Decimation decreases the number of samples that are processed. A
+                                       decimation factor of two means that the output of the filter will
+                                       have a sample rate equal to one-half of the input sample rate, or
+                                       in this case only 10000 samples/sec. This is a sufficient sample
+                                       rate for the frequencies that we are dealing with. Generate and
+                                       execute the flow graph. What frequency do you observe on the FFT?
+                                       Measure it precisely by letting the cursor hover over the peak of
+                                       the observed component.,
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>You should have observed that the FFT is now measuring a
+                                       signal around 400 Hz, rather than the expected 200Hz. Why is this
+                                       error occurring? It is because the sample rate on the FFT has not
+                                       been adjusted to properly measure its input. Double-click on the
+                                       FFT Sink block and change the sample rate to samp_rate/2. Generate
+                                       and execute the flow graph. You should now read the correct
+                                       frequency. <span class="bold"><strong>It is important to be aware of
+                                             the sample rate in each branch of your flowgraph.</strong></span>
+                                       Decimation and Interpolation options decrease and increase the
+                                       sample rate respectively.
+                        </p>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="section">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e684"></a>1.2.11. Running Generated Python Code
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>Open a file browser by going to Places-&gt;Home Folder as
+                                       shown in <a class="xref" href="ar01s01s02.html#home_folder" title="Figure 13. Location of file browser">Figure 13</a>.
+                        </p>
+                        <div class="figure"><a id="home_folder"></a><p class="title"><strong>Figure 13. Location of file browser</strong></p>
+                           <div class="figure-contents">
+                              <div class="screenshot">
+                                 <div align="center">
+                                    <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="30%">
+                                       <tr>
+                                          <td align="center"><img src="images/home_folder.png" align="middle" width="100%" alt="Location of file browser" /></td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <p><br class="figure-break" /></p>
+                     </li>
+                     <li class="listitem">
+                        <p>Browse to the directory that contains the GRC file that you
+                                       have been working on. If you are unsure as to where this is, the
+                                       path to this file is shown in the bottom portion of the GRC
+                                       window. In addition to saving a ".grc" file with your flow graph,
+                                       note that there is also a file titled "top_block.py", as shown in
+                                       <a class="xref" href="ar01s01s02.html#python_code" title="Figure 14. Each flow graph has an associated GRC and Python file">Figure 14</a>. This is
+                                       the Python file that is generated by GRC. It is this file that is
+                                       being run when you execute the flow graph.
+                        </p>
+                        <div class="figure"><a id="python_code"></a><p class="title"><strong>Figure 14. Each flow graph has an associated GRC and Python
+                                                 file</strong></p>
+                           <div class="figure-contents">
+                              <div class="screenshot">
+                                 <div align="center">
+                                    <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="50%">
+                                       <tr>
+                                          <td align="center"><img src="images/python_code.png" align="middle" width="100%" alt="Each flow graph has an associated GRC and Python file" /></td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <p><br class="figure-break" /></p>
+                     </li>
+                     <li class="listitem">
+                        <p>Double-click on this file. You will be given the option to
+                                       Run or Display this file (see <a class="xref" href="ar01s01s02.html#python_code_run" title="Figure 15. Run or display dialog prompt">Figure 15</a>).
+                        </p>
+                        <div class="figure"><a id="python_code_run"></a><p class="title"><strong>Figure 15. Run or display dialog prompt</strong></p>
+                           <div class="figure-contents">
+                              <div class="screenshot">
+                                 <div align="center">
+                                    <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="50%">
+                                       <tr>
+                                          <td align="center"><img src="images/python_code_run.png" align="middle" width="100%" alt="Run or display dialog prompt" /></td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <p><br class="figure-break" /></p>
+                     </li>
+                     <li class="listitem">
+                        <p>Select Display. You can modify this file and run it from the
+                                       terminal window. This allows you to use features that are not
+                                       included in GRC. Keep in mind that every time you run your flow
+                                       graph in GRC, it will overwrite the Python script that is
+                                       generated. So, if you make changes directly in the Python script
+                                       that you want to keep, save it under another name.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>To learn more about writing flowgraphs directly in Python,
+                                       see this <a class="ulink" href="http://gnuradio.org/redmine/projects/gnuradio/wiki/TutorialsWritePythonApplications#A-first-working-code-example" target="_top">code
+                                          example</a>.
+                        </p>
+                     </li>
+                     <li class="listitem">
+                        <p>It is possible to change the file name of the generated
+                                       Python code by changing the <span class="emphasis"><em>ID</em></span> field in the
+                                       flowgraph's <span class="emphasis"><em>Options</em></span> block.
+                        </p>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="section">
+               <div xmlns="" class="titlepage">
+                  <div>
+                     <div>
+                        <h4 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="d0e739"></a>1.2.12. Conclusions
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p>In this tutorial, you have learned several of the basic concepts
+                          in using GRC. Make a brief list of these concepts. When you are
+                          comfortable with this material, feel free to move on to tutorial
+                          2.
+               </p>
+            </div>
+         </div><script type="text/javascript" src="common/main.js">
+            <!----></script><script type="text/javascript" src="common/splitterInit.js">
+            <!----></script><div class="navfooter">
+            <hr />
+            <table width="100%" summary="Navigation footer">
+               <tr>
+                  <td width="40%" align="left"><a accesskey="p" href="ar01s01s01.html">Prev</a> 
+                  </td>
+                  <td width="20%" align="center"><a accesskey="u" href="ar01s01.html">Up</a></td>
+                  <td width="40%" align="right"> <a accesskey="n" href="ar01s01s03.html">Next</a></td>
+               </tr>
+               <tr>
+                  <td width="40%" align="left" valign="top"> </td>
+                  <td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+                  <td width="40%" align="right" valign="top"> </td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      <div id="sidebar">
+         <div id="leftnavigation" style="padding-top:3px;">
+            <div id="tabs">
+               <ul>
+                  <li><a href="#treeDiv" style="outline:0;" tabindex="1"><span class="contentsTab">Contents</span></a></li>
+                  <li><a href="#searchDiv" style="outline:0;" tabindex="1" onclick="doSearch()"><span class="searchTab">Search</span></a></li>
+               </ul>
+               <div id="treeDiv"><img src="common/images/loading.gif" alt="loading table of contents..." id="tocLoading" style="display:block;" /><div id="ulTreeDiv" style="display:none">
+                     <ul id="tree" class="filetree">
+                        <li><span class="file"><a href="ar01s01.html" tabindex="1">Lab 1. GNU Radio Tutorials</a></span><ul>
+                              <li><span class="file"><a href="ar01s01s01.html" tabindex="1">Deliverables</a></span></li>
+                              <li id="webhelp-currentid"><span class="file"><a href="ar01s01s02.html" tabindex="1">Tutorial 1: Using GNU Radio Companion</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e179" tabindex="1">Objectives</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e197" tabindex="1">Launching GNU Radio Companion</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e217" tabindex="1">Configuring the Flowgraph</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e262" tabindex="1">Adding Blocks to the Flowgraph</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e413" tabindex="1">Executing the Flowgraph</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e439" tabindex="1">Working with the Scope Sink</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e475" tabindex="1">Working with the FFT Sink</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e535" tabindex="1">Working with Audio I/O</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e575" tabindex="1">Math Operations</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e632" tabindex="1">Filters</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e684" tabindex="1">Running Generated Python Code</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s02.html#d0e739" tabindex="1">Conclusions</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s01s03.html" tabindex="1">Tutorial 2: Variables and Controls</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e748" tabindex="1">Objectives</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e762" tabindex="1">Working with Sliders</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e812" tabindex="1">Working with Text Boxes</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e836" tabindex="1">Working with Choosers</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e857" tabindex="1">Working with Notebooks</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s03.html#d0e915" tabindex="1">Conclusions</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s01s04.html" tabindex="1">Tutorial 3A: AM Signal waveforms</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s04.html#d0e924" tabindex="1">Objectives</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s04.html#d0e942" tabindex="1">AM flowgraphs</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s01s05.html" tabindex="1">Tutorial 3B: Receiving AM Signals</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s05.html#d0e1001" tabindex="1">Objectives</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s05.html#d0e1021" tabindex="1">Real signals, basic AM receiver</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s05.html#d0e1040" tabindex="1">Complex signals, receiver with channel selection
+                                                     (tuning)</a></span><ul>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1062" tabindex="1">Playing a Data File</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1139" tabindex="1">Frequency Display Resolution</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1197" tabindex="1">Selecting one channel by filtering</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1234" tabindex="1">AM Demodulation</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1292" tabindex="1">Matching the Audio Sample Rate</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1393" tabindex="1">Adding a Volume Control</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1461" tabindex="1">Tuning to a desired station (channel)</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s05.html#d0e1509" tabindex="1">Automatic Gain Control</a></span></li>
+                                       </ul>
+                                    </li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s01s06.html" tabindex="1">Tutorial 4: Complex Signals and Receiving SSB</a></span><ul>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e1546" tabindex="1">Objectives</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e1561" tabindex="1">Complex/Analytic Signals</a></span><ul>
+                                          <li><span class="file"><a href="ar01s01s06.html#d0e1571" tabindex="1">Hilbert Transforms</a></span></li>
+                                          <li><span class="file"><a href="ar01s01s06.html#d0e1667" tabindex="1">Complex Multiplication</a></span></li>
+                                       </ul>
+                                    </li>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e1688" tabindex="1">Single Sideband (SSB) Signals</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e1734" tabindex="1">Frequency Translating Filter</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e1822" tabindex="1">Using the firdes Module</a></span></li>
+                                    <li><span class="file"><a href="ar01s01s06.html#d0e1862" tabindex="1">Weaver Demodulator</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s02.html" tabindex="1">Lab 2. FM, IQ and USRP Tutorial</a></span><ul>
+                              <li><span class="file"><a href="ar01s02s01.html" tabindex="1">Deliverables</a></span></li>
+                              <li><span class="file"><a href="ar01s02s02.html" tabindex="1">Setup</a></span></li>
+                              <li><span class="file"><a href="ar01s02s03.html" tabindex="1">FM Signal waveforms</a></span><ul>
+                                    <li><span class="file"><a href="ar01s02s03.html#d0e2098" tabindex="1">Objectives</a></span></li>
+                                    <li><span class="file"><a href="ar01s02s03.html#d0e2113" tabindex="1">FM flowgraphs</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s02s04.html" tabindex="1">FM Receivers</a></span><ul>
+                                    <li><span class="file"><a href="ar01s02s04.html#d0e2149" tabindex="1">FM broadcast receiver</a></span></li>
+                                    <li><span class="file"><a href="ar01s02s04.html#d0e2192" tabindex="1">FM data receiver</a></span></li>
+                                    <li><span class="file"><a href="ar01s02s04.html#d0e2222" tabindex="1">Dynamic Range with FM</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s02s05.html" tabindex="1">I/Q Receiver</a></span><ul>
+                                    <li><span class="file"><a href="ar01s02s05.html#d0e2265" tabindex="1">I/Q Receiver output</a></span></li>
+                                    <li><span class="file"><a href="ar01s02s05.html#d0e2385" tabindex="1">Dynamic range with IQ signals</a></span></li>
+                                    <li><span class="file"><a href="ar01s02s05.html#d0e2399" tabindex="1">Noise figure</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="ar01s02s06.html" tabindex="1">Carrier Wave Transmitter</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s03.html" tabindex="1">Lab 3. FLEX Frame Synchronizer</a></span><ul>
+                              <li><span class="file"><a href="ar01s03s01.html" tabindex="1">Deliverables</a></span></li>
+                              <li><span class="file"><a href="ar01s03s02.html" tabindex="1">Frame Capture</a></span></li>
+                              <li><span class="file"><a href="ar01s03s03.html" tabindex="1">Bit and Frame Sync</a></span></li>
+                              <li><span class="file"><a href="ar01s03s04.html" tabindex="1">Decoding text</a></span></li>
+                              <li><span class="file"><a href="ar01s03s05.html" tabindex="1">Other data signals</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="ar01s04.html" tabindex="1">Lab 4. PSK systems</a></span><ul>
+                              <li><span class="file"><a href="ar01s04s01.html" tabindex="1">Deliverables</a></span></li>
+                              <li><span class="file"><a href="ar01s04s02.html" tabindex="1">Testing a PSK system</a></span></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div id="searchDiv">
+                  <div id="search">
+                     <form onsubmit="Verifie(searchForm);return false" name="searchForm" class="searchForm">
+                        <div><input id="textToSearch" name="textToSearch" type="search" placeholder="Search" class="searchText" tabindex="1" /> &nbsp; <input onclick="Verifie(searchForm)" type="button" class="searchButton" value="Go" id="doSearch" tabindex="1" /></div>
+                     </form>
+                  </div>
+                  <div id="searchResults">
+                     <center></center>
+                  </div>
+                  <p class="searchHighlight"><a href="#" onclick="toggleHighlight()">Search Highlighter (On/Off)</a></p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
