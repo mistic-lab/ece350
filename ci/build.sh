@@ -8,6 +8,7 @@ html_dir="${script_dir}/../build_output"
 cd lab_manual
 bash gen_html.sh
 
+echo "Failing after here?"
 # TODO Shove in index.html and grc_doc
 # cd ..
 # cp index.html ${html_dir}

@@ -10,6 +10,7 @@ xmllint --valid ${script_dir}/lab_manual/lab_manual.xml --noout
 # Render the HTML
 ant webhelp
 
+echo "End of gen_html"
 # TODO Copy to directory
 # cp -r ${script_dir}/lab_manual/data ${html_dir}/lab_manual
 
