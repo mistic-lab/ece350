@@ -10,15 +10,14 @@ cd lab_manual
 xmllint --valid lab_manual.xml --noout
 ## Render the HTML
 ant webhelp
-cd ..
-# TODO Copy to directory
-# cp -r lab_manual/data build_output/lab_manual
-# cd ..
 
+# TODO Copy to directory
+cp -r data ../build_output/lab_manual
+cd ..
 ########## Shove in grc_doc
 #TODO Shove in grc_doc
-# mkdir build_output/grc_doc
-# cp -r grc_doc/build_output/* build_output/grc_doc
+mkdir build_output/grc_doc
+cp -r grc_doc/build_output/* build_output/grc_doc
 
 ########## Add static site elements
 # TODO Shove in index.html and grc_doc
