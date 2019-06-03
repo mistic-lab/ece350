@@ -1,8 +1,5 @@
 before_install:
-  chmod +x ./ci/build.sh ./ci/lab_manual/gen_html.sh
-
-before_script:
-  cd ci
+  chmod +x ./build.sh
 
 addons:
   apt:
@@ -27,7 +24,6 @@ deploy:
   skip_cleanup: true
   github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
   keep_history: true
-  local_dir: build_output
+  local_dir: ${TRAVIS_BUILD_DIR}/build_output
   on:
     branch: master
-  verbose: true
