@@ -14,15 +14,10 @@ addons:
       docbook5-xml
       fop
       libxml2
-      docbook-xml-4.5
-      docbook-xsl-1.79.2
-      apache-ant-1.10.6
-      libxslt-1.1.33
-      python2
-      ruby-2.6.3
+      libxslt
+      python2.7-dev
       libsaxon-java
       default-jre
-      xerces2Java
 jobs:
   include:
     script: ./build.sh
