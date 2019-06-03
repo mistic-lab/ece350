@@ -13,8 +13,7 @@ addons:
       docbook-xsl-ns
       docbook5-xml
       fop
-
-      libxml2-dev
+      libxml2
       docbook-xml-4.5
       docbook-xsl-1.79.2
       apache-ant-1.10.6
