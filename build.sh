@@ -10,7 +10,7 @@ cd lab_manual
 xmllint --valid lab_manual.xml --noout
 ## Render the HTML
 ant webhelp
-
+cd ..
 # TODO Copy to directory
 # cp -r lab_manual/data build_output/lab_manual
 # cd ..
