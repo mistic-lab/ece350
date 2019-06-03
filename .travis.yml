@@ -2,7 +2,7 @@ before_install:
   chmod +x ./ci/build.sh ./ci/lab_manual/gen_html.sh
 
 before_script:
-  cd ci
+  cd ci/lab_manual
 
 addons:
   apt:
@@ -20,7 +20,7 @@ addons:
       default-jre
 jobs:
   include:
-    script: ./build.sh
+    script: ./gen_html.sh
 
 deploy:
   provider: pages
