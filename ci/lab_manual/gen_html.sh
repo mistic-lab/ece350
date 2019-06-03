@@ -19,7 +19,7 @@ ant webhelp
 # Copy to directory
 if [ $? == 0 ] # If ant did not throw an error
   then 
-    cp -r ${script_dir}/../../lab_manual/data ${html_dir}/lab_manual
+    cp -r /lab_manual/data ${html_dir}/lab_manual
 else
   echo "ANT COMPLAINED"
 fi
