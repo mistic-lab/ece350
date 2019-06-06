@@ -58,13 +58,19 @@ demodulator is needed to detect the data.
 - What do you observe? With some patience, you should periodically see
     two strong lines that are 9.6 kHz apart with other weaker lines on
     either side (harmonics) as shown in
-    [figure\_title](#flex_waterfall). 9.6 kHz is the frequency shift
+    [Fig. 3.1](#figure-3.1:-flex-waterfall). 9.6 kHz is the frequency shift
     used by the FLEX signal. The signal actually switches rapidly
     between the two frequencies, although the resolution of the
     waterfall is not fine enough to show this detail.
 
+    ![Figure 3.1](./figures/flex_waterfall.png)
+    ##### Figure 3.1: Flex waterfall
+
 - You may also observe that the paging signal occurs in shorter
-    bursts, as shown in [figure\_title](#flex_waterfall2).
+    bursts, as shown in [Fig. 3.2](#figure-3.2:-another-flex-waterfall).
+
+    ![Figure 3.2](./figures/flex_waterfall2.png)
+    ##### Figure 3.2: Another Flex waterfall
 
 - Although FLEX can use a variety of modulation schemes, the sync word
     is always sent as 2-level FSK at 1600 bits per second. Create an FM
