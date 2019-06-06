@@ -236,28 +236,6 @@
           encountered.</para>
         </listitem>
       </itemizedlist>
-
-      <!--Commenting this section out, as lab reports will no longer be done.
-	<para>Questions to be answered during the lab and submitted in a brief report</para>
-	<itemizedlist>
-	<listitem>
-	For an AM signal as written in the text section 2.1 page 35, what is the acceptable 
-	range of the parameter k_a so that the message can be recovered perfectly in the receiver? 
-	</listitem>
-	<listitem>
-	Sketch the spectrum of an AM signal with a message signal that is the sum of two cosine waves. 
-	Repeat for a message signal that is the product of two cosine waves. 
-	</listitem>
-	<listitem>
-	 What is the cutoff frequency of the low pass filter used in a synchronous AM receiver 
-	 (where the received signal is multiplied with the carrier waveform and lowpass filtered).
-	</listitem>
-	<listitem>
-	Consider a signal with sampling rate of 256KHz. We use rational resampler block with 
-	decimation factor of 3 and interpolation factor of 4. What would be the new sampling rate of the signal?  
-	</listitem>
-     </itemizedlist>
-     -->
     </section>
 
     <section>
@@ -389,13 +367,6 @@
         categories so that you have an idea of what blocks are
         available.</para>
 
-        <!-- I don't think we will use a customized version anymore. Commenting this paragraph out..
-	<para>
-	  Note that the version of GNURadio installed in the lab has been customized to contain a limited set of blocks for use in the ELEC350 course. If you install GNURadio on your own machine you will notice that there are hundreds of additional blocks in the default installation and many more available through <ulink url="http://www.cgran.org">CGRAN</ulink>.
-	</para>
-
--->
-
         <para>You can also click on the magnifying glass in the upper right
         side of the window and simply type a search term (e.g.
         <emphasis>receiver</emphasis>) to search all categories. A small text
@@ -433,10 +404,6 @@
             <para>This <emphasis>Signal Source</emphasis> is now set to output
             a real-valued 1 kHz sinusoid with a peak amplitude of 0.5.</para>
           </listitem>
-
-          <!--
-	   Should more items be added to the GRC Documetation website?  Eg. all of the sink blocks, .
-	   -->
 
           <listitem>
             <para>In the flowgraph, the <emphasis>Signal Source</emphasis>
@@ -1259,8 +1226,8 @@
           </listitem>
 
           <listitem>
-            <para>Questions to be answered during the lab <!--and submitted in a brief
-        report at the end of the lab period --><itemizedlist>
+            <para>Questions to be answered during the lab
+            <itemizedlist>
                 <listitem>
                   <para>For an AM signal as written in the text section 2.1
                   page 35, what is the acceptable range of the parameter k_a
@@ -1383,8 +1350,6 @@
             File-&gt;New.</para>
           </listitem>
         </itemizedlist>
-
-        <!--</section>-->
 
         <section>
           <title>Playing a Data File</title>
@@ -2307,14 +2272,6 @@
       <section>
         <title>Weaver Demodulator</title>
 
-        <!--<para>Download the files used in this section: <ulink
-        url="data/ssb_lsb_256k_complex2.dat">LSB voice .dat file</ulink>,
-        <ulink url="./data/SDRSharp_20130920_024052Z_14190kHz_IQ.wav">USB
-        voice .wav file</ulink>, <ulink
-        url="./data/SDRSharp_20130919_004154Z_14053kHz_IQ.wav">Morse code and
-        PSK data .wav file</ulink>. Create source blocks for each of these
-        files in your flowgraph.</para><-->
-
         <para>Recall that the signal is a complex (analytic) signal. One
         method of demodulating SSB voice is to operate on the real and
         imaginary parts of the signal separately. The <emphasis>Complex to
@@ -2529,8 +2486,8 @@
     xrefstyle="select: label"/> to understand the receive path of the USRP as
     it is set up in the lab. The USRPs in the lab have the WBX daughtercard
     installed which feature a programmable attenuator, programmable local
-    oscillator and analog I/Q mixer. The WBX daughterboard is an analog <!--circuit similar to the "softrock" described in the previous
-    section, but using-->front end for the GNU Radio software. It consists of
+    oscillator and analog I/Q mixer. The WBX daughterboard is an analog
+    front end for the GNU Radio software. It consists of
     a local oscillator implemented as a wideband frequency synthesizer, thus
     allowing the USRP to receive signals in the range from 50 MHz to 2.2 GHz.
     The WBX Daughterboard performs complex downconversion of a 100 MHz slice
@@ -2769,7 +2726,7 @@
 
           <listitem>
             <para>Execute the flowgraph by first clicking the Generate button
-            followed by the Execute button. <!--(see Figure 4)-->The screen
+            followed by the Execute button. The screen
             shows an FM receiver with a spectrum analyzer display and several
             sliders. The radio is tuned to 98.1 MHz (an FM station in
             Seattle), the RF gain is set to 7 and the AF gain is set to 300m.
@@ -3424,9 +3381,7 @@
           thought. In this case, since the USRP is phase locked to GPS, there
           is an integer number of samples per bit, which makes the
           waveform-to-bits conversion much easier. One method to find the
-          locations of the sync word by computer is as follows: <!--<para>Write a program (in MATLAB or another language of your choice) to
-      obtain the bit stream and correlate the demodulated FLEX signal against
-      the sync word.--></para>
+          locations of the sync word by computer is as follows:</para>
 
           <orderedlist>
             <listitem>
@@ -3483,33 +3438,6 @@
       </itemizedlist>
     </section>
 
-    <!--<para>You can use this <ulink url="./data/FLEX_bits.wav">FLEX file
-      source</ulink> as a sanity check. It contains 16 frames, with the first
-      one starting at 0.7126 seconds and the last one starting at 30.7126
-      seconds. Find the start times of all 16 frames.</para>
-
-      <para>Run your program on the frames you captured in the previous step
-      and give the start times of each sync word. How much time between frames
-      (sync words)? Is there any larger pattern?</para>-->
-
-    <!-- Times of all sync words in the file:
-    0.7126
-    2.5876 
-    4.4626
-    6.3376
-    8.2126
-   10.0876
-   11.9626
-   13.8376
-   17.5876
-   19.4626
-   21.3376
-   23.2126
-   25.0876
-   26.9626
-   28.8376
-   30.7126 -->
-
     <section>
       <title>Decoding text</title>
 
@@ -3560,11 +3488,6 @@
             </listitem>
           </itemizedlist>
 
-          <!-- Answers:
-       2-tone: -10kHz, 8-tone 15kHz
-       2-tone: 45.45 symbols / sec
-       8-tone: 31.25 symbols / sec
-    -->
         </listitem>
 
         <listitem>
