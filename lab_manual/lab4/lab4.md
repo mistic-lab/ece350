@@ -19,15 +19,15 @@ Start by reviewing the theory in the text chapters 6 (pulse shaping) and
 7 (PSK) and the GRC patches therein. The following GRC patches
 (flowgraphs) will help you understand how BPSK and QPSK are generated:
 
-- Real BPSK: [bpsk\_txrx\_real.grc](./data/bpsk_txrx_real.grc)
+- Real BPSK: [bpsk_txrx_real.grc](./data/bpsk_txrx_real.grc)
 
-- Complex BPSK: [bpsk\_txrx\_complex.grc](./data/bpsk_txrx_complex.grc)
+- Complex BPSK: [bpsk_txrx_complex.grc](./data/bpsk_txrx_complex.grc)
 
-- Real QPSK: [qpsk\_txrx\_real.grc](./data/qpsk_txrx_real.grc)
+- Real QPSK: [qpsk_txrx_real.grc](./data/qpsk_txrx_real.grc)
 
-- Complex QPSK: [qpsk\_txrx\_complex.grc](./data/qpsk_txrx_complex.grc)
+- Complex QPSK: [qpsk_txrx_complex.grc](./data/qpsk_txrx_complex.grc)
 
-Observe that for each of these 4 flowgraphs, the signal source is a square wave (not an impulse train) representing a 1010\... data pattern represented at the given sample rate. What is the bit rate and the symbol rate in each case? How many samples per symbol? Observe how the signal constellation rotates when the frequency offset is not equal to zero.
+Observe that for each of these 4 flowgraphs, the signal source is a square wave (not an impulse train) representing a 1010... data pattern represented at the given sample rate. What is the bit rate and the symbol rate in each case? How many samples per symbol? Observe how the signal constellation rotates when the frequency offset is not equal to zero.
 
 We now modify the Complex BPSK flowgraph to use a random data pattern
 and a non-square pulse shape.
