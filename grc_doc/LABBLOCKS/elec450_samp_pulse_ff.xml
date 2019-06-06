@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<block>
+  <name>Pulse Sampler</name>
+  <key>elec450_samp_pulse_ff</key>
+  <category>ELEC450</category>
+  <import>import elec450</import>
+  <make>elec450.samp_pulse_ff($decim)</make>
+
+  <param>
+    <name>Decimation</name>
+    <key>decim</key>
+    <type>int</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+
+  <sink>
+    <name>sample</name>
+    <type>byte</type>
+  </sink>
+  
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+
+</block>
